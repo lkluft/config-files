@@ -61,9 +61,9 @@ result=$?
 if [ $result = 1 ];then
     /opt/cisco/anyconnect/bin/vpnui &> /dev/null &
     cd ~/Datenverarbeitung/Matlab
-    /usr/local/MATLAB/R2013a/bin/matlab &
+    /usr/local/MATLAB/R20*/bin/matlab &
 else
     cd ~/Datenverarbeitung/Matlab
-    /usr/local/MATLAB/R2013a/bin/matlab &
+    /usr/local/MATLAB/R20*/bin/matlab &
 fi
 }
