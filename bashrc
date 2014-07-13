@@ -89,7 +89,7 @@ if [ $(hostname) == "lukas" ];then
     # set german keyboard configuration
     setxkbmap de
     # HDMI settings
-    hdmi-settings
+#    hdmi-settings
 fi
 
 # enable programmable completion features (you don't need to enable
