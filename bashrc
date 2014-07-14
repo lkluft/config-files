@@ -104,8 +104,8 @@ if ! shopt -oq posix; then
 fi
 
 # set ssh pass-phrase
-if [ $SSH_AGENT_PID ]; then
-    if [[ $(ssh-add -l) != *id_?sa* ]]; then
-        ssh-add
-    fi
-fi
+#if [ $SSH_AGENT_PID ]; then
+#    if [[ $(ssh-add -l) != *id_?sa* ]]; then
+#        ssh-add
+#    fi
+#fi
