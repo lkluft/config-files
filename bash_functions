@@ -30,7 +30,7 @@ V(){ nohup vlc $@ &> /dev/null & }
 # clementine shortcut
 C(){ nohup clementine $@ &> /dev/null & }
 
-# evince shortcut
+# PDF viewer shortcut
 pdf(){ $PDFVIEWER "$@" &> /dev/null & }
 
 # command line calculator

@@ -7,11 +7,12 @@ fi
 
 # UNIX-Kurzbefehle
 case $(hostname) in
-    "apple"*)   alias ls='gls --color=auto --group-directories-first' ;;
+    "apple"*)   alias ls='gls --color=auto --group-directories-first'
+                alias finder="open -a finder";;
     "lehre"*)   alias ls='ls'
-            alias rm='rm -I' ;;
-    *)      alias ls='ls --color=auto --group-directories-first'
-            alias rm='rm -I';;
+                alias rm='rm -I' ;;
+           *)   alias ls='ls --color=auto --group-directories-first'
+                alias rm='rm -I';;
 esac
 
 alias l='ls -oFh'

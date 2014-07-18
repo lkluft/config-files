@@ -44,9 +44,13 @@ case $(hostname) in
 esac
 
 # set standard browser and edtior variables
-export BROWSER="chromium-browser --proxy-auto-detect"
-export EDITOR=gedit
-export PDFVIEWER=okular
+case $(hostname) in
+    "apple"*)   export EDITOR=vim
+                export PDFVIEWER="open -a preview" ;;
+           *)   export BROWSER="chromium-browser --proxy-auto-detect"
+                export EDITOR=vim
+                export PDFVIEWER=okular ;;
+esac
 
 # alias definitions.
 # edit in ~/.bash_aliases
