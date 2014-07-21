@@ -15,7 +15,8 @@ case $(hostname) in
                 alias rm='rm -I';;
 esac
 
-alias l='ls -oFh'
+alias l='ls'
+alias ll='ls -oFh'
 alias lrt='ls -ortFh'
 alias la='ls -oFAh'
 alias lR='ls -oFRh'
