@@ -18,7 +18,7 @@ $BROWSER \
 &> /dev/null &
 }
 
-# LaTeXila shortcut
+# texmaker shortcut
 t(){ texmaker "$@" &> /dev/null &}
 
 # redefine R command

@@ -107,6 +107,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# set completion for own scripts and functions
+complete -o plusdirs -f -X '!*.pdf' pdf
+complete -o plusdirs -f -X '!*.tex' compiletex
+complete -d ls la ll lR l
+
 # set ssh pass-phrase
 #if [ $SSH_AGENT_PID ]; then
 #    if [[ $(ssh-add -l) != *id_?sa* ]]; then
