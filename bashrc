@@ -111,6 +111,7 @@ fi
 complete -o plusdirs -f -X '!*.pdf' pdf
 complete -o plusdirs -f -X '!*.tex' compiletex
 complete -d ls la ll lR l
+complete -o plusdirs -f -X '!*.arts' arts
 
 # set ssh pass-phrase
 #if [ $SSH_AGENT_PID ]; then
