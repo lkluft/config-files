@@ -92,8 +92,6 @@ esac
 if [ $(hostname) == "lukas" ];then
     # set german keyboard configuration
     setxkbmap de
-    # HDMI settings
-#    hdmi-settings
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -110,6 +108,7 @@ fi
 # set completion for own scripts and functions
 complete -o plusdirs -f -X '!*.pdf' pdf
 complete -o plusdirs -f -X '!*.tex' compiletex
+complete -o plusdirs -f -X '!*.tex' t
 complete -d ls la ll lR l
 complete -o plusdirs -f -X '!*.arts' arts
 
