@@ -1,0 +1,15 @@
+# case-insensitive completion
+set completion-ignore-case on
+
+# only show end of possible completions
+set completion-prefix-display-length 2
+
+# show possible completions on first tab
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+
+# append / to complete symlink names
+set mark-symlinked-directories oni
+
+# include system wide settings
+$include /etc/inputrc
