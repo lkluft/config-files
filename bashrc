@@ -92,6 +92,8 @@ esac
 if [ $(hostname) == "lukas" ];then
     # set german keyboard configuration
     setxkbmap de
+    # disconnect phantom VGA screen
+    vga-disconnect
 fi
 
 # enable programmable completion features (you don't need to enable
