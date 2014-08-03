@@ -35,7 +35,7 @@ fi
 
 # set prompt name
 case $(hostname) in
-    "lukas")        PS1="\[\033[1;32m\]\A@\h:\[\033[1;34m\]\W\[\033[1;32m\]$\[\033[0m\] " ;;
+    "medion"|"acer")        PS1="\[\033[1;32m\]\A@\h:\[\033[1;34m\]\W\[\033[1;32m\]$\[\033[0m\] " ;;
     "login"*)       PS1="\[\033[31;47m\]\A@\h:\[\033[31;34m\]\W\[\033[31;47m\]$\[\033[0m\] " ;;
     "snow"*)        PS1="\[\033[1;37m\]\A@\h:\[\033[1;34m\]\W\[\033[1;37m\]$\[\033[0m\] " ;;
     "lehre"*)       PS1="\[\033[1;33m\]\A@\h:\[\033[1;34m\]\W\[\033[1;33m\]$\[\033[0m\] " ;;
@@ -89,11 +89,13 @@ case $(hostname) in
           shopt -s autocd ;;
 esac
 
-if [ $(hostname) == "lukas" ];then
+if [ $(hostname) == "acer" ]||[ $(hostname) == "medion" ];then
     # set german keyboard configuration
     setxkbmap de
-    # disconnect phantom VGA screen
-    vga-disconnect
+    if [ $(hostname) == "acer" ];then
+        # disconnect phantom VGA screen
+        vga-disconnect
+    fi
 fi
 
 # enable programmable completion features (you don't need to enable
