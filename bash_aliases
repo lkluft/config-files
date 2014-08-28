@@ -8,6 +8,7 @@ fi
 # UNIX-Kurzbefehle
 case $(hostname) in
     "apple"*)   alias ls='gls --color=auto --group-directories-first'
+                eval $(gdircolors ~/.dircolors)
                 alias finder="open -a finder";;
     "lehre"*)   alias ls='ls'
                 alias rm='rm -I' ;;
