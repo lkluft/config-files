@@ -6,16 +6,11 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # UNIX-Kurzbefehle
-case $(hostname) in
-    "apple"*)   alias ls='gls --color=auto --group-directories-first'
-                eval $(gdircolors ~/.dircolors)
-                alias finder="open -a finder";;
-    "lehre"*)   alias ls='ls'
-                alias rm='rm -I' ;;
-           *)   alias ls='ls --color=auto --group-directories-first'
-                alias rm='rm -I';;
-esac
-
+if [[ $(hostname) == "apple"* ]];then
+    alias finder="open -a finder"
+fi
+alias ls='ls --color=auto --group-directories-first'
+alias rm='rm -I'
 alias l='ls'
 alias ll='ls -oFh'
 alias lrt='ls -ortFh'
@@ -29,7 +24,7 @@ alias x='exit'
 alias c='clear'
 
 # Systeminformationen
-alias topu='top -u $(whoami)'
+alias topu='top -U $(whoami)'
 alias temp='sensors | grep °C | head -3'
 
 # sudo Kurzbfehle

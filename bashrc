@@ -10,10 +10,11 @@ esac
 
 # PATH settings
 case $(hostname) in
-    "apple"*)   export PATH=$HOME/.scripts:$PATH:/opt/local/bin ;;
-    "lehre"*)   module load python/2.7-ve0 ;;
-    "thunder7") export PATH=$HOME/.scripts:$PATH:~/lkluft/arts/build/src
-                unset LANG 
+    "apple"*)   export PATH=$HOME/.scripts:/opt/local/libexec/gnubin:$PATH ;;
+    "lehre"*)   export PATH=$HOME/.scripts:/opt/csw/gnu:$PATH
+                module load python/2.7-ve0 ;;
+    "thunder7") export PATH=$HOME/.scripts:$HOME/lkluft/arts/build/src:$PATH
+                unset LANG
                 module load python/2.7-ve3 ;;
     *)          export PATH=$HOME/.scripts:$PATH ;;
 esac
@@ -35,22 +36,23 @@ fi
 
 # set prompt name
 case $(hostname) in
-    "medion"|"acer")        PS1="\[\033[1;32m\]\A@\h:\[\033[1;34m\]\W\[\033[1;32m\]$\[\033[0m\] " ;;
-    "login"*)       PS1="\[\033[31;47m\]\A@\h:\[\033[31;34m\]\W\[\033[31;47m\]$\[\033[0m\] " ;;
-    "snow"*)        PS1="\[\033[1;37m\]\A@\h:\[\033[1;34m\]\W\[\033[1;37m\]$\[\033[0m\] " ;;
-    "lehre"*)       PS1="\[\033[1;33m\]\A@\h:\[\033[1;34m\]\W\[\033[1;33m\]$\[\033[0m\] " ;;
-    "thunder"*)     PS1="\[\033[1;34m\]\A@\h:\[\033[1;36m\]\W\[\033[1;34m\]$\[\033[0m\] " ;;
-    *)              PS1="\[\033[1;31m\]\A@\h:\[\033[1;34m\]\W\[\033[1;31m\]$\[\033[0m\] " ;;
+    "medion"|"acer") PS1="\[\033[1;32m\]\A@\h:\[\033[1;34m\]\W\[\033[1;32m\]$\[\033[0m\] " ;;
+    "login"*)        PS1="\[\033[31;47m\]\A@\h:\[\033[31;34m\]\W\[\033[31;47m\]$\[\033[0m\] " ;;
+    "snow"*)         PS1="\[\033[1;37m\]\A@\h:\[\033[1;34m\]\W\[\033[1;37m\]$\[\033[0m\] " ;;
+    "lehre"*)        PS1="\[\033[1;33m\]\A@\h:\[\033[1;34m\]\W\[\033[1;33m\]$\[\033[0m\] " ;;
+    "thunder"*)      PS1="\[\033[1;34m\]\A@\h:\[\033[1;36m\]\W\[\033[1;34m\]$\[\033[0m\] " ;;
+    *)               PS1="\[\033[1;31m\]\A@\h:\[\033[1;34m\]\W\[\033[1;31m\]$\[\033[0m\] " ;;
 esac
 
 # set standard browser and edtior variables
 case $(hostname) in
-    "apple"*)   export EDITOR=vim
-                export PDFVIEWER="open -a preview" ;;
+    "apple"*)   export PDFVIEWER="open -a preview" ;;
+    "lehre"*)   export PDFVIEWER=evince
+                export BROWSER=firefox ;;
            *)   export BROWSER="chromium-browser --proxy-auto-detect"
-                export EDITOR=vim
                 export PDFVIEWER=okular ;;
 esac
+export EDITOR=vim
 
 # alias definitions.
 # edit in ~/.bash_aliases
