@@ -10,7 +10,7 @@ esac
 
 # PATH settings
 case $(hostname) in
-    "apple"*)   export PATH=$HOME/.scripts:/opt/local/libexec/gnubin:$PATH ;;
+    "apple"*)   export PATH=$HOME/.scripts:/opt/local/libexec/gnubin:/opt/local/bin:$PATH ;;
     "lehre"*)   export PATH=$HOME/.scripts:/opt/csw/gnu:$PATH
                 module load python/2.7-ve0 ;;
     "thunder7") export PATH=$HOME/.scripts:$HOME/lkluft/arts/build/src:$PATH
@@ -53,6 +53,9 @@ case $(hostname) in
                 export PDFVIEWER=okular ;;
 esac
 export EDITOR=vim
+
+# pythonrc location
+export PYTHONSTARTUP=$HOME/.pythonrc
 
 # alias definitions.
 # edit in ~/.bash_aliases
