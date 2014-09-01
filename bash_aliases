@@ -1,9 +1,7 @@
 # list of aliases for bash shell
 #
 # enable color support of ls and also add handy aliases
-if [ $(which dircolors) ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-fi
+which dircolors &> /dev/null && [[ -r ~/.dircolors ]] && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 
 # UNIX-Kurzbefehle
 if [[ $(hostname) == "apple"* ]];then
