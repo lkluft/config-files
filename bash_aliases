@@ -30,8 +30,10 @@ alias rb='sudo reboot'
 
 # Programme
 alias gnu='gnuplot'
-alias sp='spotify &> /dev/null &'
-alias ipython='BROWSER=chromium-browser ipython'
+if [[ $(hostname) == "medion" ]] || [[ $(hostname) == "acer" ]];then
+    alias sp='spotify &> /dev/null &'
+    alias ipython='BROWSER=chromium-browser ipython'
+fi
 #
 alias bil='localc ~/Dropbox/Dokumente/Bilanz/Ausgaben_2014.xls &'
 
