@@ -31,6 +31,7 @@ alias rb='sudo reboot'
 # Programme
 alias gnu='gnuplot'
 alias sp='spotify &> /dev/null &'
+alias ipython='BROWSER=chromium-browser ipython'
 #
 alias bil='localc ~/Dropbox/Dokumente/Bilanz/Ausgaben_2014.xls &'
 
