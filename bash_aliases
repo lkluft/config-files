@@ -4,9 +4,13 @@
 which dircolors &> /dev/null && [[ -r ~/.dircolors ]] && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 
 # UNIX-Kurzbefehle
-if [[ $(hostname) == "apple"* ]];then
-    alias finder="open -a finder"
-fi
+case $(hostname) in
+    "apple"*)   alias finder="open -a finder" ;;
+    "lehre"*)   alias man="TERM=xterm man"
+                alias less="TERM=xterm less"
+                alias view="TERM=xterm view" ;;
+esac
+
 alias ls='ls --color=auto --group-directories-first'
 alias rm='rm -I'
 alias l='ls'
