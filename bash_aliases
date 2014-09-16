@@ -6,9 +6,7 @@ which dircolors &> /dev/null && [[ -r ~/.dircolors ]] && eval "$(dircolors -b ~/
 # UNIX-Kurzbefehle
 case $(hostname) in
     "apple"*)   alias finder="open -a finder" ;;
-    "lehre"*)   alias man="TERM=xterm man"
-                alias less="TERM=xterm less"
-                alias view="TERM=xterm view" ;;
+    "lehre"*)   alias vim="TERM=xterm-256color vim" ;;
 esac
 
 alias ls='ls --color=auto --group-directories-first'
