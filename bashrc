@@ -50,7 +50,9 @@ case $(hostname) in
     "apple"*)   export PDFVIEWER="open -a preview" ;;
     "lehre"*)   export PDFVIEWER=evince
                 export BROWSER=firefox ;;
-           *)   export BROWSER="chromium-browser --proxy-auto-detect"
+    "thunder"*) export BROWSER=firefox
+                export PDFVIEWER=okular ;;
+            *)  export BROWSER="chromium-browser --proxy-auto-detect"
                 export PDFVIEWER=okular ;;
 esac
 export EDITOR=vim
