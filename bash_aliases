@@ -33,7 +33,6 @@ alias rb='sudo reboot'
 # Programme
 alias gnu='gnuplot'
 if [[ $(hostname) == "medion" ]] || [[ $(hostname) == "acer" ]];then
-    alias sp='spotify &> /dev/null &'
     alias ipython='BROWSER=chromium-browser ipython'
 fi
 #
@@ -42,8 +41,8 @@ alias bil='localc ~/Dropbox/Dokumente/Bilanz/Ausgaben_2014.xls &'
 
 # Internetkurzbefehle (Browser in ~/.bashrc editieren)
 alias fb='nohup $BROWSER facebook.com/?sk=h_chr &> /dev/null &'
-alias stine='nohup $BROWSER https://www.stine.uni-hamburg.de > /dev/null 2>&1&'
-alias ping='ping google.com -c 3'
+alias stine='nohup $BROWSER https://www.stine.uni-hamburg.de &> /dev/null &'
+alias sp='nohup $BROWSER https://play.spotify.com/browse &> /dev/null &'
 
 # SSH-Verbindung
 alias login1='ssh -X u300509@login1.zmaw.de'
