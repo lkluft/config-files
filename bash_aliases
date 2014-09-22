@@ -32,6 +32,7 @@ alias rb='sudo reboot'
 
 # Programme
 alias gnu='gnuplot'
+alias latexmk='latexmk -pdf'
 if [[ $(hostname) == "medion" ]] || [[ $(hostname) == "acer" ]];then
     alias ipython='BROWSER=chromium-browser ipython'
 fi
