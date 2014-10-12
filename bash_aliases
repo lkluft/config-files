@@ -35,6 +35,7 @@ alias latexmk='latexmk -pdf'
 if [[ $(hostname) == "medion" ]] || [[ $(hostname) == "acer" ]];then
     alias ipython='BROWSER=chromium-browser ipython'
 fi
+alias ipnote='ipython notebook --port 4242'
 #
 alias bil='localc ~/Dropbox/Dokumente/Bilanz/Ausgaben_2014.xls &'
 
