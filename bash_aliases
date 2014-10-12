@@ -24,7 +24,7 @@ alias x='exit'
 alias c='clear'
 
 # Systeminformationen
-alias topu='top -U $(whoami)'
+alias topu='top -u $(whoami)'
 alias temp='sensors | grep °C | head -3'
 
 # sudo Kurzbfehle
