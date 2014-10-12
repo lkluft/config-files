@@ -1,0 +1,24 @@
+# ssh configuration file
+ForwardAgent yes
+
+Host uni
+    Hostname login1.zmaw.de
+    User u300509
+
+Host thun
+    Hostname thunder7
+    User u300509
+
+Host lehre
+    Hostname lehre2
+    User u300509
+
+Host acer
+    Hostname 10.0.0.4
+    Port 8787
+    LocalForward 8888 localhost:8888
+
+Host medion
+    Hostname 10.0.0.7
+    Port 8787
+    LocalForward 8888 localhost:8888

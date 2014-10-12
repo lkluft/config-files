@@ -31,7 +31,6 @@ alias temp='sensors | grep °C | head -3'
 alias rb='sudo reboot'
 
 # Programme
-alias gnu='gnuplot'
 alias latexmk='latexmk -pdf'
 if [[ $(hostname) == "medion" ]] || [[ $(hostname) == "acer" ]];then
     alias ipython='BROWSER=chromium-browser ipython'
@@ -46,7 +45,4 @@ alias stine='nohup $BROWSER https://www.stine.uni-hamburg.de &> /dev/null &'
 alias sp='nohup $BROWSER https://play.spotify.com/browse &> /dev/null &'
 
 # SSH-Verbindung
-alias login1='ssh -X u300509@login1.zmaw.de'
-alias thun='ssh -X thunder7'
-alias lehre='ssh -X lehre2'
 #alias uni_info='ssh -X xkluft@rzssh1.informatik.uni-hamburg.de'
