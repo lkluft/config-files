@@ -75,14 +75,6 @@ if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
 
-# show date at terminal start
-echo $(date +%A), $(date +%x)
-case $(date +%H) in
-    0[6-9]|1[0-1])  echo Guten Morgen, $USER! ;;
-    1[2-9])         echo Guten Tag, $USER! ;;
-    2[0-3]|0[0-5])  echo Guten Abend, $USER! ;;
-esac
-
 # auto-correct typos/append to history file, don't overwrite
 shopt -s cdspell
 shopt -s histappend
