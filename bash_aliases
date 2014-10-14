@@ -10,12 +10,12 @@ case $(hostname) in
 esac
 
 alias ls='ls --color=auto --group-directories-first'
-alias rm='rm -I'
 alias l='ls'
 alias ll='ls -oFh'
 alias lrt='ls -ortFh'
 alias la='ls -oFAh'
 alias lR='ls -oFRh'
+alias rm='rm -I'
 alias grep='grep --color=auto'
 alias h='history'
 alias p='pwd'
@@ -25,9 +25,8 @@ alias c='clear'
 
 # Systeminformationen
 alias topu='top -u $(whoami)'
-alias temp='sensors | grep °C | head -3'
 
-# sudo Kurzbfehle
+# sudo Kurzbefehle
 alias rb='sudo reboot'
 
 # Programme

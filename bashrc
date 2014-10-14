@@ -24,8 +24,8 @@ esac
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=100
-HISTFILESIZE=500
+HISTSIZE=1000
+HISTFILESIZE=5000
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -51,10 +51,10 @@ case $(hostname) in
     "apple"*)   export PDFVIEWER="open -a preview" ;;
     "lehre"*)   export PDFVIEWER=evince
                 export BROWSER=firefox ;;
-    "thunder"*) export BROWSER=firefox
-                export PDFVIEWER=okular ;;
-            *)  export BROWSER="chromium-browser --proxy-auto-detect"
-                export PDFVIEWER=okular ;;
+    "thunder"*) export PDFVIEWER=okular
+                export BROWSER=firefox ;;
+            *)  export PDFVIEWER=okular
+                export BROWSER="chromium-browser --proxy-auto-detect" ;;
 esac
 export EDITOR=vim
 
@@ -81,6 +81,7 @@ shopt -s histappend
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+
 case $(hostname) in
     "apple"*|"lehre"*) ;;
     *)    # If set, the pattern "**" used in a pathname expansion context will
@@ -116,10 +117,3 @@ complete -o plusdirs -f -X '!*.tex' compiletex
 complete -o plusdirs -f -X '!*.tex' t
 complete -d ls la ll lR l
 complete -o plusdirs -f -X '!*.arts' arts
-
-# set ssh pass-phrase
-#if [ $SSH_AGENT_PID ]; then
-#    if [[ $(ssh-add -l) != *id_?sa* ]]; then
-#        ssh-add
-#    fi
-#fi
