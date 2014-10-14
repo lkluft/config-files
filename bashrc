@@ -20,10 +20,8 @@ case $(hostname) in
     *)          export PATH=$HOME/.scripts:$PATH ;;
 esac
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+# history settings
+HISTCONTROL=ignoreboth # no duplicates, no lines starting with space
 HISTSIZE=1000
 HISTFILESIZE=5000
 
@@ -61,16 +59,12 @@ export EDITOR=vim
 # pythonrc location
 export PYTHONSTARTUP=$HOME/.pythonrc
 
-# alias definitions.
-# edit in ~/.bash_aliases
-
+# alias definitions. edit in ~/.bash_aliases
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# bash functions
-# edit in ~/.bash_functions
-
+# bash functions. edit in ~/.bash_functions
 if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
@@ -78,20 +72,12 @@ fi
 # auto-correct typos/append to history file, don't overwrite
 shopt -s cdspell
 shopt -s histappend
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
+
+# update the values of LINES and COLUMNS after each command
 shopt -s checkwinsize
 
-case $(hostname) in
-    "apple"*|"lehre"*) ;;
-    *)    # If set, the pattern "**" used in a pathname expansion context will
-          # match all files and zero or more directories and subdirectories.
-          shopt -s globstar
-          # auto cd
-          shopt -s autocd ;;
-esac
-
-if [ $(hostname) == "acer" ]||[ $(hostname) == "medion" ];then
+# special settings for own machines
+if [ $(whoami) == "lukas" ]&&[ ! -z $DISPLAY  ];then
     # set german keyboard configuration
     setxkbmap de
     if [ $(hostname) == "acer" ];then
