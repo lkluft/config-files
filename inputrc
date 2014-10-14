@@ -1,3 +1,6 @@
+# include system wide settings
+$include /etc/inputrc
+
 # case-insensitive completion
 set completion-ignore-case on
 
@@ -10,6 +13,3 @@ set show-all-if-unmodified on
 
 # append / to complete symlink names
 set mark-symlinked-directories oni
-
-# include system wide settings
-$include /etc/inputrc
