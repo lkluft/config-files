@@ -3,10 +3,11 @@
 # enable color support of ls and also add handy aliases
 which dircolors &> /dev/null && [[ -r ~/.dircolors ]] && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 
-# UNIX-Kurzbefehle
 case $(hostname) in
-    "apple"*)   alias finder="open -a finder" ;;
-    "lehre"*)   alias vim="TERM=xterm-256color vim" ;;
+    "apple"*)           alias finder="open -a finder" ;;
+    "lehre"*)           alias vim="TERM=xterm-256color vim" ;;
+    "acer"|"medion")    alias ipython='BROWSER=chromium-browser ipython'
+                        alias bil='localc ~/Dropbox/Dokumente/Bilanz/Ausgaben_2014.xls &' ;;
 esac
 
 alias ls='ls --color=auto --group-directories-first'
@@ -22,27 +23,12 @@ alias p='pwd'
 alias mkdir='mkdir -p'
 alias x='exit'
 alias c='clear'
-
-# Systeminformationen
 alias topu='top -u $(whoami)'
-
-# sudo Kurzbefehle
 alias rb='sudo reboot'
-
-# Programme
 alias latexmk='latexmk -pdf'
-if [[ $(hostname) == "medion" ]] || [[ $(hostname) == "acer" ]];then
-    alias ipython='BROWSER=chromium-browser ipython'
-fi
 alias ipnote='ipython notebook --port 4242'
-#
-alias bil='localc ~/Dropbox/Dokumente/Bilanz/Ausgaben_2014.xls &'
 
-
-# Internetkurzbefehle (Browser in ~/.bashrc editieren)
-alias fb='nohup $BROWSER facebook.com/?sk=h_chr &> /dev/null &'
-alias stine='nohup $BROWSER https://www.stine.uni-hamburg.de &> /dev/null &'
-alias sp='nohup $BROWSER https://play.spotify.com/browse &> /dev/null &'
-
-# SSH-Verbindung
-#alias uni_info='ssh -X xkluft@rzssh1.informatik.uni-hamburg.de'
+# webpage aliases (edit environment variable BROWSER in ~/.bashrc)
+alias fb='$BROWSER facebook.com/?sk=h_chr &> /dev/null &'
+alias stine='$BROWSER https://www.stine.uni-hamburg.de &> /dev/null &'
+alias sp='$BROWSER https://play.spotify.com/browse &> /dev/null &'
