@@ -17,11 +17,11 @@ Host lehre
     LocalForward 4242 localhost:4242
 
 Host acer
-    Hostname 10.0.0.4
+    Hostname acer.local
     Port 8787
     LocalForward 4242 localhost:4242
 
 Host medion
-    Hostname 10.0.0.7
+    Hostname medion.local
     Port 8787
     LocalForward 4242 localhost:4242
