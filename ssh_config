@@ -2,25 +2,26 @@
 ForwardAgent yes
 
 # settings for university servers
-Host uni
+Host login1
     Hostname login1.zmaw.de
     User u300509
-    LocalForward 4242 localhost:4242
-
-Host uni_info
-    Hostname  rzssh1.informatik.uni-hamburg.de
-    User xkluft
-    LocalForward 4242 localhost:4242
 
 Host thun
     Hostname thunder7
     User u300509
     LocalForward 4242 localhost:4242
+    ProxyCommand ssh -q login1 nc -q0 thunder7 22
 
 Host lehre
     Hostname lehre2
     User u300509
     LocalForward 4242 localhost:4242
+    ProxyCommand ssh -q login1 nc -q0 lehre2 22
+
+#Host uni_info
+#    Hostname  rzssh1.informatik.uni-hamburg.de
+#    User xkluft
+#    LocalForward 4242 localhost:4242
 
 # personal machines
 Host acer
