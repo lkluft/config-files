@@ -9,10 +9,10 @@
 " properly set to work with the Vim-related packages available in Debian.
 runtime! debian.vim
 
-" Uncomment the next line to make Vim more Vi-compatible
-" NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
-" options, so any other options should be set AFTER setting 'compatible'.
-"set compatible
+" Source a global configuration file if available
+if filereadable("/etc/vim/vimrc.local")
+  source /etc/vim/vimrc.local
+endif
 
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
@@ -29,9 +29,9 @@ colorscheme koehler
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
-"if has("autocmd")
-"  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-"endif
+" if has("autocmd")
+"   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+" endif
 
 " Uncomment the following to have Vim load indentation rules and plugins
 " according to the detected filetype.
@@ -41,12 +41,10 @@ endif
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
-"set ignorecase     " Do case insensitive matching
-"set smartcase      " Do smart case matching
+set ignorecase      " Do case insensitive matching
+set smartcase       " Do smart case matching
 set incsearch       " Incremental search
 set hlsearch        " highlight search results
-"set autowrite      " Automatically save before commands like :next and :make
-"set hidden         " Hide buffers when they are abandoned
 set autoindent
 set copyindent
 set mouse=a         " Enable mouse usage (all modes)
@@ -65,13 +63,11 @@ set tabstop=4       " The width of a TAB is set to 4.
                     " Still it is a \t. It is just that
                     " Vim will interpret it to be having
                     " a width of 4.
+set softtabstop=4   " Sets the number of columns for a TAB
+set expandtab       " Expand TABs to spaces
 
 set shiftwidth=4    " Indents will have a width of 4
 set shiftround      " use multiple of shiftwidth when indenting with '<'
-
-set softtabstop=4   " Sets the number of columns for a TAB
-
-set expandtab       " Expand TABs to spaces
 
 " using backspace to delete characters
 set backspace=indent,eol,start
@@ -82,8 +78,3 @@ set wildmode=list:longest,full
 
 " adding extensions to syntax highlighting
 au BufNewFile,BufRead *.fi set filetype=fortran
-
-" Source a global configuration file if available
-if filereadable("/etc/vim/vimrc.local")
-  source /etc/vim/vimrc.local
-endif
