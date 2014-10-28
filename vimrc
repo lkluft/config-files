@@ -28,9 +28,9 @@ set background=dark
 colorscheme koehler
 
 " tab bar color
-:hi TabLineSel ctermfg=Black ctermbg=LightBlue  " active label
-:hi TabLine ctermfg=Grey ctermbg=Black          " other labels
-:hi TabLineFill ctermfg=Black ctermbg=Black     " rest of the bar
+:hi TabLineSel  ctermfg=White   ctermbg=Black       " active label
+:hi TabLine     ctermfg=Grey    ctermbg=DarkGrey    " other labels
+:hi TabLineFill ctermfg=Black   ctermbg=DarkGrey    " rest of the bar
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
