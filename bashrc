@@ -24,6 +24,7 @@ esac
 HISTCONTROL=ignoreboth # no duplicates, no lines starting with space
 HISTSIZE=1000
 HISTFILESIZE=5000
+HISTIGNORE="cd:h:ls:ll:l"
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"

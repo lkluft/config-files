@@ -80,8 +80,10 @@ set backspace=indent,eol,start
 set wildmenu
 set wildmode=list:longest,full
 
+" adding extensions to syntax highlighting
+au BufNewFile,BufRead *.fi set filetype=fortran
+
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
-
