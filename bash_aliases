@@ -25,6 +25,7 @@ alias x='exit'
 alias c='clear'
 alias topu='top -u $(whoami)'
 alias rb='sudo reboot'
+alias shut='sudo shutdown -h now'
 alias latexmk='latexmk -pdf'
 alias ipnote='ipython notebook --port 4242'
 
