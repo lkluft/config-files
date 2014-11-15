@@ -27,6 +27,9 @@ HISTSIZE=1000
 HISTFILESIZE=5000
 HISTIGNORE="cd:u:x:h:c:ls:ll:l"
 
+# disable flow control to enable i-search using Ctrl-s
+stty -ixon
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
