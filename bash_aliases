@@ -4,7 +4,6 @@
 which dircolors &> /dev/null && [[ -r ~/.dircolors ]] && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 
 case $(hostname) in
-    "apple"*)           alias finder="open -a finder" ;;
     "acer"|"medion")    alias ipython='BROWSER=chromium-browser ipython'
                         alias bil='localc ~/Dropbox/Dokumente/Bilanz/Ausgaben_2014.xls &' ;;
 esac
