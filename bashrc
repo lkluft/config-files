@@ -12,11 +12,11 @@ esac
 case $(hostname) in
     "apple"*)   export PATH=$HOME/.scripts:/opt/local/libexec/gnubin:/opt/local/bin:$PATH ;;
     "lehre"*)   export PATH=$HOME/.scripts:/opt/csw/gnu:$PATH
-                module load git
-                module load python/2.7-ve0
+                module load grads cdo git python/2.7-ve0
                 export TERM=xterm ;;
     "thunder"*) export PATH=$HOME/.scripts:$HOME/lkluft/arts/build/src:$PATH
                 . /scratch/uni/u237/sw/profile.apmet/apmet.sh
+                module load grads cdo
                 unset LANG ;;
     *)          export PATH=$HOME/.scripts:$PATH ;;
 esac
