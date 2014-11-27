@@ -25,7 +25,8 @@ endif
 set t_Co=256
 syntax enable
 set background=dark
-colorscheme koehler
+let g:solarized_termcolors=256
+colorscheme solarized
 
 " tab bar color
 :hi TabLineSel  ctermfg=White   ctermbg=Black       " active label
