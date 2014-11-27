@@ -26,7 +26,7 @@ alias rb='sudo reboot'
 alias shut='sudo shutdown -h now'
 alias latexmk='latexmk -pdf'
 alias ipynb='ipython notebook'
-alias vim="TERM=xterm-256color vim -p"
+alias vim="vim -p"
 
 # webpage aliases (edit environment variable BROWSER in ~/.bashrc)
 alias fb='$BROWSER facebook.com/?sk=h_chr &> /dev/null &'
