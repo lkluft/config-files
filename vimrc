@@ -20,11 +20,17 @@ if has("syntax")
   syntax on
 endif
 
-" If using a dark background within the editing area and syntax highlighting
-" turn on this option as well
-set t_Co=256
 syntax enable
-set background=dark
+set t_Co=256
+
+" different background for GUI mode
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+
+" colorscheme
 let g:solarized_termcolors=256
 colorscheme solarized
 
