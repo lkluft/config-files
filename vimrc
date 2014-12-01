@@ -21,17 +21,30 @@ if has("syntax")
 endif
 
 syntax enable
-set t_Co=256
-
-" different background for GUI mode
 if has('gui_running')
-    set background=light
+    " GUI mode
+    " switch dark/light depending on time
+    let hr=strftime("%H")
+    if hr > 6 && hr < 18
+        set background=light
+    else
+        set background=dark
+    endif
+
+    " different fonts on Linux/MacOS
+    if has("gui_gtk2")
+        set guifont=Monospace\ 10
+    elseif has("gui_macvim")
+        set guifont=Menlo\ Regular:h14
+    endif
 else
+    " VIM in terminal
     set background=dark
+    let g:solarized_termcolors=256
+    set t_Co=256
 endif
 
 " colorscheme
-let g:solarized_termcolors=256
 colorscheme solarized
 
 " tab bar color
