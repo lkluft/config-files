@@ -34,6 +34,8 @@ if has('gui_running')
     " function to toggle between background modes
     call togglebg#map("<F5>")
 
+    set go-=T   " hide toolbar
+    set go-=r   " hide scrollbar
     " different fonts on Linux/MacOS
     if has("gui_gtk2")
         set guifont=Monospace\ 10
