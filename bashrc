@@ -51,7 +51,8 @@ esac
 
 # set standard browser and edtior variables
 case $(hostname) in
-    "apple"*)   export PDFVIEWER=open ;;
+    "apple"*)   export PDFVIEWER=open
+                export BROWSER=open ;;
     "lehre"*)   export PDFVIEWER=evince
                 export BROWSER=firefox ;;
     "thunder"*) export PDFVIEWER=okular

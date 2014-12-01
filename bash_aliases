@@ -4,8 +4,7 @@
 which dircolors &> /dev/null && [[ -r ~/.dircolors ]] && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 
 case $(hostname) in
-    "acer"|"medion")    alias ipython='BROWSER=chromium-browser ipython'
-                        alias bil='localc ~/Dropbox/Dokumente/Bilanz/Ausgaben_2014.xls &' ;;
+    "acer"|"medion") alias bil='localc ~/Dropbox/Dokumente/Bilanz/Ausgaben_2014.xls &' ;;
 esac
 
 alias ls='ls --color=auto --group-directories-first'
@@ -29,6 +28,6 @@ alias ipynb='ipython notebook'
 alias vim="vim -p"
 
 # webpage aliases (edit environment variable BROWSER in ~/.bashrc)
-alias fb='$BROWSER facebook.com/?sk=h_chr &> /dev/null &'
+alias fb='$BROWSER https://facebook.com/?sk=h_chr &> /dev/null &'
 alias stine='$BROWSER https://www.stine.uni-hamburg.de &> /dev/null &'
 alias sp='$BROWSER https://play.spotify.com/browse &> /dev/null &'
