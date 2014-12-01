@@ -31,6 +31,9 @@ if has('gui_running')
         set background=dark
     endif
 
+    " function to toggle between background modes
+    call togglebg#map("<F5>")
+
     " different fonts on Linux/MacOS
     if has("gui_gtk2")
         set guifont=Monospace\ 10
