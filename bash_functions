@@ -4,7 +4,7 @@
 cdl(){ cd $1; ls; }
 
 # easy cd ..
-u() {
+u(){
     if [ -z $1 ];then
         LIMIT=1
     else
@@ -19,7 +19,7 @@ u() {
 }
 
 # texmaker shortcut
-t(){ texmaker "$@" &> /dev/null &}
+t(){ texmaker "$@" &> /dev/null & }
 
 # PDF viewer shortcut
 pdf(){ $PDFVIEWER "$@" &> /dev/null & }
@@ -31,10 +31,10 @@ T(){ bc <<< "scale=4;"$@""; }
 f(){ f95 $1 -o ${1%.*}.x; }
 
 # Google/YouTube search via terminal
-g() {
+g(){
     $BROWSER \
     "https://startpage.com/do/search?q=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')" \
-    &> /dev/null & 
+    &> /dev/null &
 }
 
 yt(){
@@ -43,8 +43,17 @@ yt(){
     &> /dev/null &
 }
 
+# start spotify client/web player
+sp(){
+    if type spotify &> /dev/null;then
+        spotify &> /dev/null &
+    else
+        $BROWSER "https://play.spotify.com/browse" &> /dev/null &
+    fi
+}
+
 # start matlab and cisco client if needed
-mat() {
+mat(){
     # check if cisco vpnui is already running
     ps -e | grep -v grep | grep vpnui &> /dev/null
     result=$?

@@ -31,4 +31,3 @@ alias gvim="gvim -p"
 # webpage aliases (edit environment variable BROWSER in ~/.bashrc)
 alias fb='$BROWSER https://facebook.com/?sk=h_chr &> /dev/null &'
 alias stine='$BROWSER https://www.stine.uni-hamburg.de &> /dev/null &'
-alias sp='$BROWSER https://play.spotify.com/browse &> /dev/null &'
