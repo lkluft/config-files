@@ -24,7 +24,7 @@ alias topu='top -u $(whoami)'
 alias rb='sudo reboot'
 alias shut='sudo shutdown -h now'
 alias latexmk='latexmk -pdf'
-alias ipynb='ipython notebook'
+alias ipynb='ipython notebook --script'
 alias vim="vim -p"
 alias gvim="gvim -p"
 
