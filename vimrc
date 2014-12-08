@@ -58,12 +58,12 @@ colorscheme solarized
 :hi TabLineFill ctermfg=Black   ctermbg=DarkGrey    " rest of the bar
 
 " tab navigation
-nnoremap <A-tab>    :tabprevious<CR>
-nnoremap <C-tab>    :tabnext<CR>
-nnoremap <C-t>      :tabnew<CR>
-inoremap <A-tab>    <Esc>:tabprevious<CR>i
-inoremap <C-tab>    <Esc>:tabnext<CR>i
-inoremap <C-t>      <Esc>:tabnew<CR>
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-tab>   <Esc>:tabnext<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>
 
 " Uncomment the following to have Vim jump to the last position when reopening a file
 if has("autocmd")
