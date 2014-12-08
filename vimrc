@@ -57,11 +57,18 @@ colorscheme solarized
 :hi TabLine     ctermfg=Grey    ctermbg=DarkGrey    " other labels
 :hi TabLineFill ctermfg=Black   ctermbg=DarkGrey    " rest of the bar
 
-" Uncomment the following to have Vim jump to the last position when
-" reopening a file
-" if has("autocmd")
-"   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-" endif
+" tab navigation
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-tab>   <Esc>:tabnext<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>
+
+" Uncomment the following to have Vim jump to the last position when reopening a file
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
 
 " Uncomment the following to have Vim load indentation rules and plugins
 " according to the detected filetype.
@@ -81,6 +88,7 @@ set mouse=a         " Enable mouse usage (all modes)
 set showcmd         " Show (partial) command in status line.
 set showmatch       " Show matching brackets.
 set number          " show line numbers
+set autoread        " reload file if changed (only in GUI mode)
 
 " highlight tabs and trailing spaces
 set listchars=tab:>-,trail:-
