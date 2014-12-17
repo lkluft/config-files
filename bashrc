@@ -25,7 +25,7 @@ esac
 HISTCONTROL=ignoreboth # no duplicates, no lines starting with space
 HISTSIZE=1000
 HISTFILESIZE=5000
-HISTIGNORE="cd:u:x:h:c:ls:ll:l"
+HISTIGNORE="cd:u:x:h:c:ls:ll:l:la"
 
 # set colors for man pages (less)
 export LESS_TERMCAP_mb=$'\E[01;31m' # begin blinking
