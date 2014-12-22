@@ -95,10 +95,6 @@ shopt -s checkwinsize
 if [ $(whoami) == "lukas" ]&&[ ! -z $DISPLAY  ];then
     # set german keyboard configuration
     setxkbmap de
-    if [ $(hostname) == "acer" ];then
-        # disconnect phantom VGA screen
-        vga-disconnect
-    fi
 fi
 
 # enable programmable completion features (you don't need to enable
