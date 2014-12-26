@@ -43,23 +43,13 @@ yt(){
     &> /dev/null &
 }
 
-# start spotify client/web player
-sp(){
-    if type spotify &> /dev/null;then
-        spotify &> /dev/null &
-    else
-        $BROWSER "https://play.spotify.com/browse" &> /dev/null &
-    fi
-}
-
 # start matlab and cisco client if needed
 mat(){
     # check if cisco vpnui is already running
-    ps -e | grep -v grep | grep vpnui &> /dev/null
-    result=$?
+    ps cax | grep vpnui &> /dev/null
 
     # if cisco is running start matlab, otherwise start both processes
-    if [ $result = 1 ];then
+    if [ $? == 1 ];then
         /opt/cisco/anyconnect/bin/vpnui &> /dev/null &
         cd ~/Datenverarbeitung/Matlab
         /usr/local/MATLAB/R20*/bin/matlab &
