@@ -11,5 +11,9 @@ set completion-prefix-display-length 2
 set show-all-if-ambiguous on
 set show-all-if-unmodified on
 
+# colorize possible completions
+set visible-stats on
+set colored-stats on
+
 # append / to complete symlink names
 set mark-symlinked-directories oni
