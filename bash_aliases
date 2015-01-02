@@ -4,7 +4,7 @@
 which dircolors &> /dev/null && [[ -r ~/.dircolors ]] && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 
 case $(hostname) in
-    "acer"|"medion") alias bil='localc ~/Dropbox/Dokumente/Bilanz/Ausgaben_2014.xls &' ;;
+    "acer"|"medion") alias bil='localc ~/Dropbox/Dokumente/Bilanz/Ausgaben_2015.xls &' ;;
 esac
 
 alias ls='ls --color=auto --group-directories-first'
