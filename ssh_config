@@ -14,6 +14,12 @@ Host thun
     LocalForward 4242 localhost:4242
     ProxyCommand ssh -q login1 nc -q0 thunder7 22
 
+Host apple
+    Hostname apple157.mi.zmaw.de
+    User u300509
+    LocalForward 4242 localhost:4242
+    ProxyCommand ssh -q login1 nc -q0 apple157.mi.zmaw.de 22
+
 Host lehre
     Hostname lehre2
     User u300509
