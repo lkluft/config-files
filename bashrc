@@ -16,7 +16,7 @@ case $(hostname) in
                 export TERM=xterm ;;
     "thunder"*) export PATH=$HOME/.scripts:$HOME/lkluft/arts/build/src:$PATH
                 . /scratch/uni/u237/sw/profile.apmet/apmet.sh
-                module load grads cdo
+                module load grads cdo intel
                 unset LANG ;;
     *)          export PATH=$HOME/.scripts:$PATH ;;
 esac

@@ -28,7 +28,15 @@ pdf(){ $PDFVIEWER "$@" &> /dev/null & }
 T(){ bc <<< "scale=4;"$@""; }
 
 # fortran compiler
-f(){ f95 $1 -o ${1%.*}.x; }
+f(){
+    if type ifort &> /dev/null;then
+        ifort $1 -o ${1%.*}.x
+    elif type f95 &> /dev/null;then
+        f95 $1 -o ${1%.*}.x
+    else
+        echo No frotran compiler found.
+    fi
+}
 
 # Google/YouTube search via terminal
 g(){
