@@ -34,7 +34,7 @@ f(){
     elif type f95 &> /dev/null;then
         f95 $1 -o ${1%.*}.x
     else
-        echo No frotran compiler found.
+        echo No fortran compiler found.
     fi
 }
 
