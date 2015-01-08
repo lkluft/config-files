@@ -4,27 +4,27 @@ ForwardX11 yes
 LogLevel ERROR
 
 # settings for university servers
-Host login1
-    Hostname login1.zmaw.de
+Host login
+    Hostname login2.zmaw.de
     User u300509
 
 Host thun
     Hostname thunder7
     User u300509
     LocalForward 4242 localhost:4242
-    ProxyCommand ssh -q login1 nc -q0 thunder7 22
+    ProxyCommand ssh -q login nc -q0 %h 22
 
 Host apple
     Hostname apple157.mi.zmaw.de
     User u300509
     LocalForward 4242 localhost:4242
-    ProxyCommand ssh -q login1 nc -q0 apple157.mi.zmaw.de 22
+    ProxyCommand ssh -q login nc -q0 %h 22
 
 Host lehre
-    Hostname lehre2
+    Hostname lehre1
     User u300509
     LocalForward 4242 localhost:4242
-    ProxyCommand ssh -q login1 nc -q0 lehre2 22
+    ProxyCommand ssh -q login nc -q0 %h 22
 
 #Host uni_info
 #    Hostname  rzssh1.informatik.uni-hamburg.de
