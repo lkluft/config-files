@@ -18,6 +18,9 @@ u(){
     cd "$P"
 }
 
+# show/search bash history
+h(){ history | grep -E "$(echo $@ | sed 's/ /|/g')" ; }
+
 # texmaker shortcut
 t(){ texmaker "$@" &> /dev/null & }
 
