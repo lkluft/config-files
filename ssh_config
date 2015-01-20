@@ -1,6 +1,8 @@
 # ssh configuration file
 ForwardAgent yes
-ForwardX11 yes
+ForwardX11 no
+ForwardX11trusted no
+HashKnownHosts yes
 LogLevel ERROR
 
 # settings for university servers
