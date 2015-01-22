@@ -10,7 +10,8 @@ esac
 
 # PATH settings
 case $(hostname) in
-    "apple"*)   export PATH=$HOME/.scripts:/opt/local/libexec/gnubin:/opt/local/bin:$PATH ;;
+    "apple"*)   export PATH=$HOME/.scripts:/opt/local/libexec/gnubin:/opt/local/bin:$PATH
+                export SHELL='/opt/local/bin/bash' ;;
     "lehre"*)   export PATH=$HOME/.scripts:/opt/csw/gnu:$PATH
                 module load grads cdo git python/2.7-ve0
                 export TERM=xterm ;;
@@ -84,12 +85,11 @@ if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
 
-# auto-correct typos/append to history file, don't overwrite
-shopt -s cdspell
-shopt -s histappend
-
-# update the values of LINES and COLUMNS after each command
-shopt -s checkwinsize
+# bash behaviour
+shopt -s cdspell        # auto-correct typos
+shopt -s histappend     # appen to history file, don't overwrite
+shopt -s globstar       # ** wildcard matches all subdirectories
+shopt -s checkwinsize   # check size of terminal window
 
 # special settings for own machines
 if [ $(whoami) == "lukas" ]&&[ ! -z $DISPLAY  ];then
