@@ -63,9 +63,9 @@ mat(){
     if [ $? == 1 ];then
         /opt/cisco/anyconnect/bin/vpnui &> /dev/null &
         cd ~/Datenverarbeitung/Matlab
-        /usr/local/MATLAB/R20*/bin/matlab &
+        matlab &> /dev/null &
     else
         cd ~/Datenverarbeitung/Matlab
-        /usr/local/MATLAB/R20*/bin/matlab &
+        matlab &> /dev/null &
     fi
 }
