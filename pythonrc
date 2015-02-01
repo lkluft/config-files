@@ -1,14 +1,5 @@
 # Import useful packages
 import os
 import sys
-import matplotlib.pyplot    as plt
 import numpy                as np
 import scipy                as sp
-
-# define a function with output smilar to MATLAB's Workspace
-def workspace():
-    for k,t in [(key, type(value)) for key, value in globals().iteritems() if key[0] != '_']:
-        print('{:20s}{:20s}'.format(k, t))
-
-# success message
-print('pythonrc gelesen.')

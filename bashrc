@@ -19,7 +19,7 @@ case $(hostname) in
                 . /scratch/uni/u237/sw/profile.apmet/apmet.sh
                 module load grads cdo intel
                 unset LANG ;;
-    *)          export PATH=$HOME/.scripts:$PATH:/usr/local/MATLAB/R2014b/bin/:usr/local/MATLAB/R2012a/bin ;;
+    *)          export PATH=$HOME/.scripts:$PATH:/usr/local/MATLAB/R2014b/bin/:/usr/local/MATLAB/R2012a/bin ;;
 esac
 
 # history settings

@@ -56,16 +56,18 @@ yt(){
 
 # start matlab and cisco client if needed
 mat(){
-    # check if cisco vpnui is already running
-    ps cax | grep vpnui &> /dev/null
+    # if wifi SSID is "eduroam" start matlab,
+    # otherwise establish VPN and start matlab
+    if [[ $(iwgetid -r) != "eduroam" ]];then
+        # temporary file to store openconnect PID
+        temp1=$(mktemp)
 
-    # if cisco is running start matlab, otherwise start both processes
-    if [ $? == 1 ];then
-        /opt/cisco/anyconnect/bin/vpnui &> /dev/null &
-        cd ~/Datenverarbeitung/Matlab
-        matlab &> /dev/null &
+        # establish VPN
+        sudo openconnect vpn.rrz.uni-hamburg.de \
+        --background --user=fgrx245 --pid-file=$temp1 && \
+        matlab && \
+        sudo kill $(cat $temp1)
     else
-        cd ~/Datenverarbeitung/Matlab
         matlab &> /dev/null &
     fi
 }
