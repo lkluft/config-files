@@ -1,5 +1,5 @@
 # Import useful packages
 import os
 import sys
-import numpy                as np
-import scipy                as sp
+import numpy as np
+import scipy as sp

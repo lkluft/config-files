@@ -4,8 +4,8 @@ $include /etc/inputrc
 # case-insensitive completion
 set completion-ignore-case on
 
-# only show end of possible completions
-set completion-prefix-display-length 2
+# treats hyphens and underscores  as equivalent
+set completion-map-case on
 
 # show possible completions on first tab
 set show-all-if-ambiguous on
@@ -17,3 +17,10 @@ set colored-stats on
 
 # append / to complete symlink names
 set mark-symlinked-directories oni
+
+# mark modified lines in history
+set mark-modified-lines on
+
+# completion in the middle of a word deletes
+# the following characters
+set skip-completed-text on

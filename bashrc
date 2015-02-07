@@ -16,6 +16,7 @@ case $(hostname) in
                 module load grads cdo git python/2.7-ve0
                 export TERM=xterm ;;
     "thunder"*) export PATH=$HOME/.scripts:$HOME/lkluft/arts/build/src:$PATH
+                export PYTHONPATH=/scratch/uni/u237/users/lkluft/Python/lib/python:$PYTHONPATH
                 . /scratch/uni/u237/sw/profile.apmet/apmet.sh
                 module load grads cdo intel
                 unset LANG ;;
@@ -26,7 +27,7 @@ esac
 HISTCONTROL=ignoreboth # no duplicates, no lines starting with space
 HISTSIZE=1000
 HISTFILESIZE=5000
-HISTIGNORE="cd:u:x:h:c:ls:ll:l:la:sp *:tm"
+HISTIGNORE="cd:u:x:h:c:ls:ll:l:la:tm"
 
 # set colors for man pages (less)
 export LESS_TERMCAP_mb=$'\E[01;31m' # begin blinking
