@@ -1,10 +1,4 @@
 # ssh configuration file
-ForwardAgent yes
-ForwardX11 no
-ForwardX11trusted no
-HashKnownHosts yes
-LogLevel ERROR
-
 # settings for university servers
 Host login
     Hostname login2.zmaw.de
@@ -15,6 +9,8 @@ Host thun
     User u300509
     LocalForward 4242 localhost:4242
     ProxyCommand ssh -q login nc -q0 %h 22
+    ForwardX11 yes
+    ForwardX11trusted yes
 
 Host apple
     Hostname apple157.mi.zmaw.de
@@ -45,3 +41,11 @@ Host medion
     User lukas
     Port 8787
     LocalForward 4242 localhost:4242
+
+Host *
+    ForwardAgent yes
+    HashKnownHosts yes
+    LogLevel ERROR
+    ForwardX11 no
+    ForwardX11trusted no
+
