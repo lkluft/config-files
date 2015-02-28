@@ -79,6 +79,9 @@ export PDFVIEWER BROWSER EDITOR=vim
 
 # pythonrc location
 export PYTHONSTARTUP=$HOME/.pythonrc
+if  [[ $(hostname) == "acer" || $(hostname) == "medion" ]]; then
+    VIRTUAL_ENV_DISABLE_PROMPT=1 source $HOME/.pyenv/bin/activate
+fi
 
 # alias definitions. edit in ~/.bash_aliases
 if [ -f ~/.bash_aliases ]; then
