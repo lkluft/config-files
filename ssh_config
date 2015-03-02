@@ -43,9 +43,10 @@ Host medion
     LocalForward 4242 localhost:4242
 
 Host *
+    Compression yes
     ForwardAgent yes
-    HashKnownHosts yes
-    LogLevel ERROR
     ForwardX11 no
     ForwardX11trusted no
+    HashKnownHosts yes
+    LogLevel ERROR
 
