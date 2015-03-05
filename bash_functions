@@ -54,6 +54,23 @@ yt(){
     &> /dev/null &
 }
 
+# smsvongesternnacht.de in terminal
+smsvongesternnacht(){
+tmp=$(mktemp)
+[[ -z $1 ]] || [[ $1 == "zufall" || $1 == "beste" ]] || return 1
+curl -s http://www.smsvongesternnacht.de/$1?page={0..10} >> $tmp
+grep -E "(\"sms-bubble\")|(\"sms-tag\")|(\"field-item odd\")|(sms-participant)|(class=\"sms-tagline)" $tmp | \
+sed -e 's/\r//g' \
+    -e 's/.*<div class="sms-participant sms-participant-1">.*/\"\\n\\033\[1;31m\"/' \
+    -e 's/.*<div class="sms-participant sms-participant-2">.*/\"\\n\\033[1;32m\"/' \
+    -e 's/<div class="sms-tag">/\"/' \
+    -e 's/<div class="sms-bubble">/\"/' \
+    -e 's:</div>:\":' \
+    -e 's/.*<aside class="sms-tagline">.*/\"\\033\[0m\\n\\n\"/' \
+    -e 's/\&#......;//g' | \
+xargs echo -e | less -R
+}
+
 # start matlab and cisco client if needed
 mat(){
     # if wifi SSID is "eduroam" start matlab,
