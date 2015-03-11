@@ -6,23 +6,28 @@
 [[ $- == *i* ]] || return
 
 # PATH settings
+path_append ()  { path_remove $1; export PATH="$PATH:$1"; }
+path_prepend () { path_remove $1; export PATH="$1:$PATH"; }
+path_remove ()  { export PATH=$(echo -n $PATH | \
+    awk -v RS=: -v ORS=: '$0 != "'$1'"' | sed 's/:$//'); }
+
 case $(hostname) in
-    "apple"*)   PATH=/opt/local/libexec/gnubin:/opt/local/bin:$PATH
-                PATH=$HOME/.scripts:$PATH
+    "apple"*)   path_prepend /opt/local/libexec/gnubin:/opt/local/bin
+                path_prepend $HOME/.scripts
                 export SHELL='/opt/local/bin/bash' ;;
-    "lehre"*)   PATH=$HOME/.scripts:/opt/csw/gnu:$PATH
+    "lehre"*)   path_prepend $HOME/.scripts:/opt/csw/gnu
                 module load grads cdo git python/2.7-ve0 ;;
-    "thunder"*) PATH=$HOME/.scripts:$HOME/lkluft/arts/build/src:$PATH
-                PYTHONPATH=$HOME/lkluft/Python/lib/python:$PYTHONPATH
-                . /scratch/uni/u237/sw/profile.apmet/apmet.sh
+    "thunder"*) . /scratch/uni/u237/sw/profile.apmet/apmet.sh
                 module load grads cdo intel
-                unset LANG
-                export PYTHONPATH ;;
-    *)          PATH=$HOME/.scripts:$PATH
-                PATH=$PATH:/usr/local/MATLAB/R2014b/bin
-                PATH=$PATH:/usr/local/MATLAB/R2012a/bin ;;
+                path_prepend /scratch/uni/u237/sw/tmux/bin
+                path_prepend $HOME/lkluft/arts/build/src
+                path_prepend $HOME/.scripts
+                export PYTHONPATH=$HOME/lkluft/Python/lib/python:$PYTHONPATH
+                unset LANG ;;
+    *)          path_prepend $HOME/.scripts
+                path_append /usr/local/MATLAB/R2014b/bin
+                path_append /usr/local/MATLAB/R2012a/bin ;;
 esac
-export PATH
 
 # history settings
 HISTCONTROL=ignoreboth # no duplicates, no lines starting with space
@@ -79,17 +84,8 @@ export PYTHONSTARTUP=$HOME/.pythonrc
 
 # activate virtual python environment
 if  [ -f ~/.pyenv/bin/activate ]; then
+    path_remove ~/.pyenv/bin
     VIRTUAL_ENV_DISABLE_PROMPT=1 source ~/.pyenv/bin/activate
-fi
-
-# alias definitions. edit in ~/.bash_aliases
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-# bash functions. edit in ~/.bash_functions
-if [ -f ~/.bash_functions ]; then
-    . ~/.bash_functions
 fi
 
 # bash behaviour
@@ -102,6 +98,16 @@ shopt -s checkwinsize   # check size of terminal window
 if [ $(whoami) == "lukas" ] && [ ! -z $DISPLAY  ];then
     # set german keyboard configuration
     setxkbmap de
+fi
+
+# alias definitions. edit in ~/.bash_aliases
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# bash functions. edit in ~/.bash_functions
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -121,3 +127,4 @@ complete -o plusdirs -f -X '!*.tex' compiletex
 complete -o plusdirs -f -X '!*.tex' t
 complete -d ls la ll lR l
 complete -o plusdirs -f -X '!*.arts' arts
+
