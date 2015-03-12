@@ -16,7 +16,8 @@ case $(hostname) in
                 path_prepend /opt/local/libexec/gnubin
                 path_prepend $HOME/.scripts
                 export SHELL='/opt/local/bin/bash' ;;
-    "lehre"*)   path_prepend $HOME/.scripts:/opt/csw/gnu
+    "lehre"*)   path_prepend /opt/csw/gnu
+                path_prepend $HOME/.scripts
                 module load grads cdo git python/2.7-ve0 ;;
     "thunder"*) . /scratch/uni/u237/sw/profile.apmet/apmet.sh
                 module load grads cdo intel
