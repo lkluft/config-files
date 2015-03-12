@@ -12,7 +12,8 @@ path_remove ()  { export PATH=$(echo -n $PATH | \
     awk -v RS=: -v ORS=: '$0 != "'$1'"' | sed 's/:$//'); }
 
 case $(hostname) in
-    "apple"*)   path_prepend /opt/local/libexec/gnubin:/opt/local/bin
+    "apple"*)   path_prepend /opt/local/bin
+                path_prepend /opt/local/libexec/gnubin
                 path_prepend $HOME/.scripts
                 export SHELL='/opt/local/bin/bash' ;;
     "lehre"*)   path_prepend $HOME/.scripts:/opt/csw/gnu
