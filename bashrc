@@ -16,8 +16,7 @@ case $(hostname) in
                 path_prepend /opt/local/libexec/gnubin
                 path_prepend $HOME/.scripts
                 export SHELL='/opt/local/bin/bash' ;;
-    "lehre"*)   path_prepend /opt/csw/gnu
-                path_prepend $HOME/.scripts
+    "lehre"*)   export PATH=$HOME/.scripts:/opt/csw/gnu:$PATH
                 module load grads cdo git python/2.7-ve0 ;;
     "thunder"*) . /scratch/uni/u237/sw/profile.apmet/apmet.sh
                 module load grads cdo intel
@@ -42,11 +41,6 @@ stty -ixon
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
 
 # set bash prompt
 case $(hostname) in
@@ -89,7 +83,7 @@ shopt -s checkwinsize   # check size of terminal window
 
 # special settings for own machines
 if [ $(whoami) == "lukas" ] && [ ! -z $DISPLAY  ];then
-    # set german keyboard configuration
+    # set german keyboard configuration for KeePassx auto-fill
     setxkbmap de
 fi
 
@@ -115,9 +109,9 @@ if ! shopt -oq posix; then
 fi
 
 # set completion for own scripts and functions
-complete -o plusdirs -f -X '!*.pdf' pdf
-complete -o plusdirs -f -X '!*.tex' compiletex
-complete -o plusdirs -f -X '!*.tex' t
 complete -d ls la ll lR l
-complete -o plusdirs -f -X '!*.arts' arts
+complete -o plusdirs -f -X '!*.arts'    arts
+complete -o plusdirs -f -X '!*.tex'     latexmk
+complete -o plusdirs -f -X '!*.pdf'     pdf
+complete -o plusdirs -f -X '!*.tex'     t
 
