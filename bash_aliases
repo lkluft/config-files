@@ -27,7 +27,7 @@ alias ipy='ipython'
 alias ipynb='ipython notebook --script'
 alias vim="vim -p"
 alias gvim="gvim -p"
-alias tmup='eval $(tmux show-env | grep -v "^-" | sed -e "s/ /\\\ /g" -e "s/^/export /")'
+alias tmup='eval $(tmux show-env | sed -e /^-/d -e "s/ /\\\ /g" -e "s/^/export /")'
 
 # webpage aliases (edit environment variable BROWSER in ~/.bashrc)
 alias fb='$BROWSER https://facebook.com/?sk=h_chr &> /dev/null &'
