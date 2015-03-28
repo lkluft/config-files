@@ -37,7 +37,7 @@ t(){ texmaker "$@" &> /dev/null & }
 pdf(){ $PDFVIEWER "$@" &> /dev/null & }
 
 # command line calculator
-T(){ bc <<< "scale=4;"$@""; }
+=(){ python -c "from math import *; print($*)"; }
 
 # fortran compiler
 f(){
