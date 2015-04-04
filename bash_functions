@@ -41,13 +41,18 @@ pdf(){ $PDFVIEWER "$@" &> /dev/null & }
 
 # fortran compiler
 f(){
-    if type ifort &> /dev/null;then
+    [[ -z $1 ]] && { echo No file to compile; return 1; }
+    if has ifort &> /dev/null;then
         ifort $1 -o ${1%.*}.x
-    elif type f95 &> /dev/null;then
+    elif hash f95 &> /dev/null;then
         f95 $1 -o ${1%.*}.x
+    elif hash gfortran &> /dev/null;then
+        gfortran $1 -o ${1%.*}.x
     else
         echo No fortran compiler found.
+        return 1
     fi
+    return 0
 }
 
 # Google/YouTube search via terminal
