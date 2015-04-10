@@ -111,6 +111,7 @@ fi
 # set completion for own scripts and functions
 complete -d ls la ll lR l
 complete -o plusdirs -f -X '!*.arts'    arts
+complete -o plusdirs -f -X '!*.f??'     f
 complete -o plusdirs -f -X '!*.tex'     latexmk
 complete -o plusdirs -f -X '!*.pdf'     pdf
 complete -o plusdirs -f -X '!*.tex'     t

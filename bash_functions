@@ -41,15 +41,15 @@ pdf(){ $PDFVIEWER "$@" &> /dev/null & }
 
 # fortran compiler
 f(){
-    [[ -z $1 ]] && { echo No file to compile; return 1; }
-    if has ifort &> /dev/null;then
-        ifort $1 -o ${1%.*}.x
+    [[ -z $1 ]] && { echo ERROR: No file to compile.; return 1; }
+    if hash ifort &> /dev/null;then
+        ifort $1 -o ${1%.*}
     elif hash f95 &> /dev/null;then
-        f95 $1 -o ${1%.*}.x
-    elif hash gfortran &> /dev/null;then
-        gfortran $1 -o ${1%.*}.x
+        f95 $1 -o ${1%.*}
+    elif hash f90 &> /dev/null;then
+        f90 $1 -o ${1%.*}
     else
-        echo No fortran compiler found.
+        echo ERROR: No fortran compiler found.
         return 1
     fi
     return 0
