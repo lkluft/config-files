@@ -18,6 +18,12 @@ Host apple
     LocalForward 4242 localhost:4242
     ProxyCommand ssh -q login nc -q0 %h 22
 
+Host cluster
+    Hostname cluster.wr.informatik.uni-hamburg.de
+    User kluft
+    ForwardX11 yes
+    ForwardX11trusted yes
+
 Host lehre
     Hostname lehre1
     User u300509

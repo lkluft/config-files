@@ -23,7 +23,7 @@ alias c='clear'
 alias topu='top -u $(whoami)'
 alias rb='sudo reboot'
 alias shut='sudo shutdown -h now'
-alias latexmk='latexmk -e "$pdflatex=q/pdflatex -synctex=1 -interaction=nonstopmode/" -pdf'
+alias latexmk='latexmk -e "$pdflatex=q/pdflatex -interaction=nonstopmode/" -pdf'
 alias ipy='ipython'
 alias ipynb='ipython notebook --script'
 alias vim="vim -p"
