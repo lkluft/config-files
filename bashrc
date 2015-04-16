@@ -88,14 +88,10 @@ if [ $(whoami) == "lukas" ] && [ ! -z $DISPLAY  ];then
 fi
 
 # alias definitions. edit in ~/.bash_aliases
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+[[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 
 # bash functions. edit in ~/.bash_functions
-if [ -f ~/.bash_functions ]; then
-    . ~/.bash_functions
-fi
+[[ -f ~/.bash_functions ]] && . ~/.bash_functions
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
