@@ -39,6 +39,22 @@ pdf(){ $PDFVIEWER "$@" &> /dev/null & }
 # command line calculator
 =(){ python -c "from math import *; print($*)"; }
 
+# functions depending on BROWSER variable (set in ~/.bashrc)
+if [[ ! -z $BROWSER ]]; then
+    # Google/YouTube search via terminal
+    g(){
+        $BROWSER \
+        "https://startpage.com/do/search?q=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')" \
+        &> /dev/null &
+    }
+
+    yt(){
+        $BROWSER \
+        "http://www.youtube.com/results?search_query=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')" \
+        &> /dev/null &
+    }
+fi
+
 # fortran compiler
 f(){
     [[ -z $1 ]] && { echo ERROR: No file to compile.; return 1; }
@@ -55,50 +71,38 @@ f(){
     return 0
 }
 
-# Google/YouTube search via terminal
-g(){
-    $BROWSER \
-    "https://startpage.com/do/search?q=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')" \
-    &> /dev/null &
-}
+# # start matlab and cisco client if needed
+# mat(){
+#     # if wifi SSID is "eduroam" start matlab,
+#     # otherwise establish VPN and start matlab
+#     if [[ $(iwgetid -r) != "eduroam" ]];then
+#         # temporary file to store openconnect PID
+#         temp1=$(mktemp)
+#
+#         # establish VPN
+#         sudo openconnect vpn.rrz.uni-hamburg.de \
+#         --background --user=fgrx245 --pid-file=$temp1 && \
+#         matlab && \
+#         sudo kill $(cat $temp1)
+#     else
+#         matlab &> /dev/null &
+#     fi
+# }
+#
+# # smsvongesternnacht.de in terminal
+# smsvongesternnacht(){
+# tmp=$(mktemp)
+# [[ -z $1 ]] || [[ $1 == "zufall" || $1 == "beste" ]] || return 1
+# curl -s http://www.smsvongesternnacht.de/$1?page={0..10} >> $tmp
+# grep -E "(\"sms-bubble\")|(\"sms-tag\")|(\"field-item odd\")|(sms-participant)|(class=\"sms-tagline)" $tmp | \
+# sed -e 's/\r//g' \
+#     -e 's/.*<div class="sms-participant sms-participant-1">.*/\"\\n\\033\[1;31m\"/' \
+#     -e 's/.*<div class="sms-participant sms-participant-2">.*/\"\\n\\033[1;32m\"/' \
+#     -e 's/<div class="sms-tag">/\"/' \
+#     -e 's/<div class="sms-bubble">/\"/' \
+#     -e 's:</div>:\":' \
+#     -e 's/.*<aside class="sms-tagline">.*/\"\\033\[0m\\n\\n\"/' \
+#     -e 's/\&#......;//g' | \
+# xargs echo -e | less -R
+# }
 
-yt(){
-    $BROWSER \
-    "http://www.youtube.com/results?search_query=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')" \
-    &> /dev/null &
-}
-
-# smsvongesternnacht.de in terminal
-smsvongesternnacht(){
-tmp=$(mktemp)
-[[ -z $1 ]] || [[ $1 == "zufall" || $1 == "beste" ]] || return 1
-curl -s http://www.smsvongesternnacht.de/$1?page={0..10} >> $tmp
-grep -E "(\"sms-bubble\")|(\"sms-tag\")|(\"field-item odd\")|(sms-participant)|(class=\"sms-tagline)" $tmp | \
-sed -e 's/\r//g' \
-    -e 's/.*<div class="sms-participant sms-participant-1">.*/\"\\n\\033\[1;31m\"/' \
-    -e 's/.*<div class="sms-participant sms-participant-2">.*/\"\\n\\033[1;32m\"/' \
-    -e 's/<div class="sms-tag">/\"/' \
-    -e 's/<div class="sms-bubble">/\"/' \
-    -e 's:</div>:\":' \
-    -e 's/.*<aside class="sms-tagline">.*/\"\\033\[0m\\n\\n\"/' \
-    -e 's/\&#......;//g' | \
-xargs echo -e | less -R
-}
-
-# start matlab and cisco client if needed
-mat(){
-    # if wifi SSID is "eduroam" start matlab,
-    # otherwise establish VPN and start matlab
-    if [[ $(iwgetid -r) != "eduroam" ]];then
-        # temporary file to store openconnect PID
-        temp1=$(mktemp)
-
-        # establish VPN
-        sudo openconnect vpn.rrz.uni-hamburg.de \
-        --background --user=fgrx245 --pid-file=$temp1 && \
-        matlab && \
-        sudo kill $(cat $temp1)
-    else
-        matlab &> /dev/null &
-    fi
-}
