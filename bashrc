@@ -57,12 +57,17 @@ esac
 case $(hostname) in
     "apple"*)   PDFVIEWER=open
                 BROWSER=open ;;
-    "lehre"*)   PDFVIEWER=evince
-                BROWSER=firefox ;;
-    "thunder"*) PDFVIEWER=okular
-                BROWSER=firefox ;;
-            *)  PDFVIEWER=okular
-                BROWSER="chromium-browser --proxy-auto-detect" ;;
+           *)   if hash chromium-browser &> /dev/null;then
+                    BROWSER="chromium-browser --proxy-auto-detect"
+                elif hash firefox &> /dev/null;then
+                    BROWSER=firefox
+                fi
+
+                if hash okular &> /dev/null;then
+                    PDFVIEWER=okular
+                elif hash evince &> /dev/null;then
+                    PDFVIEWER=evince
+                fi ;;
 esac
 export PDFVIEWER BROWSER EDITOR=vim
 
