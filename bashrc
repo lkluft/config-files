@@ -32,8 +32,8 @@ esac
 
 # history settings
 HISTCONTROL=ignoreboth # no duplicates, no lines starting with space
-HISTSIZE=1000
-HISTFILESIZE=5000
+HISTSIZE=10000
+HISTFILESIZE=50000
 HISTIGNORE="cd:u:x:h:c:ls:ll:l:la:tm"
 
 # disable flow control to enable i-search using Ctrl-s
@@ -80,11 +80,11 @@ if  [ -f ~/.pyenv/bin/activate ]; then
     VIRTUAL_ENV_DISABLE_PROMPT=1 source ~/.pyenv/bin/activate
 fi
 
-# bash behaviour
-shopt -s cdspell        # auto-correct typos
-shopt -s histappend     # appen to history file, don't overwrite
-shopt -s globstar       # ** wildcard matches all subdirectories
-shopt -s checkwinsize   # check size of terminal window
+# shell option behaviour
+shopt -s cdspell checkwinsize cmdhist globstar histappend histverify
+
+# expand !-arguments with space
+bind Space:magic-space
 
 # special settings for own machines
 if [ $(whoami) == "lukas" ] && [ ! -z $DISPLAY  ];then
