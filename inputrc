@@ -1,6 +1,10 @@
 # include system wide settings
 $include /etc/inputrc
 
+# sane incremental searching
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
 # case-insensitive completion
 set completion-ignore-case on
 
@@ -10,6 +14,9 @@ set completion-map-case on
 # show possible completions on first tab
 set show-all-if-ambiguous on
 set show-all-if-unmodified on
+
+# keep hidden files hidden
+set match-hidden-files off
 
 # colorize possible completions
 set visible-stats on

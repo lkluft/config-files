@@ -53,6 +53,9 @@ case $(hostname) in
     *)          PS1="\[\033[1;37m\]\W\[\033[0m\] " ;;
 esac
 
+# get history of all previous shells
+PROMPT_COMMAND='history -a'
+
 # set standard browser and edtior variables
 case $(hostname) in
     "apple"*)   PDFVIEWER=open
