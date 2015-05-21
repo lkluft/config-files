@@ -16,7 +16,7 @@ case $(hostname) in
                 path_prepend /opt/local/libexec/gnubin
                 path_prepend $HOME/.scripts
                 export SHELL='/opt/local/bin/bash' ;;
-    "lehre"*)   export PATH=$HOME/.scripts:/opt/csw/gnu:$PATH
+    "squall"*)  path_prepend PATH=$HOME/.scripts
                 module load grads cdo git python/2.7-ve0 ;;
     "thunder"*) . /scratch/uni/u237/sw/profile.apmet/apmet.sh
                 module load grads cdo intel
@@ -46,32 +46,32 @@ stty -ixon
 case $(hostname) in
     "apple"*)   PS1="\[\033[1;31m\]\W\[\033[0m\] " ;;
     "medion")   PS1="\[\033[1;32m\]\W\[\033[0m\] " ;;
-    "lehre"*)   PS1="\[\033[1;33m\]\W\[\033[0m\] " ;;
+    "squall"*)  PS1="\[\033[1;33m\]\W\[\033[0m\] " ;;
     "thunder"*) PS1="\[\033[1;34m\]\W\[\033[0m\] " ;;
     "login"*)   PS1="\[\033[31;47m\]\W\[\033[0m\] " ;;
     "acer")     PS1="\[\033[1;36m\]\W\[\033[0m\] " ;;
     *)          PS1="\[\033[1;37m\]\W\[\033[0m\] " ;;
 esac
 
-# get history of all previous shells
+# new started shells get history of all previous shells
 PROMPT_COMMAND='history -a'
 
 # set standard browser and edtior variables
-case $(hostname) in
-    "apple"*)   PDFVIEWER=open
-                BROWSER=open ;;
-           *)   if hash chromium-browser &> /dev/null;then
-                    BROWSER="chromium-browser --proxy-auto-detect"
-                elif hash firefox &> /dev/null;then
-                    BROWSER=firefox
-                fi
+if hash chromium-browser &> /dev/null;then
+    BROWSER="chromium-browser --proxy-auto-detect"
+elif hash firefox &> /dev/null;then
+    BROWSER=firefox
+fi
 
-                if hash okular &> /dev/null;then
-                    PDFVIEWER=okular
-                elif hash evince &> /dev/null;then
-                    PDFVIEWER=evince
-                fi ;;
-esac
+if hash okular &> /dev/null;then
+    PDFVIEWER=okular
+elif hash evince &> /dev/null;then
+    PDFVIEWER=evince
+fi
+
+# MacOS: use open as browser/pdf viewer
+[[ $(hostname) == "apple"* ]] && { PDFVIEWER=open; BROWSER=open; }
+
 export PDFVIEWER BROWSER EDITOR=vim
 
 # pythonrc location
@@ -84,16 +84,10 @@ if  [ -f ~/.pyenv/bin/activate ]; then
 fi
 
 # shell option behaviour
-shopt -s cdspell checkwinsize cmdhist globstar histappend histverify
+shopt -s cdspell checkwinsize cmdhist globstar histappend
 
-# expand !-arguments with space
-bind Space:magic-space
-
-# special settings for own machines
-if [ $(whoami) == "lukas" ] && [ ! -z $DISPLAY  ];then
-    # set german keyboard configuration for KeePassx auto-fill
-    setxkbmap de
-fi
+# set german keyboard configuration for KeePassx auto-fill
+[[ $(whoami) == "lukas" ]] && [[ ! -z $DISPLAY  ]] && setxkbmap de
 
 # alias definitions. edit in ~/.bash_aliases
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases

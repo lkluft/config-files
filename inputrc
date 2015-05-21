@@ -18,6 +18,9 @@ set show-all-if-unmodified on
 # keep hidden files hidden
 set match-hidden-files off
 
+# expand !-arguments with space
+Space: magic-space
+
 # colorize possible completions
 set visible-stats on
 set colored-stats on
