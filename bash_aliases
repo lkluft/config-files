@@ -11,8 +11,8 @@ esac
 alias c='clear'
 alias grep='grep --color=auto'
 alias gvim="gvim -p"
-alias ipy='ipython'
-alias ipynb='ipython notebook --script'
+alias ipy='INPUTRC=/etc/inputrc bash -c ipython'
+alias ipynb='ipython notebook'
 alias l='ls'
 alias lR='ls -oFRh'
 alias la='ls -oFAh'
