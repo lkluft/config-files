@@ -29,7 +29,9 @@ alias rm='rm -I'
 alias shut='sudo shutdown -h now'
 alias tmup='eval $(tmux show-env | sed -e /^-/d -e "s/ /\\\ /g" -e "s/^/export /")'
 alias topu='top -u $(whoami)'
+alias type='type -all'
 alias vim="vim -p"
+alias which="type"
 alias x='exit'
 
 # webpage aliases (edit environment variable BROWSER in ~/.bashrc)

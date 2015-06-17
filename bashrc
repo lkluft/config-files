@@ -6,6 +6,7 @@
 [[ $- == *i* ]] || return
 
 # PATH settings
+[[ $(uname -s) == 'SunOS' ]] && export PATH=/opt/csw/gnu:$PATH
 path_append ()  { path_remove $1; export PATH="$PATH:$1"; }
 path_prepend () { path_remove $1; export PATH="$1:$PATH"; }
 path_remove ()  { export PATH=$(echo -n $PATH | \
@@ -16,7 +17,7 @@ case $(hostname) in
                 path_prepend /opt/local/libexec/gnubin
                 path_prepend $HOME/.scripts
                 export SHELL='/opt/local/bin/bash' ;;
-    "squall"*)  path_prepend PATH=$HOME/.scripts
+    "squall"*)  path_prepend $HOME/.scripts
                 module load grads cdo git python/2.7-ve0 ;;
     "thunder"*) . /scratch/uni/u237/sw/profile.apmet/apmet.sh
                 module load grads cdo intel
@@ -38,6 +39,9 @@ HISTIGNORE="cd:u:x:h:c:ls:ll:l:la:tm"
 
 # search path for the cd command
 CDPATH=.:~
+
+# use physical directory structure instead of symlinks
+set -P
 
 # disable flow control to enable i-search using Ctrl-s
 stty -ixon
