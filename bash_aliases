@@ -1,12 +1,8 @@
 # list of aliases for bash shell
 #
 # enable color support of ls and also add handy aliases
-which dircolors &> /dev/null && [[ -r ~/.dircolors ]] && \
-eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-
-case $(hostname) in
-    "acer"|"medion") alias bil='localc ~/Dropbox/Dokumente/Bilanz/Ausgaben_2015.xls &' ;;
-esac
+hash dircolors &> /dev/null && {  [[ -r ~/.dircolors ]] && \
+eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)" ; }
 
 alias c='clear'
 alias grep='grep --color=auto'
@@ -22,11 +18,13 @@ alias ll='ls -oFh'
 alias lrt='ls -ortFh'
 alias ls='ls --color=auto --group-directories-first'
 alias mkdir='mkdir -p'
+alias myip='curl -s ip.appspot.com'
 alias p='pwd'
 alias pp='pwd -P'
 alias rb='sudo reboot'
 alias rm='rm -I'
 alias shut='sudo shutdown -h now'
+alias sudo='sudo '
 alias tmup='eval $(tmux show-env | sed -e /^-/d -e "s/ /\\\ /g" -e "s/^/export /")'
 alias topu='top -u $(whoami)'
 alias type='type -all'
@@ -35,7 +33,4 @@ alias which="type"
 alias x='exit'
 
 # webpage aliases (edit environment variable BROWSER in ~/.bashrc)
-if [[ ! -z $BROWSER ]]; then
-    alias fb='$BROWSER https://facebook.com/?sk=h_chr &> /dev/null &'
-    alias stine='$BROWSER https://www.stine.uni-hamburg.de &> /dev/null &'
-fi
+[[ ! -z $BROWSER ]] && alias fb='$BROWSER https://fb.com/?sk=h_chr &> /dev/null &'

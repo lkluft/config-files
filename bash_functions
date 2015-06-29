@@ -55,40 +55,6 @@ if [[ ! -z $BROWSER ]]; then
     }
 fi
 
-# fortran compiler
-f(){
-    [[ -z $1 ]] && { echo ERROR: No file to compile.; return 1; }
-    if hash ifort &> /dev/null;then
-        ifort $1 -o ${1%.*}
-    elif hash f95 &> /dev/null;then
-        f95 $1 -o ${1%.*}
-    elif hash f90 &> /dev/null;then
-        f90 $1 -o ${1%.*}
-    else
-        echo ERROR: No fortran compiler found.
-        return 1
-    fi
-    return 0
-}
-
-# # start matlab and cisco client if needed
-# mat(){
-#     # if wifi SSID is "eduroam" start matlab,
-#     # otherwise establish VPN and start matlab
-#     if [[ $(iwgetid -r) != "eduroam" ]];then
-#         # temporary file to store openconnect PID
-#         temp1=$(mktemp)
-#
-#         # establish VPN
-#         sudo openconnect vpn.rrz.uni-hamburg.de \
-#         --background --user=fgrx245 --pid-file=$temp1 && \
-#         matlab && \
-#         sudo kill $(cat $temp1)
-#     else
-#         matlab &> /dev/null &
-#     fi
-# }
-#
 # # smsvongesternnacht.de in terminal
 # smsvongesternnacht(){
 # tmp=$(mktemp)

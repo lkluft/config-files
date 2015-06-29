@@ -18,7 +18,7 @@ case $(hostname) in
                 path_prepend $HOME/.scripts
                 export SHELL='/opt/local/bin/bash' ;;
     "squall"*)  path_prepend $HOME/.scripts
-                module load grads cdo git python/2.7-ve0 ;;
+                module load grads cdo git python/2.7-ve3 ;;
     "thunder"*) . /scratch/uni/u237/sw/profile.apmet/apmet.sh
                 module load grads cdo intel
                 path_prepend /scratch/uni/u237/sw/tmux/bin
@@ -37,14 +37,14 @@ HISTSIZE=10000
 HISTFILESIZE=50000
 HISTIGNORE="cd:u:x:h:c:ls:ll:l:la:tm"
 
+# new started shells get history of all previous shells
+PROMPT_COMMAND='history -a'
+
 # search path for the cd command
 CDPATH=.:~
 
 # use physical directory structure instead of symlinks
 set -P
-
-# disable flow control to enable i-search using Ctrl-s
-stty -ixon
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -59,9 +59,6 @@ case $(hostname) in
     "acer")     PS1="\[\033[1;36m\]\W\[\033[0m\] " ;;
     *)          PS1="\[\033[1;37m\]\W\[\033[0m\] " ;;
 esac
-
-# new started shells get history of all previous shells
-PROMPT_COMMAND='history -a'
 
 # set standard browser and edtior variables
 if hash chromium-browser &> /dev/null;then
@@ -118,7 +115,6 @@ fi
 # set completion for own scripts and functions
 complete -d ls la ll lR l
 complete -o plusdirs -f -X '!*.arts'    arts
-complete -o plusdirs -f -X '!*.f??'     f
 complete -o plusdirs -f -X '!*.tex'     latexmk
 complete -o plusdirs -f -X '!*.pdf'     pdf
 complete -o plusdirs -f -X '!*.tex'     t
