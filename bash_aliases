@@ -6,7 +6,7 @@ eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)" ; }
 
 alias c='clear'
 alias grep='grep --color=auto'
-alias gvim="gvim -p"
+alias gvim='gvim --remote-tab-silent'
 alias ipy='INPUTRC=/etc/inputrc bash -c ipython'
 alias ipynb='ipython notebook'
 alias l='ls'
@@ -20,7 +20,6 @@ alias ls='ls --color=auto --group-directories-first'
 alias mkdir='mkdir -p'
 alias myip='curl -s ip.appspot.com'
 alias p='pwd'
-alias pp='pwd -P'
 alias rb='sudo reboot'
 alias rm='rm -I'
 alias shut='sudo shutdown -h now'
