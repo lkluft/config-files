@@ -41,7 +41,7 @@ HISTIGNORE="cd:u:x:h:c:ls:ll:l:la:tm"
 PROMPT_COMMAND='history -a'
 
 # search path for the cd command
-CDPATH=.:~
+CDPATH=.:..:~
 
 # use physical directory structure instead of symlinks
 set -P

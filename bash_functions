@@ -39,6 +39,9 @@ pdf(){ $PDFVIEWER "$@" &> /dev/null & }
 # command line calculator
 =(){ python -c "from math import *; print($*)"; }
 
+# copy output to clipboard
+[[ -x /usr/bin/xclip ]] && pbcopy(){ xclip -sel p -f | xclip -sel s -f | xclip -sel c ; }
+
 # functions depending on BROWSER variable (set in ~/.bashrc)
 if [[ ! -z $BROWSER ]]; then
     # Google/YouTube search via terminal
