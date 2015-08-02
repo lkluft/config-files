@@ -27,6 +27,7 @@ alias sudo='sudo '
 alias tmup='eval $(tmux show-env | sed -e /^-/d -e "s/ /\\\ /g" -e "s/^/export /")'
 alias topu='top -u $(whoami)'
 alias type='type -all'
+alias update-conda='conda update --all && conda clean -y -p && conda clean -y -t'
 alias vim="vim -p"
 alias which="type"
 alias x='exit'

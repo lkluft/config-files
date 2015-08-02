@@ -81,10 +81,9 @@ export PDFVIEWER BROWSER EDITOR=vim
 # pythonrc location
 export PYTHONSTARTUP=$HOME/.pythonrc
 
-# activate virtual python environment
-if  [ -f ~/.pyenv/bin/activate ]; then
-    path_remove ~/.pyenv/bin
-    VIRTUAL_ENV_DISABLE_PROMPT=1 source ~/.pyenv/bin/activate
+# use anaconda python environment
+if  [ -f ~/.anaconda/bin/conda ]; then
+    path_prepend ~/.anaconda/bin
 fi
 
 # shell option behaviour
