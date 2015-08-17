@@ -20,6 +20,7 @@ case $(hostname) in
     "squall"*)  path_prepend $HOME/.scripts
                 module load grads cdo git python/2.7-ve3 ;;
     "thunder"*) . /scratch/uni/u237/sw/profile.apmet/apmet.sh
+                [[ -f ~/.anaconda/bin/conda ]] && module unload python
                 module load grads cdo intel
                 path_prepend /scratch/uni/u237/sw/tmux/bin
                 path_prepend $HOME/lkluft/arts/build/src
@@ -82,9 +83,7 @@ export PDFVIEWER BROWSER EDITOR=vim
 export PYTHONSTARTUP=$HOME/.pythonrc
 
 # use anaconda python environment
-if  [ -f ~/.anaconda/bin/conda ]; then
-    path_prepend ~/.anaconda/bin
-fi
+[[ -f ~/.anaconda/bin/conda ]] && path_prepend ~/.anaconda/bin
 
 # shell option behaviour
 shopt -s cdspell checkwinsize cmdhist globstar histappend
