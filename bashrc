@@ -47,6 +47,9 @@ CDPATH=.:..:~
 # use physical directory structure instead of symlinks
 set -P
 
+# the return value of a pipeline is zero or the last non-zero status
+set -o pipefail
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -83,7 +86,10 @@ export PDFVIEWER BROWSER EDITOR=vim
 export PYTHONSTARTUP=$HOME/.pythonrc
 
 # use anaconda python environment
-[[ -f ~/.anaconda/bin/conda ]] && path_prepend ~/.anaconda/bin
+if [[ -f ~/.anaconda/bin/conda ]];then
+    path_prepend ~/.anaconda/bin
+    source activate python2 &> /dev/null
+fi
 
 # shell option behaviour
 shopt -s cdspell checkwinsize cmdhist globstar histappend
