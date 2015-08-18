@@ -6,8 +6,11 @@
 [push]
     default = simple
 [alias]
-    st  = status
-    vimdiff  = difftool -t vimdiff
+    ci       = commit
+    co       = checkout
+    di       = diff
     gvimdiff = difftool -t gvimdiff
+    st       = status
+    vimdiff  = difftool -t vimdiff
 [difftool]
     prompt = false
