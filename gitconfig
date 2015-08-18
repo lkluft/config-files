@@ -11,6 +11,7 @@
     di       = diff
     gvimdiff = difftool -t gvimdiff
     st       = status
+    up       = pull
     vimdiff  = difftool -t vimdiff
 [difftool]
     prompt = false
