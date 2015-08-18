@@ -1,0 +1,13 @@
+[user]
+    name  = Lukas Kluft
+    email = lukas.kluft@gmail.com
+[core]
+    editor = vim
+[push]
+    default = simple
+[alias]
+    st  = status
+    vimdiff  = difftool -t vimdiff
+    gvimdiff = difftool -t gvimdiff
+[difftool]
+    prompt = false

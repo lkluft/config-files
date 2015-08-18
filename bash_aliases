@@ -24,13 +24,20 @@ alias rb='sudo reboot'
 alias rm='rm -I'
 alias shut='sudo shutdown -h now'
 alias sudo='sudo '
+alias t7='ssh t7 -t /scratch/uni/u237/sw/tmux/bin/tmux att -t main'
 alias tmup='eval $(tmux show-env | sed -e /^-/d -e "s/ /\\\ /g" -e "s/^/export /")'
 alias topu='top -u $(whoami)'
 alias type='type -all'
 alias update-conda='conda update -y --all && conda clean -y -p && conda clean -y -t'
-alias vim="vim -p"
-alias which="type"
+alias vim='vim -p'
+alias which='type'
 alias x='exit'
+
+if [[ $(hostname) == "apple"* ]]; then
+    alias mount_t7='mount_thunder7 && nohup track_thunder7 &> /dev/null &'
+    alias umount_t7='mount_thunder7 -u'
+fi
 
 # webpage aliases (edit environment variable BROWSER in ~/.bashrc)
 [[ ! -z $BROWSER ]] && alias fb='$BROWSER https://fb.com/?sk=h_chr &> /dev/null &'
+

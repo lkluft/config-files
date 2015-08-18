@@ -4,11 +4,11 @@ Host login
     Hostname login.zmaw.de
     User u300509
 
-Host thun
+Host t7
     Hostname thunder7
     User u300509
-    LocalForward 4242 localhost:4242
     ProxyCommand ssh -q login nc -q0 %h 22
+    LocalForward 4242 localhost:4242
     ForwardX11 yes
     ForwardX11trusted yes
 
@@ -17,21 +17,21 @@ Host apple
     User u300509
     ProxyCommand ssh -q login nc -q0 %h 22
 
-Host cluster
-    Hostname cluster.wr.informatik.uni-hamburg.de
-    User kluft
-    ForwardX11 yes
-    ForwardX11trusted yes
-
 Host lehre
     Hostname lehre3
     User u300509
     ProxyCommand ssh -q login nc -q0 %h 22
 
-#Host uni_info
-#    Hostname  rzssh1.informatik.uni-hamburg.de
-#    User xkluft
-#    LocalForward 4242 localhost:4242
+# Host cluster
+#     Hostname cluster.wr.informatik.uni-hamburg.de
+#     User kluft
+#     ForwardX11 yes
+#     ForwardX11trusted yes
+
+# Host uni_info
+#     Hostname  rzssh1.informatik.uni-hamburg.de
+#     User xkluft
+#     LocalForward 4242 localhost:4242
 
 # personal machines
 Host acer
