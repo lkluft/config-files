@@ -15,22 +15,15 @@ path_remove ()  { export PATH=$(echo -n $PATH | \
 case $(hostname) in
     "apple"*)   path_prepend /opt/local/bin
                 path_prepend /opt/local/libexec/gnubin
-                path_prepend $HOME/.scripts
                 export SHELL='/opt/local/bin/bash' ;;
-    "squall"*)  path_prepend $HOME/.scripts
-                module load grads cdo git python/2.7-ve3 ;;
+    "squall"*)  module load grads cdo git python/2.7-ve3 ;;
     "thunder"*) . /scratch/uni/u237/sw/profile.apmet/apmet.sh
-                [[ -f ~/.anaconda/bin/conda ]] && module unload python
                 module load grads cdo intel
-                path_prepend /scratch/uni/u237/sw/tmux/bin
                 path_prepend $HOME/lkluft/arts/build/src
-                path_prepend $HOME/.scripts
-                export PYTHONPATH=$HOME/lkluft/Python/lib/python:$PYTHONPATH
+                [[ -f ~/.anaconda/bin/conda ]] && module unload python
                 unset LANG ;;
-    *)          path_prepend $HOME/.scripts
-                path_append /usr/local/MATLAB/R2014b/bin
-                path_append /usr/local/MATLAB/R2012a/bin ;;
 esac
+path_prepend $HOME/.scripts
 
 # history settings
 HISTCONTROL=ignoreboth # no duplicates, no lines starting with space
@@ -41,14 +34,9 @@ HISTIGNORE="cd:u:x:h:c:ls:ll:l:la:tm"
 # new started shells get history of all previous shells
 PROMPT_COMMAND='history -a'
 
-# search path for the cd command
-CDPATH=.:..:~
-
-# use physical directory structure instead of symlinks
-set -P
-
-# the return value of a pipeline is zero or the last non-zero status
-set -o pipefail
+# use physical directory structure instead of symlinks (-P)
+# return value of a pipe is zero or the last non-zero status (pipefail)
+set -Po pipefail
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -59,23 +47,20 @@ case $(hostname) in
     "medion")   PS1="\[\033[1;32m\]\W\[\033[0m\] " ;;
     "squall"*)  PS1="\[\033[1;33m\]\W\[\033[0m\] " ;;
     "thunder"*) PS1="\[\033[1;34m\]\W\[\033[0m\] " ;;
-    "login"*)   PS1="\[\033[31;47m\]\W\[\033[0m\] " ;;
     "acer")     PS1="\[\033[1;36m\]\W\[\033[0m\] " ;;
     *)          PS1="\[\033[1;37m\]\W\[\033[0m\] " ;;
 esac
 
 # set standard browser and edtior variables
-if hash chromium-browser &> /dev/null;then
-    BROWSER="chromium-browser --proxy-auto-detect"
-elif hash firefox &> /dev/null;then
-    BROWSER=firefox
-fi
+for browser in {chromium-browser,firefox}
+do
+    hash $browser &> /dev/null && BROWSER=$browser && break
+done
 
-if hash okular &> /dev/null;then
-    PDFVIEWER=okular
-elif hash evince &> /dev/null;then
-    PDFVIEWER=evince
-fi
+for pdfviewer in {okular,zathura,evince,$BROWSER}
+do
+    hash $pdfviewer &> /dev/null && PDFVIEWER=$pdfviewer && break
+done
 
 # MacOS: use open as browser/pdf viewer
 [[ $(hostname) == "apple"* ]] && { PDFVIEWER=open; BROWSER=open; }
