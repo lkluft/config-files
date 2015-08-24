@@ -1,7 +1,17 @@
 # include system wide settings
 $include /etc/inputrc
 
+# activate vi-mode
+set editing-mode vi
+
 # sane incremental searching
+set keymap vi-command
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"k": history-search-backward
+"j": history-search-forward
+
+set keymap vi-insert
 "\e[A": history-search-backward
 "\e[B": history-search-forward
 
@@ -34,3 +44,4 @@ set mark-symlinked-directories oni
 # completion in the middle of a word deletes
 # the following characters
 set skip-completed-text on
+
