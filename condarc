@@ -3,7 +3,7 @@ changeps1: False
 
 # packages to include in every new environment
 create_default_packages:
-    - ipython-notebook
+    - jupyter
     - numpy
     - matplotlib
     - basemap

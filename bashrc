@@ -72,8 +72,9 @@ export PYTHONSTARTUP=$HOME/.pythonrc
 
 # use anaconda python environment
 if [[ -f ~/.anaconda/bin/conda ]];then
-    path_prepend ~/.anaconda/bin
-    source activate python2 &> /dev/null
+    path_prepend ~/.anaconda/envs/python2/bin
+    export CONDA_DEFAULT_ENV=python2
+    export CONDA_ENV_PATH=~/.anaconda/envs/python2
 fi
 
 # shell option behaviour
