@@ -71,10 +71,10 @@ export PDFVIEWER BROWSER EDITOR=vim
 export PYTHONSTARTUP=$HOME/.pythonrc
 
 # use anaconda python environment
-if [[ -f ~/.anaconda/bin/conda ]];then
-    path_prepend ~/.anaconda/envs/python2/bin
-    export CONDA_DEFAULT_ENV=python2
-    export CONDA_ENV_PATH=~/.anaconda/envs/python2
+if [[ -d ~/.anaconda/envs/python3/bin ]];then
+    path_prepend ~/.anaconda/envs/python3/bin
+    export CONDA_DEFAULT_ENV=python3
+    export CONDA_ENV_PATH=~/.anaconda/envs/python3
 fi
 
 # shell option behaviour
