@@ -3,10 +3,12 @@ changeps1: False
 
 # packages to include in every new environment
 create_default_packages:
-    - jupyter
-    - numpy
-    - matplotlib
     - basemap
-    - pillow
+    - jupyter
+    - matplotlib
     - netcdf4
+    - numpy
+    - pillow
+    - scikit-learn
     - scipy
+    - sympy

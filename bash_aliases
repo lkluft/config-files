@@ -20,17 +20,17 @@ alias lrt='ls -ortFh'
 alias ls='ls --color=auto --group-directories-first'
 alias mkdir='mkdir -p'
 alias myip='curl -s ip.appspot.com'
-alias p2='source activate python2'
-alias p3='source activate python3'
+alias py27='source activate py27'
+alias py34='source activate py34'
 alias p='pwd'
 alias path='echo -e ${PATH//:/\\n}'
+alias reboot='sudo reboot'
 alias rm='rm -I'
 alias root='sudo su'
 alias shut='sudo shutdown -h now'
 alias sudo='sudo '
 alias svim='sudo vim'
 alias t7='ssh t7 -t /scratch/uni/u237/sw/tmux/bin/tmux att -t main'
-alias tmup='eval $(tmux show-env | sed -e /^-/d -e "s/ /\\\ /g" -e "s/^/export /")'
 alias topu='top -u $(whoami)'
 alias type='type -all'
 alias vim='vim -p'
@@ -44,4 +44,7 @@ fi
 
 # webpage aliases (edit environment variable BROWSER in ~/.bashrc)
 [[ ! -z $BROWSER ]] && alias fb='$BROWSER https://fb.com/?sk=h_chr &> /dev/null &'
+
+# tmux: export the current environment
+[[ ! -z $TMUX ]] && alias tmup='eval $(tmux show-env | sed -e /^-/d -e "s/ /\\\ /g" -e "s/^/export /")'
 
