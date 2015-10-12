@@ -22,11 +22,11 @@ Host lehre
     User u300509
     ProxyCommand ssh -q login nc -q0 %h 22
 
-# Host cluster
-#     Hostname cluster.wr.informatik.uni-hamburg.de
-#     User kluft
-#     ForwardX11 yes
-#     ForwardX11trusted yes
+Host cluster
+    Hostname cluster.wr.informatik.uni-hamburg.de
+    User kluft
+    ForwardX11 yes
+    ForwardX11trusted yes
 
 # Host uni_info
 #     Hostname  rzssh1.informatik.uni-hamburg.de

@@ -24,9 +24,9 @@ alias py27='source activate py27'
 alias py34='source activate py34'
 alias p='pwd'
 alias path='echo -e ${PATH//:/\\n}'
-alias reboot='sudo reboot'
+alias rb='sudo reboot'
 alias rm='rm -I'
-alias root='sudo su'
+alias root='sudo -i'
 alias shut='sudo shutdown -h now'
 alias sudo='sudo '
 alias svim='sudo vim'
@@ -44,6 +44,7 @@ fi
 
 # webpage aliases (edit environment variable BROWSER in ~/.bashrc)
 [[ ! -z $BROWSER ]] && alias fb='$BROWSER https://fb.com/?sk=h_chr &> /dev/null &'
+[[ ! -z $BROWSER ]] && alias wa='$BROWSER https://web.whatsapp.com &> /dev/null &'
 
 # tmux: export the current environment
 [[ ! -z $TMUX ]] && alias tmup='eval $(tmux show-env | sed -e /^-/d -e "s/ /\\\ /g" -e "s/^/export /")'
