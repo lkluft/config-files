@@ -1,19 +1,7 @@
 # add or edit bash functions
 
 # easy cd ..
-u(){
-    if [ -z $1 ];then
-        LIMIT=1
-    else
-        LIMIT=$1
-    fi
-    P="$PWD"
-    for ((i=1; i <= LIMIT; i++))
-    do
-        P="$P/.."
-    done
-    cd "$P"
-}
+u() { cd $(eval printf '../'%.s {1..$1}) && pwd; }
 
 # open man page with colorized less
 man() {
@@ -42,36 +30,15 @@ pdf(){ $PDFVIEWER "$@" &> /dev/null & }
 # copy output to clipboard
 [[ -x /usr/bin/xclip ]] && pbcopy(){ xclip -sel p -f | xclip -sel s -f | xclip -sel c ; }
 
-# functions depending on BROWSER variable (set in ~/.bashrc)
-if [[ ! -z $BROWSER ]]; then
-    # Google/YouTube search via terminal
-    g(){
-        $BROWSER \
-        "https://startpage.com/do/search?q=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')" \
-        &> /dev/null &
-    }
+# Google search via terminal
+[[ ! -z $BROWSER ]] && g(){
+    qry=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')
+    $BROWSER https://startpage.com/do/search?q=$qry &> /dev/null &
+}
 
-    yt(){
-        $BROWSER \
-        "http://www.youtube.com/results?search_query=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')" \
-        &> /dev/null &
-    }
-fi
-
-# # smsvongesternnacht.de in terminal
-# smsvongesternnacht(){
-# tmp=$(mktemp)
-# [[ -z $1 ]] || [[ $1 == "zufall" || $1 == "beste" ]] || return 1
-# curl -s http://www.smsvongesternnacht.de/$1?page={0..10} >> $tmp
-# grep -E "(\"sms-bubble\")|(\"sms-tag\")|(\"field-item odd\")|(sms-participant)|(class=\"sms-tagline)" $tmp | \
-# sed -e 's/\r//g' \
-#     -e 's/.*<div class="sms-participant sms-participant-1">.*/\"\\n\\033\[1;31m\"/' \
-#     -e 's/.*<div class="sms-participant sms-participant-2">.*/\"\\n\\033[1;32m\"/' \
-#     -e 's/<div class="sms-tag">/\"/' \
-#     -e 's/<div class="sms-bubble">/\"/' \
-#     -e 's:</div>:\":' \
-#     -e 's/.*<aside class="sms-tagline">.*/\"\\033\[0m\\n\\n\"/' \
-#     -e 's/\&#......;//g' | \
-# xargs echo -e | less -R
-# }
+# YouTube search via terminal
+[[ ! -z $BROWSER ]] && yt(){
+    qry=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')
+    $BROWSER http://www.youtube.com/results?search_query=$qry &> /dev/null &
+}
 
