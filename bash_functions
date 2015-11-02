@@ -42,3 +42,10 @@ pdf(){ $PDFVIEWER "$@" &> /dev/null & }
     $BROWSER http://www.youtube.com/results?search_query=$qry &> /dev/null &
 }
 
+
+# if command line dictionary dict is not present use dict.cc in $BROWSER
+[[ -x dict ]] || [[ ! -z $BROWSER ]] && dict(){
+    qry=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')
+    $BROWSER http://www.dict.cc/?s=$qry &> /dev/null &
+}
+

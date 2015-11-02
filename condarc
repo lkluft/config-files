@@ -7,6 +7,7 @@ create_default_packages:
     - jupyter
     - matplotlib
     - netcdf4
+    - nose
     - numpy
     - pillow
     - scikit-learn
