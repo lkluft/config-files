@@ -44,8 +44,8 @@ pdf(){ $PDFVIEWER "$@" &> /dev/null & }
 
 
 # if command line dictionary dict is not present use dict.cc in $BROWSER
-[[ -x dict ]] || [[ ! -z $BROWSER ]] && dict(){
+[[ -x /usr/bin/dict ]] || { [[ ! -z $BROWSER ]] && dict(){
     qry=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')
     $BROWSER http://www.dict.cc/?s=$qry &> /dev/null &
-}
+} ; }
 
