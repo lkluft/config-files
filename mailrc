@@ -1,0 +1,2 @@
+# sendmail settings for osx
+set sendmail=/opt/local/bin/msmtp

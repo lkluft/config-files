@@ -1,1 +1,2 @@
+# sendmail settings for Linux
 set sendmail=/usr/bin/msmtp
