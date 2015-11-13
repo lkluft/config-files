@@ -6,8 +6,7 @@ eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)" ; }
 
 alias c='clear'
 alias grep='grep --color=auto'
-alias gvim='gvim --remote-silent'
-alias gvimdiff='\gvim -d'
+alias gvimdiff='gvim -d'
 alias ipy='INPUTRC=/etc/inputrc bash -c ipython'
 alias ipynb='ipython notebook'
 alias l='ls'
