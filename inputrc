@@ -36,12 +36,8 @@ set visible-stats on
 set colored-stats on
 
 # append / to complete symlink names
-set mark-symlinked-directories oni
+set mark-symlinked-directories on
 
-# mark modified lines in history
-# set mark-modified-lines on
-
-# completion in the middle of a word deletes
-# the following characters
+# completion in the middle of a word deletes the following characters
 set skip-completed-text on
 
