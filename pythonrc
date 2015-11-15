@@ -1,11 +1,12 @@
-# Import useful packages
+# import useful packages
 import os
 import sys
-import numpy as np
-import scipy as sp
+
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+import numpy as np
+import scipy as sp
 
-mpl.rcParams['image.cmap']  = 'cubehelix'
-mpl.rcParams['font.size']   = 16
-
+# matplotlib settings
+mpl.rcParams['image.cmap'] = 'viridis'
+mpl.rcParams['font.size'] = 16
