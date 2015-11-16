@@ -20,7 +20,6 @@ case $(hostname) in
     "thunder"*) . /scratch/uni/u237/sw/profile.apmet/apmet.sh
                 module load grads cdo intel
                 path_prepend $HOME/lkluft/arts/build/src
-                [[ -f ~/.anaconda/bin/conda ]] && module unload python
                 unset LANG ;;
 esac
 path_prepend $HOME/.scripts
