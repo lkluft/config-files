@@ -18,8 +18,9 @@ case $(hostname) in
                 export SHELL='/opt/local/bin/bash' ;;
     "squall"*)  module load grads cdo git python/2.7-ve3 ;;
     "thunder"*) . /scratch/uni/u237/sw/profile.apmet/apmet.sh
-                module load grads cdo intel
                 path_prepend $HOME/lkluft/arts/build/src
+                ARTS_DATA_PATH=$APMETSCRATCH/users/lkluft/arts-xml-data
+                export ARTS_DATA_PATH
                 unset LANG ;;
 esac
 path_prepend $HOME/.scripts
