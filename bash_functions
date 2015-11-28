@@ -18,11 +18,17 @@ man() {
 # show/search bash history
 h(){ history | grep -E "$(echo $@ | sed 's/ /|/g')" ; }
 
+# create backup of the file passed as parameter
+bak(){ cp $1{,.bak}; }
+
 # texmaker shortcut
 t(){ texmaker "$@" &> /dev/null & }
 
 # PDF viewer shortcut
-pdf(){ $PDFVIEWER "$@" &> /dev/null & }
+vpdf(){ $PDFVIEWER "$@" &> /dev/null & }
+
+# image viewer shortcut
+vimg(){ $IMAGEVIEWER "$@" &> /dev/null & }
 
 # command line calculator
 =(){ python -c "from math import *; print($*)"; }

@@ -62,10 +62,15 @@ do
     hash $pdfviewer &> /dev/null && PDFVIEWER=$pdfviewer && break
 done
 
+for imgviewer in {eog,$BROWSER}
+do
+    hash $imgviewer &> /dev/null && IMAGEVIEWER=$imgviewer && break
+done
+
 # MacOS: use open as browser/pdf viewer
 [[ $(hostname) == "apple"* ]] && { PDFVIEWER=open; BROWSER=open; }
 
-export PDFVIEWER BROWSER EDITOR=vim
+export EDITOR=vim BROWSER PDFVIEWER IMAGEVIEWER
 
 # pythonrc location
 export PYTHONSTARTUP=$HOME/.pythonrc
@@ -104,8 +109,9 @@ fi
 
 # set completion for own scripts and functions
 complete -d ls la ll lR l
-complete -o plusdirs -f -X '!*.arts'    arts
-complete -o plusdirs -f -X '!*.tex'     latexmk
-complete -o plusdirs -f -X '!*.pdf'     pdf
-complete -o plusdirs -f -X '!*.tex'     t
+complete -o plusdirs -f -X '!*.arts' arts
+complete -o plusdirs -f -X '!*.tex' latexmk
+complete -o plusdirs -f -X '!*.pdf' vpdf
+complete -o plusdirs -f -X '!*.@(png|jpg)' vimg
+complete -o plusdirs -f -X '!*.tex' t
 
