@@ -61,7 +61,7 @@ vimg(){ $IMAGEVIEWER "$@" &> /dev/null & }
     wa(){ $BROWSER https://web.whatsapp.com &> /dev/null & }
 
     # go to specific localhost port
-    lh(){ $BROWSER localhost:$1 &> /dev/null & }
+    lh(){ $BROWSER http://localhost:$1 &> /dev/null & }
 
     # if command line dictionary dict is not present use dict.cc in $BROWSER
     [[ -x /usr/bin/dict ]] || dict()
