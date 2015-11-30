@@ -1,10 +1,11 @@
 # add or edit bash functions
 
 # easy cd ..
-u() { cd $(eval printf '../'%.s {1..$1}) && pwd; }
+u(){ cd $(eval printf '../'%.s {1..$1}) && pwd; }
 
 # open man page with colorized less
-man() {
+man()
+{
     env LESS_TERMCAP_mb=$'\E[01;31m' \
     LESS_TERMCAP_md=$'\E[01;38;5;74m' \
     LESS_TERMCAP_me=$'\E[0m' \
@@ -36,22 +37,36 @@ vimg(){ $IMAGEVIEWER "$@" &> /dev/null & }
 # copy output to clipboard
 [[ -x /usr/bin/xclip ]] && pbcopy(){ xclip -sel p -f | xclip -sel s -f | xclip -sel c ; }
 
-# Google search via terminal
-[[ ! -z $BROWSER ]] && g(){
-    qry=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')
-    $BROWSER https://startpage.com/do/search?q=$qry &> /dev/null &
+# functions for easier BROWSER access
+[[ ! -z $BROWSER ]] &&
+{
+    # Google search via terminal
+    g()
+    {
+        qry=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')
+        $BROWSER https://startpage.com/do/search?q=$qry &> /dev/null &
+    }
+
+    # YouTube search via terminal
+    yt()
+    {
+        qry=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')
+        $BROWSER http://www.youtube.com/results?search_query=$qry &> /dev/null &
+    }
+
+    # facebook
+    fb(){ $BROWSER https://fb.com/?sk=h_chr &> /dev/null & }
+
+    # WhatsApp
+    wa(){ $BROWSER https://web.whatsapp.com &> /dev/null & }
+
+    # go to specific localhost port
+    lh(){ $BROWSER localhost:$1 &> /dev/null & }
+
+    # if command line dictionary dict is not present use dict.cc in $BROWSER
+    [[ -x /usr/bin/dict ]] || dict()
+    {
+        qry=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')
+        $BROWSER http://www.dict.cc/?s=$qry &> /dev/null &
+    }
 }
-
-# YouTube search via terminal
-[[ ! -z $BROWSER ]] && yt(){
-    qry=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')
-    $BROWSER http://www.youtube.com/results?search_query=$qry &> /dev/null &
-}
-
-
-# if command line dictionary dict is not present use dict.cc in $BROWSER
-[[ -x /usr/bin/dict ]] || { [[ ! -z $BROWSER ]] && dict(){
-    qry=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')
-    $BROWSER http://www.dict.cc/?s=$qry &> /dev/null &
-} ; }
-
