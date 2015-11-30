@@ -34,8 +34,14 @@ vimg(){ $IMAGEVIEWER "$@" &> /dev/null & }
 # command line calculator
 =(){ python -c "from math import *; print($*)"; }
 
+# put current directory under version control (git)
+git.(){ [[ -d .git ]] || { git init && git add .; }; }
+
 # copy output to clipboard
-[[ -x /usr/bin/xclip ]] && pbcopy(){ xclip -sel p -f | xclip -sel s -f | xclip -sel c ; }
+[[ -x /usr/bin/xclip ]] && pbcopy()
+{
+    xclip -sel p -f | xclip -sel s -f | xclip -sel c
+}
 
 # functions for easier BROWSER access
 [[ ! -z $BROWSER ]] &&
@@ -50,8 +56,8 @@ vimg(){ $IMAGEVIEWER "$@" &> /dev/null & }
     # YouTube search via terminal
     yt()
     {
-        qry=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')
-        $BROWSER http://www.youtube.com/results?search_query=$qry &> /dev/null &
+        q=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')
+        $BROWSER https://www.youtube.com/results?search_query=$q &> /dev/null &
     }
 
     # facebook
