@@ -15,13 +15,15 @@ path_remove ()  { export PATH=$(echo -n $PATH | \
 case $(hostname) in
     "apple"*)   path_prepend /opt/local/bin
                 path_prepend /opt/local/libexec/gnubin
-                export SHELL='/opt/local/bin/bash' ;;
-    "squall"*)  module load grads cdo git python/2.7-ve3 ;;
+                export SHELL='/opt/local/bin/bash'
+                ;;
+    "squall"*)  module load grads cdo git python/2.7-ve3
+                ;;
     "thunder"*) . /scratch/uni/u237/sw/profile.apmet/apmet.sh
                 path_prepend $HOME/lkluft/arts/build/src
                 ARTS_DATA_PATH=$APMETSCRATCH/users/lkluft/arts-xml-data
                 export ARTS_DATA_PATH
-                unset LANG ;;
+                ;;
 esac
 path_prepend $HOME/.scripts
 
