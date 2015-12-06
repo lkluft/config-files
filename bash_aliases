@@ -34,13 +34,14 @@ alias shut='sudo shutdown -h now'
 alias sudo='sudo '
 alias svim='sudo vim'
 alias t7tm='ssh t7 -t /scratch/uni/u237/sw/tmux/bin/tmux att -t main'
-alias td='cd $(mktemp -d)'
+alias td='cd $(mktemp -dt bash.XXX)'
+alias tdd='cd && find $TMPDIR -maxdepth 1 -user $USER -name "bash.???" -exec rm -rf {} +'
 alias topu='top -u $(whoami)'
 alias type='type -all'
 alias which='type'
 alias x='exit'
 
-if [[ $(hostname) == "apple"* ]]; then
+if [[ $(uname -s) == "Darwin" ]]; then
     alias mount_t7='mount_thunder7 && nohup track_thunder7 &> /dev/null &'
     alias umount_t7='mount_thunder7 -u'
 fi
