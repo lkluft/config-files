@@ -14,7 +14,8 @@ case $(hostname) in
                 path_prepend /opt/local/libexec/gnubin
                 export SHELL='/opt/local/bin/bash'
                 ;;
-    "squall"*)  module load grads cdo git python/2.7-ve3
+    "squall"*)  module purge
+                module load grads cdo git python/2.7-ve3
                 ;;
     "thunder"*) . /scratch/uni/u237/sw/profile.apmet/apmet.sh
                 path_prepend $HOME/lkluft/arts/build/src
@@ -64,9 +65,7 @@ export PDFVIEWER=$(first_to_appear zathura okular evince $BROWSER)
 
 # MacOS: use open to open files
 if [[ $(uname -s) == "Darwin" ]];then
-    export IMAGEVIWER=open
-    export PDFVIEWER=open
-    export BROWSER=open
+    export {IMAGEVIEWER,PDFVIEWER,BROWSER}=open
 fi
 
 
@@ -82,9 +81,7 @@ fi
 
 
 # language settings
-export LC_ALL=en_US.utf-8
-export LANG=$LC_ALL
-export LANGUAGE=$LC_ALL
+export {LC_ALL,LANG,LANGUAGE}=en_US.utf-8
 
 
 # shell options
