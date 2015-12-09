@@ -82,6 +82,8 @@ fi
 
 # Todo.txt settings
 export TODOTXT_DEFAULT_ACTION=ls
+export TODOTXT_AUTO_ARCHIVE=0
+export TODOTXT_DATE_ON_ADD=1
 
 
 # language settings
