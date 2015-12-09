@@ -80,6 +80,10 @@ if [[ -d ~/.anaconda/envs/py34/bin ]];then
 fi
 
 
+# Todo.txt settings
+export TODOTXT_DEFAULT_ACTION=ls
+
+
 # language settings
 export {LC_ALL,LANG,LANGUAGE}=en_US.utf-8
 
