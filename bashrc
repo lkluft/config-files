@@ -89,7 +89,7 @@ export TODOTXT_FORCE=1
 
 
 # language settings
-export {LC_ALL,LANG,LANGUAGE}=en_US.utf-8
+export LANG=en_US.utf-8
 
 
 # shell options
