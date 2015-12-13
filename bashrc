@@ -117,6 +117,9 @@ complete -o plusdirs -f -X '!*.pdf' vpdf
 complete -o plusdirs -f -X '!*.@(png|jpg)' vimg
 complete -o plusdirs -f -X '!*.tex' t
 
+# enable color support of ls
+hash dircolors &> /dev/null && {  [[ -r ~/.dircolors ]] && \
+eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)" ; }
 
 # alias definitions. edit in ~/.bash_aliases
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
