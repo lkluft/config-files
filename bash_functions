@@ -176,7 +176,7 @@ tdd ()
 # updated env in a tmux session
 tmup ()
 {
-    [[ -z TMUX ]] || return
+    [[ -z $TMUX ]] && echo "ERROR: Not attached to tmux session." && return 1;
     eval $(tmux show-env | sed -e /^-/d -e "s/ /\\\ /g" -e "s/^/export /")
 }
 
