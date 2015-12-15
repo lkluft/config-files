@@ -81,7 +81,7 @@ fi
 
 
 # language settings
-export {LANG,LANGUAGE}=en_US.utf-8 LC_ALL=C
+export LANG=en_US.utf-8
 
 
 # shell options

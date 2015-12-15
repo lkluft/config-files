@@ -5,11 +5,14 @@ bak(){ cp $1{,.bak}; }
 
 
 # if command line dictionary dict is not present use dict.cc in $BROWSER
-[[ -z $BROWSER ]] || [[ -x /usr/bin/dict ]] || dict()
-{
-    qry=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')
-    $BROWSER http://www.dict.cc/?s=$qry &> /dev/null &
-}
+if ! hash xclip &> /dev/null;then
+    dict()
+    {
+        [[ -z $BROWSER ]] && echo "ERROR: BROWSER not set." && return 1
+        qry=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')
+        $BROWSER http://www.dict.cc/?s=$qry &> /dev/null &
+    }
+fi
 
 
 # extract archive depending on file extension
@@ -47,19 +50,25 @@ fi
 
 
 # facebook
-[[ -z $BROWSER ]] || fb(){ $BROWSER https://fb.com/?sk=h_chr &> /dev/null & }
+fb()
+{
+    [[ -z $BROWSER ]] && echo "ERROR: BROWSER not set." && return 1
+    $BROWSER https://fb.com/?sk=h_chr &> /dev/null &
+}
+
+
+# Google search via terminal
+g()
+{
+    [[ -z $BROWSER ]] && echo "ERROR: BROWSER not set." && return 1
+    qry=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')
+    $BROWSER https://startpage.com/do/search?q=$qry &> /dev/null &
+}
+
 
 
 # put current directory under version control (git)
 git.(){ [[ -d .git ]] || { git init && git add .; }; }
-
-
-# Google search via terminal
-[[ -z $BROWSER ]] || g()
-{
-    qry=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')
-    $BROWSER https://startpage.com/do/search?q=$qry &> /dev/null &
-}
 
 
 # show/search bash history
@@ -67,7 +76,11 @@ h(){ history | grep -E "$(echo $@ | sed 's/ /|/g')"; }
 
 
 # go to specific localhost port
-[[ -z $BROWSER ]] || lh(){ $BROWSER http://localhost:$1 &> /dev/null & }
+lh()
+{
+    [[ -z $BROWSER ]] && echo "ERROR: BROWSER not set." && return 1
+    $BROWSER http://localhost:$1 &> /dev/null &
+}
 
 
 # open man page with colorized less
@@ -85,11 +98,13 @@ man()
 
 
 # mount thunder7 directories and keep track of them
-[[ $(uname -s) == "Darwin" ]] && mount_t7()
-{
-    mount_thunder7
-    nohup track_thunder7 &> /dev/null &
-}
+if [[ $(uname -s) == "Darwin" ]];then
+    mount_t7()
+    {
+        mount_thunder7
+        nohup track_thunder7 &> /dev/null &
+    }
+fi
 
 
 # print the current IP
@@ -104,10 +119,12 @@ path(){ echo -e ${PATH//:/\\n}; }
 pingg(){ ping -c 3 -i 0.2 google.com; }
 
 # copy output to clipboard
-[[ -x /usr/bin/xclip ]] && pbcopy()
-{
-    xclip -sel p -f | xclip -sel s -f | xclip -sel c;
-}
+if ! hash xclip &> /dev/null;then
+    pbcopy()
+    {
+        xclip -sel p -f | xclip -sel s -f | xclip -sel c;
+    }
+fi
 
 
 # create a temporary directory and change into it
@@ -135,11 +152,19 @@ u(){ cd $(eval printf '../'%.s {1..$1}) && pwd; }
 
 
 # image viewer shortcut
-[[ -z $IMAGEVIEWER ]] || vimg(){ $IMAGEVIEWER "$@" &> /dev/null & }
+vimg()
+{
+    [[ -z $IMAGEVIEWER ]] && echo "ERROR: IMAGEVIEWER not set." && return 1
+    $IMAGEVIEWER "$@" &> /dev/null &
+}
 
 
 # PDF viewer shortcut
-[[ -z $PDFVIEWER ]] || vpdf(){ $PDFVIEWER "$@" &> /dev/null & }
+vpdf()
+{
+    [[ -z $PDFVIEWER ]] && echo "ERROR: PDFVIEWER not set." && return 1
+    $PDFVIEWER "$@" &> /dev/null &
+}
 
 
 # command line calculator
@@ -147,12 +172,17 @@ pc(){ python -c "from math import *; print($*)"; }
 
 
 # WhatsApp
-[[ -z $BROWSER ]] || wa(){ $BROWSER https://web.whatsapp.com &> /dev/null & }
+wa()
+{
+    [[ -z $BROWSER ]] && echo "ERROR: BROWSER not set." && return 1
+    $BROWSER https://web.whatsapp.com &> /dev/null &
+}
 
 
 # YouTube search via terminal
-[[ -z $BROWSER ]] || yt()
+yt()
 {
+    [[ -z $BROWSER ]] && echo "ERROR: BROWSER not set." && return 1
     q=$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')
     $BROWSER https://www.youtube.com/results?search_query=$q &> /dev/null &
 }
