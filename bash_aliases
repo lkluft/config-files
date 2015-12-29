@@ -35,3 +35,4 @@ alias topu='top -u $(whoami)'
 alias type='type -all'
 alias which='type'
 alias x='exit'
+

@@ -8,6 +8,7 @@ create_default_packages:
     - matplotlib
     - netcdf4
     - nose
+    - numba
     - numpy
     - pillow
     - scikit-learn
