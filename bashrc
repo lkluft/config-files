@@ -53,7 +53,7 @@ PROMPT_COMMAND="history -a"
 
 # prompt settings
 export BLACK='\[\e[1;30m\]'
-export WHITE='\[\e[0;37m\]'
+export WHITE='\[\e[1;37m\]'
 export BLUE='\[\e[0;34m\]'
 export CYAN='\[\e[0;36m\]'
 export GREEN='\[\e[0;32m\]'
@@ -145,8 +145,7 @@ fi
 complete -d ls la ll lR l
 complete -o plusdirs -f -X '!*.arts' arts
 complete -o plusdirs -f -X '!*.tex' latexmk
-complete -o plusdirs -f -X '!*.pdf' vpdf
-complete -o plusdirs -f -X '!*.@(png|jpg)' vimg
+complete -o plusdirs -f -X '!*.@(pdf|png|jpg)' o
 complete -o plusdirs -f -X '!*.tex' t
 
 # enable color support of ls

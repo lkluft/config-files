@@ -31,28 +31,28 @@ err() {
 
 
 # extract archive depending on file extension
-extract() {
+xtr() {
   if [[ -z "$1" ]]; then
     # display usage if no parameters given
     echo "Usage: extract <path/to/archive>"
   else
     if [[ -f "$1" ]] ; then
       case "$1" in
-        *.7z)        7z x ./"$1" ;;
-        *.Z)         uncompress ./"$1" ;;
-        *.bz2)       bunzip2 ./"$1" ;;
-        *.exe)       cabextract ./"$1" ;;
-        *.gz)        gunzip ./"$1" ;;
-        *.lzma)      unlzma ./"$1" ;;
-        *.rar)       unrar x -ad ./"$1" ;;
-        *.tar)       tar xf ./"$1" ;;
         *.tar.bz2)   tar xjf ./"$1" ;;
         *.tar.gz)    tar xzf ./"$1" ;;
         *.tar.xz)    tar xJf ./"$1" ;;
+        *.lzma)      unlzma ./"$1" ;;
+        *.bz2)       bunzip2 ./"$1" ;;
+        *.rar)       unrar x -ad ./"$1" ;;
+        *.gz)        gunzip ./"$1" ;;
+        *.tar)       tar xf ./"$1" ;;
         *.tbz2)      tar xjf ./"$1" ;;
         *.tgz)       tar xzf ./"$1" ;;
-        *.xz)        unxz ./"$1" ;;
         *.zip)       unzip ./"$1" ;;
+        *.Z)         uncompress ./"$1" ;;
+        *.7z)        7z x ./"$1" ;;
+        *.xz)        unxz ./"$1" ;;
+        *.exe)       cabextract ./"$1" ;;
         *)           echo "extract: $1 - unknown archive method" ;;
       esac
     else
@@ -200,16 +200,30 @@ u() {
 
 
 # image viewer shortcut
-vimg() {
+view_img() {
   check_var IMAGEVIEWER || return 1;
   ${IMAGEVIEWER} "$@" &> /dev/null &
 }
 
 
 # PDF viewer shortcut
-vpdf() {
+view_pdf() {
   check_var PDFVIEWER || return 1;
   ${PDFVIEWER} "$@" &> /dev/null &
+}
+
+
+# open each file given in a list depending on its extension
+o() {
+  for file in "$@"; do
+    # lower case before matching the extension
+    case "${file,,}" in
+      *.pdf) view_pdf "${file}" ;;
+      *.png) view_img "${file}" ;;
+      *.jpg) view_img "${file}" ;;
+      *) err "'${file}' unknown file type" ;;
+    esac
+  done
 }
 
 
