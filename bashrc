@@ -33,6 +33,7 @@ case "$(hostname)" in
   "thunder"*)
     . "/scratch/uni/u237/sw/profile.apmet/apmet.sh"
     path_prepend "${HOME}/lkluft/arts/build/src"
+    . "${HOME}/lkluft/arts/tools/bash_completion/completion_arts.sh"
     export ARTS_DATA_PATH="${APMETSCRATCH}/users/lkluft/arts-xml-data"
     ;;
 esac
@@ -143,7 +144,6 @@ fi
 
 # set completion for own scripts and functions
 complete -d ls la ll lR l
-complete -o plusdirs -f -X '!*.arts' arts
 complete -o plusdirs -f -X '!*.tex' latexmk
 complete -o plusdirs -f -X '!*.@(pdf|png|jpg)' o
 complete -o plusdirs -f -X '!*.tex' t
