@@ -102,6 +102,10 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
 fi
 
 
+# if existing use hosts-system for ssh host completion
+[[ -r '/etc/hosts-system' ]] && export HOSTFILE='/etc/hosts-system'
+
+
 # python settings
 export PYTHONSTARTUP="${HOME}/.pythonrc"
 
