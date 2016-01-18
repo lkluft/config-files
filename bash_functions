@@ -90,6 +90,20 @@ h() {
 }
 
 
+# count files in given directory (defaults to "./")
+lc() {
+  case "$#" in
+    0) command ls -U | wc -l ;;
+    1) command ls -U "$1" | wc -l ;;
+    *)
+      for d in "$@"; do
+        echo "${d}": "$(command ls -U "${d}" | wc -l)"
+      done
+    ;;
+  esac
+}
+
+
 # go to specific localhost port
 lh() {
   check_var BROWSER || return 1;
