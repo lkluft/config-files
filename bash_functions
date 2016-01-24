@@ -84,6 +84,13 @@ gitpwd() {
 }
 
 
+# open Google Mail in web browser
+gm() {
+  check_var BROWSER || return 1;
+  ${BROWSER} "https://mail.google.com" &> /dev/null &
+}
+
+
 # show/search bash history
 h() {
   history | grep -E "$(echo "$@" | sed 's/ /|/g')"
