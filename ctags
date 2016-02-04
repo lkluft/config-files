@@ -1,0 +1,7 @@
+--python-kinds=-i
+--recurse=yes
+--exclude=build
+--exclude=doc
+--exclude=.git
+--exclude=.svn
+--exclude=tags

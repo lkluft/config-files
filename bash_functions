@@ -85,9 +85,16 @@ gitpwd() {
 
 
 # open Google Mail in web browser
-gm() {
+gmail() {
   check_var BROWSER || return 1;
   ${BROWSER} "https://mail.google.com" &> /dev/null &
+}
+
+
+# open Google Mail in web browser
+gcal() {
+  check_var BROWSER || return 1;
+  ${BROWSER} "https://calendar.google.com" &> /dev/null &
 }
 
 
