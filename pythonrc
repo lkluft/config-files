@@ -6,6 +6,8 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 
+import typhon
+
 # matplotlib settings
 mpl.rcParams['image.cmap'] = 'viridis'
 mpl.rcParams['font.size'] = 16
