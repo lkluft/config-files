@@ -112,11 +112,7 @@ fi
 export PYTHONSTARTUP="${HOME}/.pythonrc"
 
 # use anaconda python environment if available
-if [[ -d "${HOME}/.anaconda/envs/py35/bin" ]]; then
-  path_prepend "${HOME}/.anaconda/envs/py35/bin"
-  export CONDA_DEFAULT_ENV="py35"
-  export CONDA_ENV_PATH="${HOME}/.anaconda/envs/py35"
-fi
+[[ -d "${HOME}/.anaconda/bin" ]] && path_prepend "${HOME}/.anaconda/bin"
 
 
 # language settings

@@ -140,13 +140,13 @@ man() {
 export -f man
 
 
-# mount thunder7 directories and keep track of them
-if [[ "$(uname -s)" == "Darwin" ]]; then
-  mount_t7() {
-    mount_thunder7
-    nohup track_thunder7 &> /dev/null &
-  }
-fi
+# # mount thunder7 directories and keep track of them
+# if [[ "$(uname -s)" == "Darwin" ]]; then
+#   mount_t7() {
+#     mount_thunder7
+#     nohup track_thunder7 &> /dev/null &
+#   }
+# fi
 
 
 # print the current IP
@@ -265,6 +265,15 @@ pc() {
 wa() {
   check_var BROWSER || return 1;
   ${BROWSER} "https://web.whatsapp.com" &> /dev/null &
+}
+
+# current weather information
+wttr() {
+    if [[ -z $1 ]]; then
+        curl -s wttr.in | head -n 7 | tail -n +3
+    else
+        curl -s wttr.in/$1
+    fi
 }
 
 
