@@ -189,15 +189,17 @@ fi
 
 # create a temporary directory and change into it
 td() {
-  cd "$(mktemp -dt bash.XXX)"
+  [[ -f ~/.tmpdir ]] || mktemp -dt bash.XXX > ~/.tmpdir
+  cd "$(cat ~/.tmpdir)"
 }
 
 
-# delete all temporary directories created with td
+# delete temporary directory created with td
 tdd() {
-  cd "${HOME}"
-  find "${TMPDIR}" -maxdepth 1 -user "${USER}" -name "bash.???" \
-    -exec rm -rf {} +
+  [[ -f ~/.tmpdir ]] || return 0;
+  local tmpdir="$(cat ~/.tmpdir)"
+  [[ "${PWD}" == "${tmpdir}" ]] && cd
+  rm -rf "${tmpdir}" && rm ~/.tmpdir
 }
 
 
