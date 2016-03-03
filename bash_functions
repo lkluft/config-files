@@ -197,7 +197,7 @@ td() {
 # delete temporary directory created with td
 tdd() {
   [[ -f ~/.tmpdir ]] || return 0;
-  local tmpdir="$(cat ~/.tmpdir)"
+  local tmpdir="$(readlink -f $(cat ~/.tmpdir))"
   [[ "${PWD}" == "${tmpdir}" ]] && cd
   rm -rf "${tmpdir}" && rm ~/.tmpdir
 }
