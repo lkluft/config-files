@@ -2,7 +2,7 @@
 
 # create backup of the file passed as parameter
 bak() {
-  cp $1{,.bak}
+  cp -ir $1{,.bak}
 }
 
 
@@ -14,11 +14,10 @@ check_var(){
 
 
 # if command line dictionary dict is not present use dict.cc in $BROWSER
-if ! hash xclip &> /dev/null; then
+if ! hash dict &> /dev/null; then
   dict() {
     check_var BROWSER || return 1;
-    local qry
-    qry="$(echo "$@" | sed -e 's/+/%2B/g' -e 's/ /+/g')";
+    local qry="$(echo "$@" | sed -e 's/+/%2B/g' -e 's/ /+/g')";
     ${BROWSER} "http://www.dict.cc/?s=${qry}" &> /dev/null &
   }
 fi
@@ -72,8 +71,7 @@ fb() {
 # Google search via terminal
 g() {
   check_var BROWSER || return 1;
-  local qry
-  qry="$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')"
+  local qry="$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')"
   ${BROWSER} "https://startpage.com/do/search?q=${qry}" &> /dev/null &
 }
 
@@ -140,15 +138,6 @@ man() {
 export -f man
 
 
-# # mount thunder7 directories and keep track of them
-# if [[ "$(uname -s)" == "Darwin" ]]; then
-#   mount_t7() {
-#     mount_thunder7
-#     nohup track_thunder7 &> /dev/null &
-#   }
-# fi
-
-
 # print the current IP
 myip() {
   echo "$(curl -s ip.appspot.com)"
@@ -178,8 +167,7 @@ fi
 # take a screenshot from command line
 if [[ "$(uname -s)" == "Darwin" ]]; then
   scrot() {
-    local date
-    date="$(date +%F_%H%M%S)"
+    local date="$(date +%F_%H%M%S)"
     case "$1" in
       -i) screencapture -i "${date}_selection.png" ;;
       -w) screencapture -w "${date}_window.png" ;;
@@ -189,8 +177,7 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
 elif [[ "$(uname -s)" == "Linux" ]]; then
   scrot() {
     [[ -z "$2" ]] && delay=3 || delay="$2";
-    local date
-    date="$(date +%F_%H%M%S)"
+    local date="$(date +%F_%H%M%S)"
     case "$1" in
       -i) gnome-screenshot -a -f "${date}_selection.png" ;;
       -w) gnome-screenshot -w -d "${delay}" -f "${date}_window.png" ;;
@@ -214,7 +201,7 @@ tdd() {
 }
 
 
-# updated env in a tmux session
+# update env in a tmux session
 tmup() {
   check_var TMUX || return 1;
   eval "$(tmux show-env | sed -e /^-/d -e 's/ /\\\ /g' -e 's/^/export /')"
@@ -280,8 +267,7 @@ wttr() {
 # YouTube search via terminal
 yt() {
   check_var BROWSER || return 1;
-  local q
-  q="$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')";
+  local q="$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')";
   ${BROWSER} "https://www.youtube.com/results?search_query=${q}" &> /dev/null &
 }
 
