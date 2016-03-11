@@ -39,6 +39,7 @@ case "$(hostname)" in
     export ARTS_DATA_PATH="${APMETSCRATCH}/users/lkluft/arts-xml-data"
     ;;
 esac
+path_prepend "${HOME}/bin"
 path_prepend "${HOME}/.scripts"
 
 
