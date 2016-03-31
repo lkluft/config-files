@@ -43,6 +43,10 @@ path_prepend "${HOME}/bin"
 path_prepend "${HOME}/.scripts"
 
 
+# search PATH for cd command
+export CDPATH=".:..:~"
+
+
 # set TMPDIR to /tmp if unset
 [[ -z "${TMPDIR}" ]] && export TMPDIR="/tmp"
 

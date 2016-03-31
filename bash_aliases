@@ -1,6 +1,7 @@
 # list of aliases for bash shell
 
 alias c='clear'
+alias chrome='chromium-browser'
 alias clustertm='ssh cluster -t tmux att -t main'
 alias cp='cp -i'
 alias df='df -h'
