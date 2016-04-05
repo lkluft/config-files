@@ -98,7 +98,6 @@ first_to_appear() {
 }
 
 export EDITOR="vim"
-export PAGER="less"
 export BROWSER="$(first_to_appear chromium-browser firefox)"
 export IMAGEVIEWER="$(first_to_appear eog "${BROWSER}")"
 export PDFVIEWER="$(first_to_appear zathura okular evince "${BROWSER}")"
@@ -108,6 +107,10 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
   export {IMAGEVIEWER,PDFVIEWER,BROWSER}="open"
 fi
 
+
+# pager settings
+export PAGER="less"
+export LESS="-reFsX"
 
 # if existing use hosts-system for ssh host completion
 [[ -r '/etc/hosts-system' ]] && export HOSTFILE='/etc/hosts-system'
