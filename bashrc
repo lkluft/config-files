@@ -37,6 +37,7 @@ case "$(hostname)" in
     path_prepend "${HOME}/lkluft/arts/build/src"
     . "${HOME}/lkluft/arts/tools/bash_completion/completion_arts.sh"
     export ARTS_DATA_PATH="${APMETSCRATCH}/users/lkluft/arts-xml-data"
+    export PYTHONUSERBASE="/scratch/uni/u237/users/lkluft/python"
     ;;
 esac
 path_prepend "${HOME}/bin"
