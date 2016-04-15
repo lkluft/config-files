@@ -250,6 +250,27 @@ pc() {
 }
 
 
+# resize images to be smaller than 1024x768 (slide friendly)
+slidify() {
+  for file in "$@"; do
+    convert -resize 1024x768 "${file}" "${file%.*}-slidified.${file##*.}"
+  done
+}
+
+
+# convert a PDF document with two pages side-by-side (printer friendly)
+twocolumn() {
+  for file in "$@"; do
+    if [[ ${file##*.} != "pdf" ]]; then
+        err "${file} is no PDF document."
+    else
+        pdfjam -q --landscape --nup 2x1 \
+            "${file}" -o "${file%.*}-printified.pdf"
+    fi
+  done
+}
+
+
 # WhatsApp
 wa() {
   check_var BROWSER || return 1;
