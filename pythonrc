@@ -2,13 +2,15 @@
 import os
 import sys
 
-import matplotlib as mpl
-import matplotlib.pyplot as plt
-import numpy as np
+try:
+    import numpy as np
+    import matplotlib as mpl
+    import matplotlib.pyplot as plt
 
-import typhon.cm
-import typhon.arts.xml as xml
+    import typhon.cm
+    import typhon.arts.xml as xml
 
-# matplotlib settings
-mpl.rcParams['image.cmap'] = 'viridis'
-mpl.rcParams['font.size'] = 16
+    # matplotlib settings
+    plt.style.use('typhon')
+except:
+    pass
