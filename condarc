@@ -1,16 +1,25 @@
-# do not change prompt settings
+# See http://conda.pydata.org/docs/install/config.html for more information
+# about this file.
+
+# Listing channel locations in the .condarc file will override conda defaults,
+# causing conda to search only the channels listed here, in the order given.
+#
+# Use defaults to automatically include all default channels. Non-url channels
+# will be interpreted as Anaconda.org usernames, and this can be changed by
+# modifying the channel_alias key as explained below. The default is just
+# defaults.
+channels:
+  - rttools
+  - defaults
+
+# Choose the yes option whenever asked to proceed, such as when installing.
+# Same as using the --yes flag at the command line. The default is False.
+always_yes: True
+
+# When using activate, change the command prompt ($PS1) to include the
+# activated environment. The default is True.
 changeps1: False
 
-# packages to include in every new environment
-create_default_packages:
-    - basemap
-    - jupyter
-    - matplotlib
-    - netcdf4
-    - nose
-    - numba
-    - numpy
-    - pillow
-    - scikit-learn
-    - scipy
-    - sympy
+# Show channel URLs when displaying what is going to be downloaded and
+# in 'conda list'. The default is False.
+show_channel_urls: True

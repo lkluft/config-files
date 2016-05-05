@@ -1,32 +1,37 @@
 # add or edit bash functions
 
+
+## auxiliary functions (needed by other functions)
+
+# check if variable is set
+_check_var(){
+  [[ -z "${!1}" ]] && _err "${1} not set." && return 1
+  return 0
+}
+
+
+# print _error message to STDERR
+_err() {
+  >&2 echo "ERROR: $1";
+}
+
+
+## user functions
+
 # create backup of the file passed as parameter
 bak() {
   cp -ir $1{,.bak}
 }
 
 
-# check if variable is set
-check_var(){
-  [[ -z "${!1}" ]] && err "${1} not set." && return 1
-  return 0
-}
-
-
 # if command line dictionary dict is not present use dict.cc in $BROWSER
 if ! hash dict &> /dev/null; then
   dict() {
-    check_var BROWSER || return 1;
+    _check_var BROWSER || return 1;
     local qry="$(echo "$@" | sed -e 's/+/%2B/g' -e 's/ /+/g')";
     ${BROWSER} "http://www.dict.cc/?s=${qry}" &> /dev/null &
   }
 fi
-
-
-# print error message to STDERR
-err() {
-  >&2 echo "ERROR: $1";
-}
 
 
 # extract archive depending on file extension
@@ -63,14 +68,14 @@ xtr() {
 
 # facebook
 fb() {
-  check_var BROWSER || return 1;
+  _check_var BROWSER || return 1;
   ${BROWSER} "https://fb.com/?sk=h_chr" &> /dev/null &
 }
 
 
 # Google search via terminal
 g() {
-  check_var BROWSER || return 1;
+  _check_var BROWSER || return 1;
   local qry="$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')"
   ${BROWSER} "https://startpage.com/do/search?q=${qry}" &> /dev/null &
 }
@@ -84,14 +89,14 @@ gitpwd() {
 
 # open Google Mail in web browser
 gmail() {
-  check_var BROWSER || return 1;
+  _check_var BROWSER || return 1;
   ${BROWSER} "https://mail.google.com" &> /dev/null &
 }
 
 
 # open Google Mail in web browser
 gcal() {
-  check_var BROWSER || return 1;
+  _check_var BROWSER || return 1;
   ${BROWSER} "https://calendar.google.com" &> /dev/null &
 }
 
@@ -118,7 +123,7 @@ lc() {
 
 # go to specific localhost port
 lh() {
-  check_var BROWSER || return 1;
+  _check_var BROWSER || return 1;
   ${BROWSER} "http://localhost:$1" &> /dev/null &
 }
 
@@ -205,7 +210,7 @@ tdd() {
 
 # update env in a tmux session
 tmup() {
-  check_var TMUX || return 1;
+  _check_var TMUX || return 1;
   eval "$(tmux show-env | sed -e /^-/d -e 's/ /\\\ /g' -e 's/^/export /')"
 }
 
@@ -218,14 +223,14 @@ u() {
 
 # image viewer shortcut
 view_img() {
-  check_var IMAGEVIEWER || return 1;
+  _check_var IMAGEVIEWER || return 1;
   ${IMAGEVIEWER} "$@" &> /dev/null &
 }
 
 
 # PDF viewer shortcut
 view_pdf() {
-  check_var PDFVIEWER || return 1;
+  _check_var PDFVIEWER || return 1;
   ${PDFVIEWER} "$@" &> /dev/null &
 }
 
@@ -238,7 +243,7 @@ o() {
       *.pdf) view_pdf "${file}" ;;
       *.png) view_img "${file}" ;;
       *.jpg) view_img "${file}" ;;
-      *) err "'${file}' unknown file type" ;;
+      *) _err "'${file}' unknown file type" ;;
     esac
   done
 }
@@ -250,19 +255,11 @@ pc() {
 }
 
 
-# resize images to be smaller than 1024x768 (slide friendly)
-slidify() {
-  for file in "$@"; do
-    convert -resize 1024x768 "${file}" "${file%.*}-slidified.${file##*.}"
-  done
-}
-
-
 # convert a PDF document with two pages side-by-side (printer friendly)
 twocolumn() {
   for file in "$@"; do
     if [[ ${file##*.} != "pdf" ]]; then
-        err "${file} is no PDF document."
+        _err "${file} is no PDF document."
     else
         pdfjam -q --landscape --nup 2x1 \
             "${file}" -o "${file%.*}-printified.pdf"
@@ -273,7 +270,7 @@ twocolumn() {
 
 # WhatsApp
 wa() {
-  check_var BROWSER || return 1;
+  _check_var BROWSER || return 1;
   ${BROWSER} "https://web.whatsapp.com" &> /dev/null &
 }
 
@@ -289,7 +286,7 @@ wttr() {
 
 # YouTube search via terminal
 yt() {
-  check_var BROWSER || return 1;
+  _check_var BROWSER || return 1;
   local q="$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')";
   ${BROWSER} "https://www.youtube.com/results?search_query=${q}" &> /dev/null &
 }
