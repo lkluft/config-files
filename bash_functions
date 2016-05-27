@@ -23,6 +23,10 @@ bak() {
   cp -ir $1{,.bak}
 }
 
+# clean ExecuteTimes from Jupyter Notebooks
+clean_execute() {
+    sed -n -i -e '1!H;1h;${x;s/ *"ExecuteTime": {[^}]*},//g;p}' "$@"
+}
 
 # if command line dictionary dict is not present use dict.cc in $BROWSER
 if ! hash dict &> /dev/null; then
