@@ -9,8 +9,5 @@ try:
 
     import typhon.cm
     import typhon.arts.xml as xml
-
-    # matplotlib settings
-    plt.style.use('typhon')
 except:
     pass

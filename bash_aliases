@@ -34,7 +34,7 @@ alias t7tm='ssh t7 -t /scratch/uni/u237/sw/tmux/bin/tmux att -t main'
 alias t='todo.sh -d ~/Dropbox/todo/todo.cfg'
 alias topu='top -u $(whoami)'
 alias type='type -all'
-alias update-conda='conda update --all && conda clean -pt'
+alias update-conda='conda update --all && conda clean -pty'
 alias which='type'
 alias x='exit'
 

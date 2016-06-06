@@ -10,11 +10,12 @@
 # defaults.
 channels:
   - rttools
+  - conda-forge
   - defaults
 
 # Choose the yes option whenever asked to proceed, such as when installing.
 # Same as using the --yes flag at the command line. The default is False.
-always_yes: True
+always_yes: False
 
 # When using activate, change the command prompt ($PS1) to include the
 # activated environment. The default is True.
