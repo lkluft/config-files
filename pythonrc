@@ -9,5 +9,10 @@ try:
 
     import typhon.cm
     import typhon.arts.xml as xml
+
+    # Use typhon style for matplotlib 1.5.1 only.
+    # The new defaults in 2.0 are sufficient.
+    if mpl.__version__ == '1.5.1':
+        mpl.style.use('typhon')
 except:
     pass
