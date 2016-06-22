@@ -213,3 +213,5 @@ EXEC 01;32
 # txt
 .txt 01
 .TXT 01
+# python
+.py 00;33
