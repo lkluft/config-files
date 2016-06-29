@@ -210,8 +210,5 @@ EXEC 01;32
 .tex 0;35
 .pdf 1;35
 .PDF 1;35
-# txt
-.txt 01
-.TXT 01
 # python
-.py 00;33
+.py 01
