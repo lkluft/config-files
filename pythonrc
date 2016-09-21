@@ -2,17 +2,15 @@
 import os
 import sys
 
+import numpy as np
+import matplotlib as mpl
+if os.getenv('DISPLAY') == '':
+    mpl.use('Agg')
+import matplotlib.pyplot as plt
+
 try:
-    import numpy as np
-    import matplotlib as mpl
-    import matplotlib.pyplot as plt
-
     import typhon.cm
+    mpl.style.use('typhon')
     import typhon.arts.xml as xml
-
-    # Use typhon style for matplotlib 1.5.1 only.
-    # The new defaults in 2.0 are sufficient.
-    if mpl.__version__ == '1.5.1':
-        mpl.style.use('typhon')
 except:
     pass
