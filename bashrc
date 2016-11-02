@@ -22,6 +22,11 @@ path_remove() {
 }
 
 case "$(hostname)" in
+  "acer")
+    path_prepend "${HOME}/arts/build/src"
+    . "${HOME}/arts/tools/bash_completion/completion_arts.sh"
+    export ARTS_DATA_PATH="${HOME}/arts-xml-data"
+    ;;
   "apple"*)
     path_prepend "/opt/local/bin"
     path_prepend "/opt/local/libexec/gnubin"
@@ -172,4 +177,3 @@ hash dircolors &> /dev/null \
 
 # bash functions. edit in ~/.bash_functions
 [[ -f "${HOME}/.bash_functions" ]] && . "${HOME}/.bash_functions"
-
