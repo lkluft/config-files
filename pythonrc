@@ -9,8 +9,8 @@ if os.getenv('DISPLAY') == '':
 import matplotlib.pyplot as plt
 
 try:
-    import typhon.cm
-    mpl.style.use('typhon')
-    import typhon.arts.xml as xml
+    import typhon.plots
+    mpl.style.use(typhon.plots.styles('typhon'))
+    from typhon.arts import xml
 except:
     pass
