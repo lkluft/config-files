@@ -35,7 +35,8 @@ case "$(hostname)" in
     ;;
   "squall"*)
     module "purge"
-    module "load grads cdo git python/2.7-ve3"
+    module "load git svn/1.9.2 python/2.7-ve3"
+    source "$HOME/Documents/arts-lectures/bin/arts-init.bash"
     ;;
   "thunder"*)
     . "/scratch/uni/u237/sw/profile.apmet/apmet.sh"
