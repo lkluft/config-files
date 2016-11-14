@@ -8,6 +8,12 @@ if os.getenv('DISPLAY') == '':
     mpl.use('Agg')
 import matplotlib.pyplot as plt
 
+def test_field(m, n):
+    """Sample 2D field for plotting."""
+    y = np.linspace(0, 1, m)[:, np.newaxis]
+    x = np.linspace(0, 2 * np.pi, n)
+    return np.sin(x**2) * np.exp(y)
+
 try:
     import typhon.plots
     mpl.style.use(typhon.plots.styles('typhon'))

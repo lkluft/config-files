@@ -31,7 +31,7 @@ case "$(hostname)" in
     path_prepend "/opt/local/bin"
     path_prepend "/opt/local/libexec/gnubin"
     path_prepend "${HOME}/Documents/arts/build/src"
-    export ARTS_DATA_PATH="${APMETSCRATCH}/Documents/arts-xml-data"
+    export ARTS_DATA_PATH="${HOME}/Documents/arts-xml-data"
     ;;
   "squall"*)
     module "purge"
