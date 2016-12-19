@@ -109,7 +109,7 @@ first_to_appear() {
 export EDITOR="vim"
 export BROWSER="$(first_to_appear chromium-browser firefox)"
 export IMAGEVIEWER="$(first_to_appear eog "${BROWSER}")"
-export PDFVIEWER="$(first_to_appear zathura okular evince "${BROWSER}")"
+export PDFVIEWER="$(first_to_appear zathura okular evince xpdf"${BROWSER}")"
 
 # MacOS: use open to open files
 if [[ "$(uname -s)" == "Darwin" ]]; then
