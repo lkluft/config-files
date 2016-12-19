@@ -1,55 +1,43 @@
 # ssh configuration file
+
 # settings for university servers
 Host login
     Hostname login.zmaw.de
     User u300509
 
 Host t7
-    Hostname thunder7
-    User u300509
-    ProxyCommand ssh -q login nc -q0 %h 22
-    LocalForward 4242 localhost:4242
-    LocalForward 5353 localhost:5353
     ForwardX11 yes
     ForwardX11trusted yes
+    Hostname thunder7
+    LocalForward 4242 localhost:4242
+    LocalForward 5353 localhost:5353
+    ProxyCommand ssh -q login nc -q0 %h 22
+    User u300509
 
 Host apple
     Hostname apple157.mi.zmaw.de
-    User u300509
     ProxyCommand ssh -q login nc -q0 %h 22
+    User u300509
 
 Host lehre
-    Hostname lehre3
-    User u300509
-    ProxyCommand ssh -q login nc -q0 %h 22
-
-Host cluster
-    Hostname cluster.wr.informatik.uni-hamburg.de
-    User kluft
     ForwardX11 yes
     ForwardX11trusted yes
-
-# Host uni_info
-#     Hostname  rzssh1.informatik.uni-hamburg.de
-#     User xkluft
-#     LocalForward 4242 localhost:4242
+    Hostname lehre3
+    ProxyCommand ssh -q login nc -q0 %h 22
+    User u300509
 
 # personal machines
-Host acer
-    Hostname acer.local
+Host acer medion
+    Hostname %h.local
     User lukas
     Port 8787
 
-Host medion
-    Hostname medion.local
-    User lukas
-    Port 8787
-
+# general settings for all hosts
 Host *
+    AddKeysToAgent yes
     Compression yes
     ForwardAgent yes
     ForwardX11 no
     ForwardX11trusted no
     HashKnownHosts yes
     LogLevel ERROR
-
