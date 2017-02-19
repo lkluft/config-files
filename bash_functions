@@ -28,6 +28,11 @@ clean_execute() {
     sed -n -i -e '1!H;1h;${x;s/ *"ExecuteTime": {[^}]*},//g;p}' "$@"
 }
 
+# Display colon-separated variables in a nicer format.
+decol() {
+    echo -e ${!1//:/\\n};
+}
+
 # if command line dictionary dict is not present use dict.cc in $BROWSER
 if ! hash dict &> /dev/null; then
   dict() {
@@ -39,7 +44,7 @@ fi
 
 
 # extract archive depending on file extension
-xtr() {
+extract() {
   if [[ -z "$1" ]]; then
     # display usage if no parameters given
     echo "Usage: extract <path/to/archive>"
@@ -155,7 +160,7 @@ myip() {
 
 # print the content of PATH
 path() {
-  echo -e "${PATH//:/\\n}"
+  decol PATH
 }
 
 
