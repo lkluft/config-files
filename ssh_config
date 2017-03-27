@@ -27,7 +27,7 @@ Host lehre3 lehre squall3 squall
     User u300509
 
 Host git.mpimet.mpg.de
-    IdentityFile ~/.ssh/id_ecdsa_git_aes.pub
+    IdentityFile ~/.ssh/id_ecdsa_git_aes
     User git
 
 # personal machines
