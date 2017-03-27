@@ -2,10 +2,10 @@
 
 # settings for university servers
 Host login
-    Hostname login.zmaw.de
+    Hostname login.cen.uni-hamburg.de
     User u300509
 
-Host t7
+Host thunder7 t7
     ForwardX11 yes
     ForwardX11trusted yes
     Hostname thunder7
@@ -15,22 +15,26 @@ Host t7
     User u300509
 
 Host apple
-    Hostname apple157.mi.zmaw.de
+    Hostname apple157.cen.uni-hamburg.de
     ProxyCommand ssh -q login nc -q0 %h 22
     User u300509
 
-Host lehre
+Host lehre3 lehre squall3 squall
     ForwardX11 yes
     ForwardX11trusted yes
-    Hostname lehre3
+    Hostname squall3
     ProxyCommand ssh -q login nc -q0 %h 22
     User u300509
+
+Host git.mpimet.mpg.de
+    IdentityFile ~/.ssh/id_ecdsa_git_aes.pub
+    User git
 
 # personal machines
 Host acer medion
     Hostname %h.local
-    User lukas
     Port 8787
+    User lukas
 
 # general settings for all hosts
 Host *
