@@ -38,7 +38,6 @@ Host acer medion
 
 # general settings for all hosts
 Host *
-    AddKeysToAgent yes
     Compression yes
     ForwardAgent yes
     ForwardX11 no
