@@ -26,6 +26,14 @@ Host lehre3 lehre squall3 squall
     ProxyCommand ssh -q login nc -q0 %h 22
     User u300509
 
+Host mistral-uhh
+    Hostname mistral.dkrz.de
+    User u300509
+
+Host mistral-mpi
+    Hostname mistral.dkrz.de
+    User m300575
+
 Host git.mpimet.mpg.de
     IdentityFile ~/.ssh/id_ecdsa_git_aes
     User git
@@ -38,6 +46,7 @@ Host acer medion
 
 # general settings for all hosts
 Host *
+    AddKeysToAgent yes
     Compression yes
     ForwardAgent yes
     ForwardX11 no
