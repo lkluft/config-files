@@ -130,13 +130,6 @@ lc() {
 }
 
 
-# go to specific localhost port
-lh() {
-  _check_var BROWSER || return 1;
-  ${BROWSER} "http://localhost:$1" &> /dev/null &
-}
-
-
 # open man page with colorized less
 man() {
   env LESS_TERMCAP_mb=$'\E[01;31m' \
@@ -202,17 +195,17 @@ fi
 
 
 # create a temporary directory and change into it
-td() {
+tmp() {
   [[ -f ~/.tmpdir ]] || mktemp -dt bash.XXX > ~/.tmpdir
   cd "$(cat ~/.tmpdir)"
 }
 
 
 # delete temporary directory created with td
-tdd() {
+tmprm() {
   [[ -f ~/.tmpdir ]] || return 0;
-  local tmpdir="$(readlink -f $(cat ~/.tmpdir))"
-  [[ "${PWD}" == "${tmpdir}" ]] && cd
+  local tmpdir="$(readlink -f $(cat ~/.tmpdir))"  # absolut path to tmpdir
+  [[ "${PWD}" == "${tmpdir}" ]] && cd  # change from tmpdir before removing
   rm -rf "${tmpdir}" && rm ~/.tmpdir
 }
 
@@ -231,14 +224,14 @@ u() {
 
 
 # image viewer shortcut
-view_img() {
+_view_img() {
   _check_var IMAGEVIEWER || return 1;
   ${IMAGEVIEWER} "$@" &> /dev/null &
 }
 
 
 # PDF viewer shortcut
-view_pdf() {
+_view_pdf() {
   _check_var PDFVIEWER || return 1;
   ${PDFVIEWER} "$@" &> /dev/null &
 }
@@ -249,20 +242,19 @@ o() {
   for file in "$@"; do
     # lower case before matching the extension
     case "${file,,}" in
-      *.pdf) view_pdf "${file}" ;;
-      *.png) view_img "${file}" ;;
-      *.jpg) view_img "${file}" ;;
+      *.pdf) _view_pdf "${file}" ;;
+      *.png) _view_img "${file}" ;;
+      *.jpg) _view_img "${file}" ;;
       *) _err "'${file}' unknown file type" ;;
     esac
   done
 }
 
 
-# command line calculator
-pc() {
-  python -c "from math import *; print($*)";
+# grep for active processes
+psgrep() {
+  ps aux | grep -E "$(echo "$@" | sed 's/ /|/g')"
 }
-
 
 # convert a PDF document with two pages side-by-side (printer friendly)
 twocolumn() {
@@ -275,7 +267,6 @@ twocolumn() {
     fi
   done
 }
-
 
 # WhatsApp
 wa() {
@@ -299,4 +290,3 @@ yt() {
   local q="$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')";
   ${BROWSER} "https://www.youtube.com/results?search_query=${q}" &> /dev/null &
 }
-
