@@ -35,6 +35,10 @@ case "$(hostname)" in
     path_prepend "${HOME}/Documents/arts/build/src"
     ARTS_DATA_PATH="${HOME}/Documents/arts-xml-data"
     export ARTS_DATA_PATH="${HOME}/Documents/catalogue:${ARTS_DATA_PATH}"
+    export CUPS_SERVER=print.cen.uni-hamburg.de
+    ;;
+  "mlogin"*)
+    source /work/um0878/sw/profile/group.sh
     ;;
   "squall"*)
     module "purge"
