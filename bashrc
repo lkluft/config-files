@@ -39,6 +39,7 @@ case "$(hostname)" in
     ;;
   "mlogin"*)
     source /work/um0878/sw/profile/group.sh
+    module "load git svn python/3.5.2"
     ;;
   "squall"*)
     module "purge"
@@ -96,6 +97,7 @@ case "$(hostname)" in
   "acer") PSCOLOR="$LIGHT_CYAN" ;;
   "apple"*) PSCOLOR="$LIGHT_RED" ;;
   "medion") PSCOLOR="$LIGHT_GREEN" ;;
+  "mlogin"*) PSCOLOR="$LIGHT_PURPLE" ;;
   "squall"*) PSCOLOR="$LIGHT_YELLOW" ;;
   "thunder"*) PSCOLOR="$LIGHT_BLUE" ;;
   *) PSCOLOR="$WHITE" ;;
