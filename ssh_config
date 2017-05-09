@@ -18,6 +18,9 @@ Host apple
     Hostname apple157.cen.uni-hamburg.de
     ProxyCommand ssh -q login nc -q0 %h 22
     User u300509
+    # **Very specific** osx settings.
+    AddKeysToAgent yes
+    UseKeyChain no
 
 Host lehre3 lehre squall3 squall
     ForwardX11 yes
@@ -46,7 +49,6 @@ Host acer medion
 
 # general settings for all hosts
 Host *
-    AddKeysToAgent yes
     Compression yes
     ForwardAgent yes
     ForwardX11 no
