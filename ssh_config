@@ -37,6 +37,14 @@ Host mistral-mpi
     Hostname mistral.dkrz.de
     User m300575
 
+Host mistralpp-uhh
+    Hostname mistralpp.dkrz.de
+    User u300509
+
+Host mistralpp-mpi
+    Hostname mistralpp.dkrz.de
+    User m300575
+
 Host git.mpimet.mpg.de
     IdentityFile ~/.ssh/id_ecdsa_git_aes
     User git
