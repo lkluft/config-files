@@ -96,9 +96,9 @@ export DEFAULT='\[\e[0m\]'
 case "$(hostname)" in
   "acer") PSCOLOR="$LIGHT_CYAN" ;;
   "apple"*) PSCOLOR="$LIGHT_RED" ;;
-  "medion") PSCOLOR="$LIGHT_GREEN" ;;
-  "mistralpp"*) PSCOLOR="$LIGHT_PURPLE" ;;
-  "mlogin"*) PSCOLOR="$LIGHT_PURPLE" ;;
+  "medion") PSCOLOR="$LIGHT_PURPLE" ;;
+  "mistralpp"*) PSCOLOR="$LIGHT_GREEN" ;;
+  "mlogin"*) PSCOLOR="$LIGHT_GREEN" ;;
   "squall"*) PSCOLOR="$LIGHT_YELLOW" ;;
   "thunder"*) PSCOLOR="$LIGHT_BLUE" ;;
   *) PSCOLOR="$WHITE" ;;
