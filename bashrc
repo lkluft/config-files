@@ -39,7 +39,7 @@ case "$(hostname)" in
     ;;
   "mlogin"*)
     source /work/um0878/sw/profile/group.sh
-    module "load git svn python/3.5.2"
+    module "load git svn"
     ;;
   "squall"*)
     module "purge"
