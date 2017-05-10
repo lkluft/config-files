@@ -37,7 +37,7 @@ case "$(hostname)" in
     export ARTS_DATA_PATH="${HOME}/Documents/catalogue:${ARTS_DATA_PATH}"
     export CUPS_SERVER=print.cen.uni-hamburg.de
     ;;
-  "mlogin"*)
+  "mlogin"*|"mistralpp"*)
     source /work/um0878/sw/profile/group.sh
     module "load git svn"
     ;;
