@@ -97,6 +97,7 @@ case "$(hostname)" in
   "acer") PSCOLOR="$LIGHT_CYAN" ;;
   "apple"*) PSCOLOR="$LIGHT_RED" ;;
   "medion") PSCOLOR="$LIGHT_GREEN" ;;
+  "mistralpp"*) PSCOLOR="$LIGHT_PURPLE" ;;
   "mlogin"*) PSCOLOR="$LIGHT_PURPLE" ;;
   "squall"*) PSCOLOR="$LIGHT_YELLOW" ;;
   "thunder"*) PSCOLOR="$LIGHT_BLUE" ;;
@@ -105,6 +106,11 @@ esac
 
 PS1="$PSCOLOR\W$DEFAULT "
 PS2="$PSCOLOR>$DEFAULT "
+
+if [[ "$(hostname)" == "mlogin"* || "$(hostname)" == "mistralpp"* ]]; then
+  PS1="$PSCOLOR\u@\h:\W$DEFAULT "
+  PS2="$PSCOLOR>$DEFAULT "
+fi
 
 
 # environment variables for editor, browser, etc.
