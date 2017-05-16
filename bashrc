@@ -141,7 +141,10 @@ export LESS="-reFsX"
 
 
 # python settings
-export PYTHONSTARTUP="${HOME}/.pythonrc"
+export PYTHONSTARTUP="${HOME}/.pythonrc"  # Path to Python startup file.
+
+# When running without X11 server, use 'Agg' backend for matplotlib.
+[[ -z "$DISPLAY" ]] && export MPLBACKEND="Agg"
 
 # use anaconda python environment if available
 [[ -d "${HOME}/.anaconda/bin" ]] && path_prepend "${HOME}/.anaconda/bin"
