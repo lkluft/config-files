@@ -6,9 +6,7 @@ Host login
     User u300509
 
 Host thunder7 t7
-    ForwardX11 yes
-    ForwardX11trusted yes
-    Hostname thunder7
+    Hostname thunder7.cen.uni-hamburg.de
     LocalForward 4242 localhost:4242
     LocalForward 5353 localhost:5353
     ProxyCommand ssh -q login nc -q0 %h 22
