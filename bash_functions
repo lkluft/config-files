@@ -256,6 +256,11 @@ psgrep() {
   ps aux | grep -E "$(echo "$@" | sed 's/ /|/g')"
 }
 
+# add a useful svn log
+svnlog() {
+  svn log -v "$@" | less
+}
+
 # convert a PDF document with two pages side-by-side (printer friendly)
 twocolumn() {
   for file in "$@"; do
