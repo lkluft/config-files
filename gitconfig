@@ -4,7 +4,7 @@
 [core]
     editor = vim
 [push]
-    default = simple
+    default = current
 [alias]
     gvimdiff = difftool -t gvimdiff
     vimdiff  = difftool -t vimdiff
