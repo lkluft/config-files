@@ -15,3 +15,5 @@
     ci = commit
     st = status
     br = branch
+[pull]
+    rebase = true
