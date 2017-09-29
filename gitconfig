@@ -17,3 +17,5 @@
     br = branch
 [pull]
     rebase = true
+[remote "origin"]
+    prune = true
