@@ -31,6 +31,7 @@ case "$(hostname)" in
     ;;
   "apple"*)
     path_prepend "/opt/local/bin"
+    path_prepend "/opt/local/sbin"
     path_prepend "/opt/local/libexec/gnubin"
     path_prepend "${HOME}/Documents/arts/build/src"
     ARTS_DATA_PATH="${HOME}/Documents/arts-xml-data"
