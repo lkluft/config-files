@@ -10,11 +10,6 @@
     vimdiff  = difftool -t vimdiff
 [difftool]
     prompt = false
-[alias]
-    co = checkout
-    ci = commit
-    st = status
-    br = branch
 [pull]
     rebase = true
 [remote "origin"]
