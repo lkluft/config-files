@@ -1,6 +1,6 @@
-#------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # NotebookApp configuration
-#------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 c = get_config()
 
 # Whether to open in a browser after starting. The specific browser used is
@@ -9,21 +9,28 @@ c = get_config()
 # configuration option.
 c.NotebookApp.open_browser = False
 
+
 # The port the notebook server will listen on.
 def get_port():
     from socket import gethostname
+    import re
 
+    # Maps regex to port number.
     port_map = {
         'thunder7': 4201,
-        'mlogin': 4202,
-        'mistralpp': 4203,
+        'mlogin.*': 4202,
+        'mistralpp.*': 4203,
     }
 
     hostname = gethostname()
-    for key, value in port_map.items():
-        if hostname.startswith(key):
+    for pattern, value in port_map.items():
+        if re.compile(pattern).match(hostname):
+            # Return the corresponding port for first matching regex pattern.
             return value
+    # Return default port if no match if found.
     return 8888
+
+
 c.NotebookApp.port = get_port()
 
 # Hashed password to use for web authentication.
