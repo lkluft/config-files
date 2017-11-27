@@ -1,0 +1,10 @@
+.cache
+
+# osx
+.DS_Store
+
+# Python
+*.pyc
+
+# JetBrain tools
+.idea
