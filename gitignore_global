@@ -9,3 +9,12 @@
 
 # JetBrain tools
 .idea
+
+# LaTeX
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.pdf
+*.synctex.gz
