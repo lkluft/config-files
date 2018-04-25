@@ -36,9 +36,9 @@ case "$(hostname)" in
     ;;
   "mlogin"*|"mistralpp"*)
     source /work/um0878/sw/profile/group.sh
-    path_prepend "${HOME}/lkluft/arts/build/src"
-    . "${HOME}/lkluft/arts/tools/bash_completion/completion_arts.sh"
-    ARTS_DATA_PATH="/work/um0878/users/lkluft/arts-xml-data"
+    path_prepend "${HOME}/lkluft/dev/arts/build/src"
+    . "${HOME}/lkluft/dev/arts/tools/bash_completion/completion_arts.sh"
+    ARTS_DATA_PATH="/work/um0878/users/lkluft/dev/arts-xml-data"
     ARTS_DATA_PATH="/work/um0878/data/catalogue/hitran/hitran2012/:${ARTS_DATA_PATH}"
     export LC_ALL=C
     ;;
