@@ -12,9 +12,15 @@
 
 # LaTeX
 *.aux
+*.bbl
+*.blg
 *.fdb_latexmk
+*.fff
 *.fls
+*.lof
 *.log
+*.lot
 *.out
 *.pdf
 *.synctex.gz
+*.ttt
