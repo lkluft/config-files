@@ -37,6 +37,6 @@ alias t='todo.sh -d ~/Dropbox/todo/todo.cfg'
 alias topu='top -u $(whoami)'
 alias type='type -all'
 alias update-conda='conda update --all && conda clean -pty'
+alias update-macports='sudo port selfupdate && sudo port upgrade outdated'
 alias which='type'
 alias x='exit'
-
