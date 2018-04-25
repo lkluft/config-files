@@ -1,10 +1,7 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 [[ $- == *i* ]] || return # return if not running interactively
 
-
-# path settings
-[[ "$(uname -s)" == "SunOS" ]] && export PATH="/opt/csw/gnu:${PATH}"
-
+# Utility functions for PATH setting.
 path_append() {
   path_remove "$1"
   export PATH="${PATH}:$1";
