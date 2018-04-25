@@ -1,5 +1,6 @@
 % add directories to the PATH
-%addpath(genpath(''));
+addpath(genpath('/Users/u300509/Documents/atmlab/atmlab'));
+atmlab_init
 
 % set default figure size
 scrz = get(0,'ScreenSize');
