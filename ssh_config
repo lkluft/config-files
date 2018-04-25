@@ -8,8 +8,8 @@ Host login
 Host thunder7 t7
     Hostname thunder7.cen.uni-hamburg.de
     LocalForward 4201 localhost:4201
-    ProxyCommand ssh -q login nc -q0 %h 22
     User u300509
+    ProxyCommand ssh -W %h:%p login
 
 Host mistral-uhh
     Hostname mistral.dkrz.de
@@ -20,6 +20,7 @@ Host mistralpp-uhh
     Hostname mistralpp.dkrz.de
     LocalForward 4203 localhost:4203
     User u300509
+    ProxyCommand ssh -W %h:%p mistral-uhh
 
 Host mistral-mpi
     Hostname mistral.dkrz.de
