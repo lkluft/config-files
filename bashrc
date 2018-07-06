@@ -36,6 +36,8 @@ case "$(hostname)" in
     ;;
   "mlogin"*|"mistralpp"*)
     source /work/um0878/sw/profile/group.sh
+    ulimit -Sv 32000000 # limit memory usage of single processes to 32GB
+    export OMP_NUM_THREADS=8
     path_prepend "${HOME}/lkluft/dev/arts/build/src"
     . "${HOME}/lkluft/dev/arts/tools/bash_completion/completion_arts.sh"
     ARTS_DATA_PATH="/work/um0878/users/lkluft/dev/arts-xml-data"
