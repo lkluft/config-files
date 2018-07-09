@@ -256,6 +256,14 @@ psgrep() {
   ps aux | grep -E "$(echo "$@" | sed 's/ /|/g')"
 }
 
+# share files via Dropbox
+share-dropbox() {
+  dropbox_dir="${HOME}/Dropbox/Shared/"
+  [[ -d ${dropbox_dir} ]] || _err "Could'nt find ${dropbox_dir}."
+
+  \cp -fr "$@" "${dropbox_dir}"
+}
+
 # add a useful svn log
 svnlog() {
   svn log -v "$@" | less
