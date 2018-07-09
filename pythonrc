@@ -1,19 +1,19 @@
 # import useful packages
+import glob
 import os
 import sys
-import glob
 
-
-import numpy as np
 import matplotlib as mpl
 if os.getenv('DISPLAY') is None:
     mpl.use('Agg')
 import matplotlib.pyplot as plt
 plt.ion()
+import numpy as np
 
 try:
-    import typhon.plots
-    mpl.style.use(typhon.plots.styles('typhon'))
-    from typhon.arts import xml
-except:
+    import typhon as ty
+except ImportError:
     pass
+else:
+    ty.plots.styles.use('typhon')
+    from typhon.arts import xml
