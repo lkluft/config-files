@@ -19,13 +19,6 @@ path_remove() {
 }
 
 case "$(hostname)" in
-  "acer")
-    path_prepend "${HOME}/Documents/arts/build/src"
-    . "${HOME}/Documents/arts/tools/bash_completion/completion_arts.sh"
-    export ARTS_DATA_PATH="${HOME}/Documents/arts-xml-data"
-    export ARTS_DATA_PATH="${ARTS_DATA_PATH}:${HOME}/Documents/catalogue"
-    export OMP_NUM_THREADS=2
-    ;;
   "apple"*)
     path_prepend "/opt/local/bin"
     path_prepend "/opt/local/sbin"
