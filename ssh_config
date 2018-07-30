@@ -1,7 +1,7 @@
 # ssh configuration file
 
 # settings for university servers
-Host login
+Host cen-login
     Hostname login.cen.uni-hamburg.de
     User u300509
 
@@ -9,7 +9,7 @@ Host thunder7 t7
     Hostname thunder7.cen.uni-hamburg.de
     LocalForward 4201 localhost:4201
     User u300509
-    ProxyCommand ssh -W %h:%p login
+    ProxyCommand ssh -W %h:%p cen-login
 
 Host mistral
     Hostname mistral.dkrz.de
