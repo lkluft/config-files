@@ -251,6 +251,11 @@ o() {
 }
 
 
+# kill user process by name
+pskill() {
+  pkill "$@" -U $USER
+}
+
 # grep for active processes
 psgrep() {
   ps aux | grep -E "$(echo "$@" | sed 's/ /|/g')"
