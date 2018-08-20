@@ -176,7 +176,6 @@ if ! shopt -oq posix; then
 fi
 
 # set completion for own scripts and functions
-complete -d ls la ll lR l
 complete -o plusdirs -f -X '!*.tex' latexmk
 complete -o plusdirs -f -X '!*.@(pdf|png|jpg)' o
 complete -o plusdirs -f -X '!*.tex' t
