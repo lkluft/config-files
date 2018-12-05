@@ -1,44 +1,28 @@
 # add or edit bash functions
 
-
-## auxiliary functions (needed by other functions)
-
-# check if variable is set
-_check_var(){
-  [[ -z "${!1}" ]] && _err "${1} not set." && return 1
-  return 0
-}
-
-
 # print _error message to STDERR
 _err() {
   >&2 echo "ERROR: $1";
 }
 
 
-## user functions
-
-# create backup of the file passed as parameter
-bak() {
-  cp -ir $1{,.bak}
-}
-
 # clean ExecuteTimes from Jupyter Notebooks
 clean_execute() {
     sed -n -i -e '1!H;1h;${x;s/ *"ExecuteTime": {[^}]*},//g;p}' "$@"
 }
+
 
 # Display colon-separated variables in a nicer format.
 decol() {
     echo -e ${!1//:/\\n};
 }
 
+
 # if command line dictionary dict is not present use dict.cc in $BROWSER
 if ! hash dict &> /dev/null; then
   dict() {
-    _check_var BROWSER || return 1;
     local qry="$(echo "$@" | sed -e 's/+/%2B/g' -e 's/ /+/g')";
-    ${BROWSER} "http://www.dict.cc/?s=${qry}" &> /dev/null &
+    open "http://www.dict.cc/?s=${qry}" &> /dev/null &
   }
 fi
 
@@ -75,38 +59,16 @@ extract() {
 }
 
 
-# facebook
-fb() {
-  _check_var BROWSER || return 1;
-  ${BROWSER} "https://fb.com/?sk=h_chr" &> /dev/null &
-}
-
-
 # Google search via terminal
 g() {
-  _check_var BROWSER || return 1;
   local qry="$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')"
-  ${BROWSER} "https://startpage.com/do/search?q=${qry}" &> /dev/null &
-}
-
-
-# put current directory under version control (git)
-gitpwd() {
-  [[ -d ".git" ]] || { git init && git add .; }
+  open "https://startpage.com/do/search?q=${qry}" &> /dev/null &
 }
 
 
 # open Google Mail in web browser
 gmail() {
-  _check_var BROWSER || return 1;
-  ${BROWSER} "https://mail.google.com" &> /dev/null &
-}
-
-
-# open Google Mail in web browser
-gcal() {
-  _check_var BROWSER || return 1;
-  ${BROWSER} "https://calendar.google.com" &> /dev/null &
+  open "https://mail.google.com" &> /dev/null &
 }
 
 
@@ -145,12 +107,6 @@ man() {
 export -f man
 
 
-# print the current IP
-myip() {
-  echo "$(curl -s ip.appspot.com)"
-}
-
-
 # print the content of PATH
 path() {
   decol PATH
@@ -161,14 +117,6 @@ path() {
 pingg() {
   ping -c 3 -i 0.2 "google.com"
 }
-
-
-# copy output to clipboard
-if hash xclip &> /dev/null; then
-  pbcopy() {
-    xclip -sel p -f | xclip -sel s -f | xclip -sel c
-  }
-fi
 
 
 # take a screenshot from command line
@@ -194,25 +142,9 @@ elif [[ "$(uname -s)" == "Linux" ]]; then
 fi
 
 
-# create a temporary directory and change into it
-tmp() {
-  [[ -f ~/.tmpdir ]] || mktemp -dt bash.XXX > ~/.tmpdir
-  cd "$(cat ~/.tmpdir)"
-}
-
-
-# delete temporary directory created with td
-tmprm() {
-  [[ -f ~/.tmpdir ]] || return 0;
-  local tmpdir="$(readlink -f $(cat ~/.tmpdir))"  # absolut path to tmpdir
-  [[ "${PWD}" == "${tmpdir}" ]] && cd  # change from tmpdir before removing
-  rm -rf "${tmpdir}" && rm ~/.tmpdir
-}
-
-
 # update env in a tmux session
 tmup() {
-  _check_var TMUX || return 1;
+  [[ -z ${TMUX} ]] && return 1;
   eval "$(tmux show-env | sed -e /^-/d -e 's/ /\\\ /g' -e 's/^/export /')"
 }
 
@@ -223,44 +155,6 @@ u() {
 }
 
 
-# image viewer shortcut
-_view_img() {
-  _check_var IMAGEVIEWER || return 1;
-  ${IMAGEVIEWER} "$@" &> /dev/null &
-}
-
-
-# PDF viewer shortcut
-_view_pdf() {
-  _check_var PDFVIEWER || return 1;
-  ${PDFVIEWER} "$@" &> /dev/null &
-}
-
-
-# open each file given in a list depending on its extension
-o() {
-  for file in "$@"; do
-    # lower case before matching the extension
-    case "${file,,}" in
-      *.pdf) _view_pdf "${file}" ;;
-      *.png) _view_img "${file}" ;;
-      *.jpg) _view_img "${file}" ;;
-      *) _err "'${file}' unknown file type" ;;
-    esac
-  done
-}
-
-
-# kill user process by name
-pskill() {
-  pkill "$@" -U $USER
-}
-
-# grep for active processes
-psgrep() {
-  ps aux | grep -E "$(echo "$@" | sed 's/ /|/g')"
-}
-
 # share files via Dropbox
 share-dropbox() {
   dropbox_dir="${HOME}/Dropbox/Shared/"
@@ -269,42 +163,22 @@ share-dropbox() {
   \cp -fr "$@" "${dropbox_dir}"
 }
 
-# add a useful svn log
-svnlog() {
-  svn log -v "$@" | less
-}
 
-# convert a PDF document with two pages side-by-side (printer friendly)
-twocolumn() {
-  for file in "$@"; do
-    if [[ ${file##*.} != "pdf" ]]; then
-        _err "${file} is no PDF document."
-    else
-        pdfjam -q --landscape --nup 2x1 \
-            "${file}" -o "${file%.*}-printified.pdf"
-    fi
-  done
-}
+# Store currently used Mistral preprocessing node to file.
+set-pphost(){ hostname > ~/.pphost; }
 
-# WhatsApp
-wa() {
-  _check_var BROWSER || return 1;
-  ${BROWSER} "https://web.whatsapp.com" &> /dev/null &
-}
+# Open ``top`` with own processes only.
+topu(){ top -U ${USER}; }
 
-# current weather information
-wttr() {
-    if [[ -z $1 ]]; then
-        curl -s wttr.in | head -n 7 | tail -n +3
-    else
-        curl -s wttr.in/$1
-    fi
-}
+# Update conda environment.
+update-conda(){ conda update --all && conda clean -pty; }
 
+# Update MacPorts.
+update-macports(){ sudo port selfupdate && sudo port upgrade outdated; }
 
-# YouTube search via terminal
-yt() {
-  _check_var BROWSER || return 1;
-  local q="$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')";
-  ${BROWSER} "https://www.youtube.com/results?search_query=${q}" &> /dev/null &
-}
+# Connect to tmux servers on remote machines.
+pptm(){ ssh mistralpp -t /work/um0878/sw/anaconda/bin/tmux att -t main; }
+t7tm(){ ssh t7 -t /scratch/uni/u237/sw/tmux/bin/tmux att -t main; }
+
+# Start Python interpreter without reading configuration file.
+ipyplain() { PYTHONSTARTUP="" ipy; }

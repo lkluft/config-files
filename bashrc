@@ -108,25 +108,8 @@ if [[ "$(hostname)" == "mlogin"* || "$(hostname)" == "mistralpp"* ]]; then
   PS2="$PSCOLOR>$DEFAULT "
 fi
 
-
-# environment variables for editor, browser, etc.
-first_to_appear() {
-  # return the first executable in argument list
-  for prog in "$@"; do
-    hash "${prog}" &> /dev/null && echo "${prog}" && break
-  done
-}
-
+# editor
 export EDITOR="vim"
-export BROWSER="$(first_to_appear chromium-browser firefox)"
-export IMAGEVIEWER="$(first_to_appear eog "${BROWSER}")"
-export PDFVIEWER="$(first_to_appear zathura okular evince xpdf"${BROWSER}")"
-
-# MacOS: use open to open files
-if [[ "$(uname -s)" == "Darwin" ]]; then
-  export {IMAGEVIEWER,PDFVIEWER,BROWSER}="open"
-fi
-
 
 # pager settings
 export PAGER="less"
