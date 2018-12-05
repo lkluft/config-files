@@ -13,7 +13,7 @@
     prompt = false
 [pull]
     rebase = true
-[remote "origin"]
+[fetch]
     prune = true
 [commit]
     gpgSign = true
