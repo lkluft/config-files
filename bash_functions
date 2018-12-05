@@ -1,24 +1,22 @@
 # add or edit bash functions
 
-# print _error message to STDERR
-_err() {
-  >&2 echo "ERROR: $1";
-}
+# Print error message to ``STDERR``.
+_err() { >&2 echo "ERROR: $1"; }
 
 
-# clean ExecuteTimes from Jupyter Notebooks
+# Clean ExecuteTimes from Jupyter Notebooks.
 clean_execute() {
-    sed -n -i -e '1!H;1h;${x;s/ *"ExecuteTime": {[^}]*},//g;p}' "$@"
+  sed -n -i -e '1!H;1h;${x;s/ *"ExecuteTime": {[^}]*},//g;p}' "$@"
 }
 
 
 # Display colon-separated variables in a nicer format.
 decol() {
-    echo -e ${!1//:/\\n};
+  echo -e ${!1//:/\\n};
 }
 
 
-# if command line dictionary dict is not present use dict.cc in $BROWSER
+# If command line dictionary dict is not present use dict.cc in web browser.
 if ! hash dict &> /dev/null; then
   dict() {
     local qry="$(echo "$@" | sed -e 's/+/%2B/g' -e 's/ /+/g')";
@@ -27,7 +25,7 @@ if ! hash dict &> /dev/null; then
 fi
 
 
-# extract archive depending on file extension
+# Extract archive depending on file extension.
 extract() {
   if [[ -z "$1" ]]; then
     # display usage if no parameters given
@@ -59,26 +57,26 @@ extract() {
 }
 
 
-# Google search via terminal
+# Open Google Search (web browser) via terminal.
 g() {
   local qry="$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')"
   open "https://startpage.com/do/search?q=${qry}" &> /dev/null &
 }
 
 
-# open Google Mail in web browser
+# Open Google Mail (web browser) via terminal.
 gmail() {
   open "https://mail.google.com" &> /dev/null &
 }
 
 
-# show/search bash history
+# Show/search bash history.
 h() {
   history | grep -E "$(echo "$@" | sed 's/ /|/g')"
 }
 
 
-# count files in given directory (defaults to "./")
+# Count files in given directory (defaults to "./")
 lc() {
   case "$#" in
     0) command ls -U | wc -l ;;
@@ -92,7 +90,7 @@ lc() {
 }
 
 
-# open man page with colorized less
+# Open man page with colorized less.
 man() {
   env LESS_TERMCAP_mb=$'\E[01;31m' \
     LESS_TERMCAP_md=$'\E[01;38;5;74m' \
@@ -107,16 +105,12 @@ man() {
 export -f man
 
 
-# print the content of PATH
-path() {
-  decol PATH
-}
+# Pretty print the content of ``PATH``.
+path() { decol PATH; }
 
 
-# ping google.com three times
-pingg() {
-  ping -c 3 -i 0.2 "google.com"
-}
+# Ping google.com three times.
+pingg() { ping -c 3 -i 0.2 "google.com"; }
 
 
 # take a screenshot from command line
@@ -142,7 +136,7 @@ elif [[ "$(uname -s)" == "Linux" ]]; then
 fi
 
 
-# update env in a tmux session
+# Update environment (``env``) in a tmux session.
 tmup() {
   [[ -z ${TMUX} ]] && return 1;
   eval "$(tmux show-env | sed -e /^-/d -e 's/ /\\\ /g' -e 's/^/export /')"
@@ -150,9 +144,7 @@ tmup() {
 
 
 # easy cd ..
-u() {
-  cd "$(eval printf '../'%.s {1..$1})" && pwd
-}
+u() { cd "$(eval printf '../'%.s {1..$1})" && pwd; }
 
 
 # share files via Dropbox
