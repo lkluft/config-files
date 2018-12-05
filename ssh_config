@@ -17,10 +17,9 @@ Host mistral
     User u300509
 
 Host mistralpp
-    Hostname mistralpp1
+    Hostname mistralpp01.dkrz.de
     LocalForward 4203 localhost:4203
     User u300509
-    ProxyCommand ssh -W %h:%p mistral
 
 Host mistral-mpi
     Hostname mistral
