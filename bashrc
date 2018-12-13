@@ -37,10 +37,9 @@ case "$(hostname)" in
     ARTS_DATA_PATH="/work/um0878/data/catalogue/hitran/hitran2012/:${ARTS_DATA_PATH}"
     export LC_ALL=C
     ;;
-  "squall"*)
+  vm-*.cen.uni-hamburg.de)
     module "purge"
-    module "load git svn/1.9.2 python/2.7-ve3"
-    source "$HOME/Documents/arts-lectures/bin/arts-init.bash"
+    module "load git/2.16.2"
     ;;
   "thunder"*)
     . "/scratch/uni/u237/sw/profile.apmet/apmet.sh"
