@@ -10,6 +10,7 @@ numexpr
 numpy>=1.13
 pandas
 pint
+pymongo
 pytest
 pytest-cov
 scikit-image
