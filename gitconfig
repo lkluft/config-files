@@ -9,6 +9,10 @@
 [alias]
     gvimdiff = difftool -t gvimdiff
     vimdiff  = difftool -t vimdiff
+    st = "status --short"
+    ci = "commit --verbose"
+    lg = log --oneline --graph
+    rbi = "rebase --interactive --autosquash"
 [difftool]
     prompt = false
 [pull]
