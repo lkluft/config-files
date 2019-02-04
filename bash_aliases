@@ -10,7 +10,6 @@ alias x='exit'
 alias jnb='jupyter notebook'
 
 # default options
-alias cp='cp -i'
 alias df='df -h'
 alias du='du --human-readable --apparent-size'
 alias free='free -h'
@@ -19,9 +18,7 @@ alias ipython='ipython --no-banner --classic --pprint'
 alias latexmk='latexmk -e "$pdflatex=q/pdflatex -interaction=nonstopmode/" -pdf'
 alias ls='ls --color=auto --group-directories-first'
 alias mkdir='mkdir -p'
-alias mv='mv -i'
 alias pgrep='pgrep -l'
-alias rm='rm -I'
 alias sort='sort -f'
 
 if [[ "$(uname -s)" == "Linux" ]]; then
