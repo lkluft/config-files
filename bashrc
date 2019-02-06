@@ -50,7 +50,7 @@ case "$(hostname)" in
     ARTS_DATA_PATH="${APMETSCRATCH}/data/catalogue/hitran/hitran2012/:${ARTS_DATA_PATH}"
     export ARTS_DATA_PATH
     export LC_ALL=C
-    export PYTHONUSERBASE="/scratch/uni/u237/users/dev/lkluft/python"
+    export PYTHONUSERBASE="/scratch/uni/u237/users/lkluft/dev/python"
     ;;
 esac
 path_prepend "${HOME}/bin"
