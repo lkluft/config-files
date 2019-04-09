@@ -120,9 +120,6 @@ export LESS="-reFsX"
 [[ -r '/etc/hosts-system' ]] && export HOSTFILE='/etc/hosts-system'
 
 
-# python settings
-export PYTHONSTARTUP="${HOME}/.pythonrc"  # Path to Python startup file.
-
 # When running without X11 server, use 'Agg' backend for matplotlib.
 [[ -z "$DISPLAY" ]] && export MPLBACKEND="Agg"
 

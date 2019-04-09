@@ -171,6 +171,3 @@ update-macports(){ sudo port selfupdate && sudo port upgrade outdated; }
 # Connect to tmux servers on remote machines.
 pptm(){ ssh mistralpp -t /work/um0878/sw/anaconda/bin/tmux att -t main; }
 t7tm(){ ssh t7 -t /scratch/uni/u237/sw/tmux/bin/tmux att -t main; }
-
-# Start Python interpreter without reading configuration file.
-ipyplain() { PYTHONSTARTUP="" ipy; }

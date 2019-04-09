@@ -7,7 +7,23 @@ c = get_config()
 #------------------------------------------------------------------------------
 
 # lines of code to run at IPython startup.
-c.InteractiveShellApp.exec_lines = ['%load_ext autoreload', '%autoreload 2']
+c.InteractiveShellApp.exec_lines = [
+    # IPython magic
+    '%load_ext autoreload',
+    '%autoreload 2',
+    # Standard library imports
+    'import glob',
+    'import os',
+    'import sys',
+    # Third-party imports
+    'import matplotlib as mpl',
+    'import matplotlib.pyplot as plt',
+    'import numpy as np',
+    'import typhon as ty',
+    # User "settings"
+    'ty.plots.styles.use("typhon")',
+    'from typhon.arts import xml',
+]
 
 #------------------------------------------------------------------------------
 # TerminalInteractiveShell configuration
