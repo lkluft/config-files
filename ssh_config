@@ -42,3 +42,4 @@ Host *
     ForwardX11trusted no
     HashKnownHosts yes
     LogLevel ERROR
+    ServerAliveInterval 60
