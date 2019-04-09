@@ -5,10 +5,12 @@ Host cen-login
     Hostname login.cen.uni-hamburg.de
     User u300509
 
-Host thunder7 t7
+Host thunder7 *t7
     Hostname thunder7.cen.uni-hamburg.de
     LocalForward 4243 localhost:4242
     User u300509
+
+Host tt7
     ProxyCommand ssh -W %h:%p cen-login
 
 Host mistral
