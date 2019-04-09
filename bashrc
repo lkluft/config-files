@@ -42,15 +42,29 @@ case "$(hostname)" in
     module "load git/2.16.2"
     ;;
   "thunder"*)
+    export LC_ALL=C
+
+    # Load group profile
     export APMETUSER="lkluft"
     . "/scratch/uni/u237/sw/profile.apmet/apmet.sh"
+
+    # With great power comes great responsibility
+    ulimit -Sv 32000000 # limit memory usage of single processes to 32GB
+    export OMP_NUM_THREADS=8
+
+    # ARTS environment
     path_prepend "${APMETSCRATCH}/users/lkluft/dev/arts/build/src"
     . "${HOME}/lkluft/dev/arts/tools/bash_completion/completion_arts.sh"
+    ARTS_BUILD_PATH="${APMETSCRATCH}/users/lkluft/dev/arts/build/"
+    ARTS_INCLUDE_PATH="${APMETSCRATCH}/users/lkluft/dev/arts/controlfiles"
     ARTS_DATA_PATH="${APMETSCRATCH}/users/lkluft/dev/arts-xml-data"
-    ARTS_DATA_PATH="${APMETSCRATCH}/data/catalogue/hitran/hitran2012/:${ARTS_DATA_PATH}"
-    export ARTS_DATA_PATH
-    export LC_ALL=C
-    export PYTHONUSERBASE="/scratch/uni/u237/users/lkluft/dev/python"
+    ARTS_DATA_PATH="${APMETSCRATCH}/data/catalogue/hitran/:${ARTS_DATA_PATH}"
+    export ARTS_{BUILD,INCLUDE,DATA}_PATH
+
+    # Make Python work on head and batch nodes
+    path_prepend "/scratch/uni/u237/sw/anaconda36/envs/python36/bin"  # fallback
+    path_prepend "/dev/shm/u237002/anaconda36/envs/python36/bin"  # head only
+    export PYTHONUSERBASE="/scratch/uni/u237/users/lkluft/.local"
     ;;
 esac
 path_prepend "${HOME}/bin"
