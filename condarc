@@ -9,7 +9,6 @@
 # modifying the channel_alias key as explained below. The default is just
 # defaults.
 channels:
-  - conda-forge
   - defaults
 
 # When using activate, change the command prompt ($PS1) to include the
