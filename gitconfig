@@ -12,11 +12,14 @@
     st = "status --short"
     ci = "commit --verbose"
     lg = log --oneline --graph
-    rbi = "rebase --interactive --autosquash"
+    rbi = "rebase --interactive"
 [difftool]
     prompt = false
 [pull]
     rebase = true
+[rebase]
+    autoStash = true
+    autoSquash = true
 [fetch]
     prune = true
 [commit]
