@@ -1,5 +1,6 @@
 # abbreviations
 alias c='clear'
+alias finger='finger -s'
 alias l='ls'
 alias la='ls -lFAh'
 alias ll='ls -lFh'
