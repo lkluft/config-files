@@ -8,8 +8,10 @@
 # will be interpreted as Anaconda.org usernames, and this can be changed by
 # modifying the channel_alias key as explained below. The default is just
 # defaults.
+channel_priority: strict
 channels:
   - defaults
+  - conda-forge
 
 # When using activate, change the command prompt ($PS1) to include the
 # activated environment. The default is True.
