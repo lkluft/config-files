@@ -11,7 +11,7 @@
     vimdiff  = difftool -t vimdiff
     st = "status --short"
     ci = "commit --verbose"
-    lg = log --oneline --graph
+    lg = log --oneline
     rbi = "rebase --interactive"
 [difftool]
     prompt = false
