@@ -3,11 +3,11 @@ cython
 flake8
 jupyter_contrib_nbextensions
 keras
-matplotlib>=1.4
-netCDF4>=1.1.1
+matplotlib
+netCDF4
 numba
 numexpr
-numpy>=1.13
+numpy
 pandas
 pint
 pymongo
@@ -15,8 +15,8 @@ pytest
 pytest-cov
 scikit-image
 scikit-learn
-scipy>=0.15.1
-setuptools>=0.7.2
+scipy
+setuptools
 sphinx
 sphinx_rtd_theme
-xarray>=0.10.2
+xarray
