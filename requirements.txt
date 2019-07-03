@@ -12,7 +12,6 @@ pandas
 pint
 pymongo
 pytest
-pytest-cov
 scikit-image
 scikit-learn
 scipy
