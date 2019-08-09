@@ -37,3 +37,6 @@ c.TerminalInteractiveShell.editing_mode = 'vi'
 
 # Autoindent IPython code entered interactively.
 c.TerminalInteractiveShell.autoindent = True
+
+# Evaluate code when hitting <TAB> in order to have completion for e.g. lists.
+c.IPCompleter.greedy = True
