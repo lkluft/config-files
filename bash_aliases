@@ -8,7 +8,6 @@ alias lrt='ls -lrtFh'
 alias p='pwd'
 alias ipy='ipython'
 alias x='exit'
-alias jnb='jupyter notebook'
 
 # default options
 alias df='df -h'
