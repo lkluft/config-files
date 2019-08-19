@@ -139,7 +139,7 @@ fi
 # Update environment (``env``) in a tmux session.
 tmup() {
   [[ -z ${TMUX} ]] && return 1;
-  eval "$(tmux show-env | sed -e /^-/d -e 's/ /\\\ /g' -e 's/^/export /')"
+  eval "$(tmux show-env -s | grep '^SSH_')"
 }
 
 
