@@ -36,6 +36,7 @@ Host git.mpimet.mpg.de
 
 # general settings for all hosts
 Host *
+    AddKeysToAgent yes
     Compression yes
     ForwardAgent yes
     ForwardX11 no
