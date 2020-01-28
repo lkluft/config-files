@@ -1,7 +1,6 @@
 cartopy
 cython
 flake8
-jupyter_contrib_nbextensions
 keras
 matplotlib
 netCDF4
