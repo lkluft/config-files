@@ -105,12 +105,8 @@ export LIGHT_YELLOW='\[\e[1;33m\]'
 export DEFAULT='\[\e[0m\]'
 
 case "$(hostname)" in
-  "acer") PSCOLOR="$LIGHT_CYAN" ;;
   "apple"*) PSCOLOR="$LIGHT_RED" ;;
-  "medion") PSCOLOR="$LIGHT_PURPLE" ;;
-  "mistralpp"*) PSCOLOR="$LIGHT_GREEN" ;;
-  "mlogin"*) PSCOLOR="$LIGHT_GREEN" ;;
-  "squall"*) PSCOLOR="$LIGHT_YELLOW" ;;
+  "mlogin"*|"mistralpp"*) PSCOLOR="$LIGHT_GREEN" ;;
   "thunder"*) PSCOLOR="$LIGHT_BLUE" ;;
   *) PSCOLOR="$WHITE" ;;
 esac
