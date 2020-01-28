@@ -166,6 +166,25 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Load git prompt shipped with MacPorts
+if [[ -f "/opt/local/share/git/git-prompt.sh" ]]; then
+  . "/opt/local/share/git/git-prompt.sh"
+fi
+
+# Enable git information in bash prompt
+if [[ $(type -t "__git_ps1") == "function" ]]; then
+  # Git prompt features (read ~/.git-prompt.sh for reference)
+  export GIT_PS1_SHOWDIRTYSTATE="true"
+  export GIT_PS1_SHOWSTASHSTATE="true"
+  export GIT_PS1_SHOWUNTRACKEDFILES="true"
+  export GIT_PS1_SHOWUPSTREAM="auto"
+  export GIT_PS1_SHOWCOLORHINTS="true"
+
+  # Use PROMPT_COMMAND to prepend git information to PS1
+  PROMPT_BASE="$PS1"
+  export PROMPT_COMMAND="$PROMPT_COMMAND;"'__git_ps1 "$PROMPT_BASE" "" "(%s) "'
+fi
+
 # set completion for own scripts and functions
 complete -o plusdirs -f -X '!*.tex' latexmk
 complete -o plusdirs -f -X '!*.@(pdf|png|jpg)' o
