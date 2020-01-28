@@ -60,7 +60,7 @@ extract() {
 # Open Google Search (web browser) via terminal.
 g() {
   local qry="$(echo $@ | sed -e 's/+/%2B/g' -e 's/ /+/g')"
-  open "https://startpage.com/do/search?q=${qry}" &> /dev/null &
+  open "https://duckduckgo.com/?q=${qry}" &> /dev/null &
 }
 
 
