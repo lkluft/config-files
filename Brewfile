@@ -27,6 +27,7 @@ cask "panoply"
 cask "texmaker"
 cask "tigervnc-viewer"
 cask "vmware-horizon-client"
+cask "xquartz"
 
 # Mac App Store
 brew "mas"
