@@ -11,7 +11,7 @@ Host thunder7 *t7
     User u300509
 
 Host tt7
-    ProxyCommand ssh -W %h:%p cen-login
+    ProxyJump cen-login
 
 Host mistral
     Hostname mistral.dkrz.de
