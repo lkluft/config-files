@@ -1,18 +1,8 @@
 # See https://conda.io/docs/user-guide/configuration/use-condarc.html
-# for more information about this file.
-
-# Listing channel locations in the .condarc file will override conda defaults,
-# causing conda to search only the channels listed here, in the order given.
-#
-# Use defaults to automatically include all default channels. Non-url channels
-# will be interpreted as Anaconda.org usernames, and this can be changed by
-# modifying the channel_alias key as explained below. The default is just
-# defaults.
 channel_priority: strict
+
 channels:
   - defaults
   - conda-forge
 
-# When using activate, change the command prompt ($PS1) to include the
-# activated environment. The default is True.
 changeps1: False
