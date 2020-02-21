@@ -24,6 +24,7 @@ cask_args appdir: "~/Applications"
 
 cask "adoptopenjdk11-jre"
 cask "macvim"
+cask "mactex"
 cask "osxfuse"
 cask "panoply"
 cask "texmaker"
