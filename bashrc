@@ -20,9 +20,8 @@ path_remove() {
 
 case "$(hostname)" in
   "apple"*)
-    path_prepend "/opt/local/bin"
-    path_prepend "/opt/local/sbin"
-    path_prepend "/opt/local/libexec/gnubin"
+    path_prepend "/usr/local/sbin"
+    path_prepend "/usr/local/opt/coreutils/libexec/gnubin"
     path_prepend "${HOME}/Documents/arts/build/src"
     ARTS_DATA_PATH="${HOME}/Documents/arts-xml-data"
     export ARTS_DATA_PATH="${HOME}/Documents/catalogue:${ARTS_DATA_PATH}"
@@ -157,8 +156,8 @@ set -Po pipefail
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [[ -f "/opt/local/etc/profile.d/bash_completion.sh" ]]; then
-    . "/opt/local/etc/profile.d/bash_completion.sh"
+  if [[ -f "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
+    . "/usr/local/etc/profile.d/bash_completion.sh"
   elif [[ -f "/usr/share/bash-completion/bash_completion" ]]; then
     . "/usr/share/bash-completion/bash_completion"
   elif [[ -f "/etc/bash_completion" ]]; then
@@ -166,10 +165,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Load git prompt shipped with MacPorts
-if [[ -f "/opt/local/share/git/git-prompt.sh" ]]; then
-  . "/opt/local/share/git/git-prompt.sh"
-fi
 
 # Enable git information in bash prompt
 if [[ $(type -t "__git_ps1") == "function" ]]; then
