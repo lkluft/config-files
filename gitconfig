@@ -24,3 +24,5 @@
     prune = true
 [commit]
     gpgSign = true
+[credential]
+    helper = store
