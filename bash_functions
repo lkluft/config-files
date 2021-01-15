@@ -163,7 +163,7 @@ set-pphost(){ hostname > ~/.pphost; }
 topu(){ top -U ${USER}; }
 
 # Update conda environment.
-update-conda(){ conda update --all && conda clean -pty; }
+update-conda(){ conda update conda -y && conda update --all && conda clean -pty; }
 
 # Connect to tmux servers on remote machines.
 pptm(){ ssh mistralpp -t /work/um0878/sw/anaconda/bin/tmux att -t main; }
