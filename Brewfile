@@ -38,6 +38,7 @@ cask_args appdir: "~/Applications"
 
 cask "adoptopenjdk11-jre"
 cask "appcleaner"
+cask "dropbox"
 cask "gimp"
 cask "mactex"
 cask "macvim"
