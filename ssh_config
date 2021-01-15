@@ -43,6 +43,7 @@ Host *
     ForwardAgent yes
     ForwardX11 no
     ForwardX11trusted no
+    XAuthLocation /opt/X11/bin/xauth
     HashKnownHosts yes
     LogLevel ERROR
     ServerAliveInterval 60
