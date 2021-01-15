@@ -36,10 +36,6 @@ Host mistralpp-mpi
     Hostname mistralpp
     User m300575
 
-Host git.mpimet.mpg.de
-    IdentityFile ~/.ssh/id_ecdsa_git_aes
-    User git
-
 # general settings for all hosts
 Host *
     AddKeysToAgent yes
