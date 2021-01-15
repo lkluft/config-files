@@ -13,6 +13,7 @@
 # LaTeX
 *.aux
 *.bbl
+*.bcf
 *.blg
 *.fdb_latexmk
 *.fff
@@ -22,5 +23,7 @@
 *.lot
 *.out
 *.pdf
+*.run.xml
 *.synctex.gz
+*.toc
 *.ttt
