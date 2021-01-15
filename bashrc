@@ -135,8 +135,9 @@ export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications"
 [[ -z "$DISPLAY" ]] && export MPLBACKEND="Agg"
 
 # use anaconda python environment if available
-[[ -d "${HOME}/.anaconda/bin" ]] && path_prepend "${HOME}/.anaconda/bin"
-
+if [[ -d "${HOME}/.anaconda/bin" ]]; then
+  path_prepend "${HOME}/.anaconda/bin"
+fi
 
 # language settings
 export LANG="en_US.utf-8"
