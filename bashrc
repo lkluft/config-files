@@ -128,6 +128,8 @@ export LESS="-reFsX"
 # if existing use hosts-system for ssh host completion
 [[ -r '/etc/hosts-system' ]] && export HOSTFILE='/etc/hosts-system'
 
+# Homebrew configuration
+export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications"
 
 # When running without X11 server, use 'Agg' backend for matplotlib.
 [[ -z "$DISPLAY" ]] && export MPLBACKEND="Agg"
