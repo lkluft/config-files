@@ -16,11 +16,17 @@ Host tt7
 Host mistral
     Hostname mistral.dkrz.de
     User u300509
+    IdentityFile ~/.ssh/id_rsa_mistral
+
+Host mlogin
+    Hostname mlogin100
+    ProxyJump mistral
 
 Host mistralpp
     Hostname mistralpp01.dkrz.de
     LocalForward 4244 localhost:4242
     User u300509
+    IdentityFile ~/.ssh/id_rsa_mistral
 
 Host mistral-mpi
     Hostname mistral
