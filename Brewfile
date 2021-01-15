@@ -1,42 +1,50 @@
 # Configure taps (channels)
+tap "adoptopenjdk/openjdk"
+tap "github/gh"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
-tap "adoptopenjdk/openjdk"
+tap "teamookla/speedtest"
 
 # Brew (packages)
+cask "osxfuse"
 brew "bash"
 brew "bash-completion"
+brew "gcc"
+brew "cdo"
 brew "cmake"
 brew "coreutils"
-brew "gcc"
+brew "cpanminus"
+brew "ffmpeg"
+brew "fftw"
+brew "gh"
 brew "git"
-brew "gnupg"
 brew "gnu-sed"
+brew "gnupg"
 brew "imagemagick"
+brew "llvm"
+brew "node"
+brew "perl"
 brew "pinentry-mac"
 brew "rename"
 brew "sshfs"
 brew "tmux"
 brew "tree"
+brew "wget"
+brew "teamookla/speedtest/speedtest"
 
 # Casks (GUIs)
 cask_args appdir: "~/Applications"
 
 cask "adoptopenjdk11-jre"
-cask "macvim"
+cask "appcleaner"
+cask "gimp"
 cask "mactex"
-cask "osxfuse"
+cask "macvim"
+cask "mattermost"
 cask "panoply"
+cask "processing"
 cask "texmaker"
-cask "tigervnc-viewer"
-cask "vmware-horizon-client"
+# cask "tigervnc-viewer"
+# cask "vmware-horizon-client"
 cask "xquartz"
-
-# Mac App Store
-brew "mas"
-
-mas "Microsoft OneNote", id: 784801555
-mas "Sim Daltonism", id: 693112260
-mas "Slack", id: 803453959
-mas "Todoist", id: 585829637
