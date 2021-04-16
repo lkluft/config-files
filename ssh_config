@@ -3,38 +3,48 @@
 # settings for university servers
 Host cen-login
     Hostname login.cen.uni-hamburg.de
-    User u300509
 
-Host thunder7 *t7
+Host thunder7 t7
     Hostname thunder7.cen.uni-hamburg.de
+    ProxyJump %r@cen-login
+    User u300509
     LocalForward 4243 localhost:4242
+
+Host *.mpimet
+    User m300575
+    IdentityFile ~/.ssh/id_rsa_mistral_mpi
+
+Host *.uhh
     User u300509
+    IdentityFile ~/.ssh/id_rsa_mistral_uhh
 
-Host tt7
-    ProxyJump cen-login
-
-Host mistral
+Host mistral.mpimet mistral.uhh
     Hostname mistral.dkrz.de
-    User u300509
-    IdentityFile ~/.ssh/id_rsa_mistral
 
-Host mlogin
-    Hostname mlogin100
-    ProxyJump mistral
+Host mistralpp.*
+    Hostname mistralpp2
+    LocalForward 4242 localhost:4242
 
-Host mistralpp
-    Hostname mistralpp01.dkrz.de
-    LocalForward 4244 localhost:4242
-    User u300509
-    IdentityFile ~/.ssh/id_rsa_mistral
+Host mistralpp.mpimet
+    ProxyJump mistral.mpimet
 
-Host mistral-mpi
-    Hostname mistral
+Host mistralpp.uhh
+    ProxyJump mistral.uhh
+
+Host breeze
+    Hostname breeze4.mpimet.mpg.de
     User m300575
+    ProxyJump %r@login.mpimet.mpg.de
 
-Host mistralpp-mpi
-    Hostname mistralpp
-    User m300575
+Host judac
+    Hostname judac.fz-juelich.de
+    User kluft1
+    IdentityFile ~/.ssh/id_rsa_juelich
+
+Host juwels
+    Hostname juwels.fz-juelich.de
+    User kluft1
+    IdentityFile ~/.ssh/id_rsa_juelich
 
 # general settings for all hosts
 Host *
