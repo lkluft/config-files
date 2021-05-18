@@ -42,9 +42,16 @@ Host judac
     IdentityFile ~/.ssh/id_rsa_juelich
 
 Host juwels
-    Hostname juwels.fz-juelich.de
+    Hostname juwels08.fz-juelich.de
     User kluft1
     IdentityFile ~/.ssh/id_rsa_juelich
+    ProxyJump mistral.mpimet
+
+Host juwels-booster
+    Hostname juwels-booster.fz-juelich.de
+    User kluft1
+    IdentityFile ~/.ssh/id_rsa_juelich
+    ProxyJump mistral.mpimet
 
 # general settings for all hosts
 Host *
