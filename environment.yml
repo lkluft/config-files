@@ -1,0 +1,25 @@
+name: main
+dependencies:
+  - python>=3.9
+  - black
+  - cartopy
+  - cython
+  - flake8
+  - jupyter
+  - jupyterlab
+  - matplotlib
+  - netCDF4
+  - numba
+  - numexpr
+  - numpy
+  - pandas
+  - pytest
+  - scikit-image
+  - scikit-learn
+  - scipy
+  - setuptools
+  - sphinx
+  - sphinx_rtd_theme
+  - xarray
+channels:
+  - conda-forge
