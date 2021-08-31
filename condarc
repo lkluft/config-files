@@ -1,8 +1,0 @@
-# See https://conda.io/docs/user-guide/configuration/use-condarc.html
-channel_priority: strict
-
-channels:
-  - defaults
-  - conda-forge
-
-changeps1: False
